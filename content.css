@@ -129,6 +129,7 @@ footer {
         transform: rotate(360deg);
     }
 }
+
 @media(max-width:1024px) {
     .content {
         margin-top: 10vh;
@@ -163,8 +164,8 @@ footer {
     .card3{
         margin: 0;
         margin-bottom: 2vh;
-        height: 70vh;
- 
+        height: 600px;
+        
     }
 
     .card1:hover {
