@@ -10,7 +10,7 @@
     grid-template-columns: 1fr 1fr 1fr;
     grid-template-rows: 1fr;
     grid-template-areas: "card1 card3 card2";
-    overflow: auto;
+
 }
 .logo-image {
     width: 100%;
@@ -138,12 +138,13 @@ footer {
         font-size: 11.5px;
         display: grid;
         width: 100%;
-        height: 100vh;
+        height: auto;
         grid-template-columns: 1fr;
         grid-template-rows: 1fr;
         grid-template-areas: "card1"
                              "card2"
                              "card3";
+        overflow: hidden;
     }
     p {
         line-height: 18px;
@@ -151,20 +152,21 @@ footer {
     .card1{
         margin: 0;
         height: auto;
-        padding-bottom: 30px;
+        padding-bottom: 45px;
     }
     .card2 {
         margin: 0;
         margin: 5vh 0;
         height: auto;
-        padding-bottom: 35px;
+        padding-bottom: 45px;
     }
     .card3{
         margin: 0;
-        margin-bottom: 5vh;
-        height: 100%;
-        padding-bottom: 30px;
+        margin-bottom: 2vh;
+        height: 70vh;
+ 
     }
+
     .card1:hover {
         transform: none;
 
@@ -178,6 +180,9 @@ footer {
         transform: none;
         margin: 0;
         transition: none;
+        box-shadow:none;
+        transition: none;
+        transform: none;
     }
     footer {
         font-size: 10px;
