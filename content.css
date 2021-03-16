@@ -197,3 +197,9 @@ footer {
         padding-bottom: 20px;
     }
 }
+@media(max-width:726px) {
+    .card3 {
+        height: 800px;
+        justify-content: center;
+    }
+}
