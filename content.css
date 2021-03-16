@@ -1,0 +1,193 @@
+@import url('https://fonts.googleapis.com/css2?family=Raleway:wght@200;400;700&display=swap');
+.content{
+    margin-top: 8vh;
+    font-family: 'Raleway';
+    font-weight: 400;
+    display: grid;
+    width: 100%;
+    height:100vh;
+    padding-top: 3vh;
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-template-rows: 1fr;
+    grid-template-areas: "card1 card3 card2";
+    overflow: auto;
+}
+.logo-image {
+    width: 100%;
+}
+.logo-image img {
+    float: right;
+    width: 150px; 
+}
+.card1 {
+    grid-area: card1;
+    padding:24px;
+    margin-left: 10px;
+    background: linear-gradient(180deg, #f1f1f1 90%, #ea3f3f 60%);
+    border-radius: 30px;
+    height: 70vh;
+    box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: stretch;
+}
+h2 {
+    letter-spacing: 5px;
+    text-transform: uppercase;
+    font-weight: 700;
+}
+
+.card1:hover {
+    box-shadow: rgba(50, 50, 93, 0.25) 0px 30px 60px -12px, rgba(0, 0, 0, 0.3) 0px 18px 36px -18px;
+    transition: all .25s ease-in-out;
+    transform: scale(1.05) translateX(30px);
+}
+.card2:hover {
+    box-shadow: rgba(50, 50, 93, 0.25) 0px 30px 60px -12px, rgba(0, 0, 0, 0.3) 0px 18px 36px -18px;
+    transition: all .25s ease-in-out;
+    transform: scale(1.05)  translateX(-30px);
+
+}
+.card3:hover {
+    box-shadow: rgba(50, 50, 93, 0.25) 0px 30px 60px -12px, rgba(0, 0, 0, 0.3) 0px 18px 36px -18px;
+    transition: all .25s ease-in;
+    transform: scale(1.05);
+
+}
+/* hr {
+    background: rgb(214, 213, 213) !important;
+    border: none;
+    height: 1px;
+    width: 80%;
+    filter: blur(1px);
+    z-index: -100;
+} */
+.card2 {
+    grid-area: card2;
+    padding:24px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: stretch;
+    margin-right: 10px;
+    background: linear-gradient(180deg, #f1f1f1 90%, #ea3f3f 60%);
+    border-radius: 30px;
+    height: 80vh;
+    box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
+}
+.card3 {
+    grid-area: card3;
+    padding:24px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: stretch;
+    margin: 0 10px;
+    background: linear-gradient(180deg, #f1f1f1 90%, #ea3f3f 60%);
+    border-radius: 30px;
+    height: 84vh;
+    box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
+}
+.card3 img {
+    width: 30%;
+}
+
+footer {
+    width: 100%;
+    background:#ea3f3f ;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-around;
+    font-family: 'Raleway';
+}
+.footer2 {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-around;
+    width: 50%;
+}
+.footer1 {
+    width: 50%;
+    text-align: center;
+}
+.footer2 img {
+    width: 10%;
+    cursor: pointer;
+}
+.footer2 img:hover {
+    animation: animate 1s ease-in-out;
+}
+@keyframes animate {
+    from {
+        transform: rotate(0);
+    }
+    to {
+        transform: rotate(360deg);
+    }
+}
+@media(max-width:1024px) {
+    .content {
+        margin-top: 10vh;
+        font-family: 'Raleway';
+        font-weight: 400;
+        margin: 0;
+        font-size: 11.5px;
+        display: grid;
+        width: 100%;
+        height: 100vh;
+        grid-template-columns: 1fr;
+        grid-template-rows: 1fr;
+        grid-template-areas: "card1"
+                             "card2"
+                             "card3";
+    }
+    p {
+        line-height: 18px;
+    }
+    .card1{
+        margin: 0;
+        height: auto;
+        padding-bottom: 30px;
+    }
+    .card2 {
+        margin: 0;
+        margin: 5vh 0;
+        height: auto;
+        padding-bottom: 35px;
+    }
+    .card3{
+        margin: 0;
+        margin-bottom: 5vh;
+        height: 100%;
+        padding-bottom: 30px;
+    }
+    .card1:hover {
+        transform: none;
+
+    }
+    .card2:hover {
+        transform: none;
+        margin: 5vh 0;
+
+    }
+    .card3:hover {
+        transform: none;
+        margin: 0;
+        transition: none;
+    }
+    footer {
+        font-size: 10px;
+        flex-direction: column;
+        height: auto;
+        width: auto;
+        margin-top: 10px;
+        padding: 10px;
+    }
+    .footer1 {
+        padding-bottom: 20px;
+    }
+}
