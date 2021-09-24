@@ -155,7 +155,7 @@ input::-webkit-inner-spin-button {
   background: hsl(33, 79%, 55%);
   color: hsl(209, 100%, 10%);
   position: absolute;
-  bottom: 0;
+  bottom: -5vh;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -272,6 +272,7 @@ input::-webkit-inner-spin-button {
   #title {
     font-size: 2rem;
     text-align: center;
+    margin-top: 10vh;
   }
   #time {
     font-size: 7rem;
