@@ -71,7 +71,8 @@
       const alertBanner = document.querySelector(".alert");
       const successBanner = document.querySelector(".success");
       const instruction = document.querySelector("#instruction");
-      const steps = document.querySelector("#steps")
+      const steps = document.querySelector("#steps");
+      const body = document.querySelector("body");
 
       function play() {
         var audio = document.getElementById("audio");
@@ -121,13 +122,15 @@
         startTimer(time, display);
         document.querySelector("#userInput").value = "";
       });
-      instruction.addEventListener("mouseover", function () {
-        steps.style.top = 0
-        steps.style.left = 0
-      });
+
       instruction.addEventListener("mouseout", function () {
-        steps.style.top = -100 + "%"
-        steps.style.left = -100 + "%"
+        steps.style.top = -100 + "%";
+        steps.style.left = -100 + "%";
+      });
+      instruction.addEventListener("click", function () {
+        steps.classList.toggle("active");
+        steps.style.top = 0;
+        steps.style.left = 0;
       });
     </script>
     <script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
