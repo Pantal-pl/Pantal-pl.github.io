@@ -26,7 +26,7 @@
       <span>Entered number must be greater than 0.</span>
     </div>
     <div class="banner success">
-      <span>Success. You hear ring when count stops.</span>
+      <span>Success. You'll hear ring when count stops.</span>
     </div>
     <header id="title">
       <h1>Ergonomy timer</h1>
@@ -122,15 +122,8 @@
         startTimer(time, display);
         document.querySelector("#userInput").value = "";
       });
-
-      instruction.addEventListener("mouseout", function () {
-        steps.style.top = -100 + "%";
-        steps.style.left = -100 + "%";
-      });
       instruction.addEventListener("click", function () {
         steps.classList.toggle("active");
-        steps.style.top = 0;
-        steps.style.left = 0;
       });
     </script>
     <script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>

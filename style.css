@@ -155,7 +155,7 @@ input::-webkit-inner-spin-button {
   background: hsl(33, 79%, 55%);
   color: hsl(209, 100%, 10%);
   position: absolute;
-  bottom: -5vh;
+  bottom: 0vh;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -193,10 +193,7 @@ input::-webkit-inner-spin-button {
   z-index: 2;
   cursor: pointer;
 }
-.active {
-  top: 0;
-  left: 0;
-}
+
 #instruction span {
   font-family: "Inconsolata", monospace;
   font-size: 1.3rem;
@@ -206,6 +203,10 @@ input::-webkit-inner-spin-button {
   left: -100%;
   top: -100%;
   margin: 50px;
+}
+.active {
+  top: 0 !important;
+  left: 0 !important;
 }
 #steps ul {
   display: flex;
