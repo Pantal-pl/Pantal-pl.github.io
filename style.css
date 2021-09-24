@@ -154,7 +154,7 @@ input::-webkit-inner-spin-button {
   height: 5vh;
   background: hsl(33, 79%, 55%);
   color: hsl(209, 100%, 10%);
-  position: absolute;
+  position: fixed;
   bottom: 0vh;
   display: flex;
   align-items: center;
@@ -297,6 +297,9 @@ input::-webkit-inner-spin-button {
   #steps ul {
     width: 40vw;
   }
+  /* #information {
+    opacity: 0;
+  } */
 }
 @media (max-width: 400px) {
   #title {
