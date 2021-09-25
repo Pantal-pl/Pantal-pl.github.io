@@ -262,18 +262,22 @@ input::-webkit-inner-spin-button {
   #steps ul {
     width: 30vw;
   }
-  #title {
+  /* #title {
     margin-top: 20px;
-  }
+  } */
   #instruction {
-    transform: translateY(14vh);
+    right: 0;
+    bottom: 0;
+    left: auto;
+    top: auto;
+    margin: 0 10px 6vh 0;
   }
 }
 @media (max-width: 485px) {
   #title {
     font-size: 2rem;
     text-align: center;
-    margin-top: 10vh;
+    margin-top: 3vh;
   }
   #time {
     font-size: 7rem;
@@ -297,9 +301,6 @@ input::-webkit-inner-spin-button {
   #steps ul {
     width: 40vw;
   }
-  /* #information {
-    opacity: 0;
-  } */
 }
 @media (max-width: 400px) {
   #title {
@@ -325,8 +326,17 @@ input::-webkit-inner-spin-button {
   .banner {
     font-size: 1rem;
   }
+  #steps {
+    width: 100vw;
+    margin: 0;
+  }
   #steps ul {
-    width: 50vw;
+    width: 100vw;
+    margin: 0;
+  }
+  #steps ul li {
+    width: 100%;
+    padding: 15px;
   }
 }
 /* ----------------------------------------------
