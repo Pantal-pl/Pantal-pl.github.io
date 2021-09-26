@@ -7,22 +7,18 @@
   box-sizing: border-box;
   font-family: "Lobster", cursive;
 }
-/* width */
 ::-webkit-scrollbar {
   width: 10px;
 }
 
-/* Track */
 ::-webkit-scrollbar-track {
   background: hsl(33, 79%, 55%);
 }
 
-/* Handle */
 ::-webkit-scrollbar-thumb {
   background: hsl(210, 100%, 5%);
 }
 
-/* Handle on hover */
 ::-webkit-scrollbar-thumb:hover {
   background: hsla(210, 100%, 7%, 0.774);
 }
@@ -121,17 +117,18 @@ input::-webkit-inner-spin-button {
   position: fixed;
   z-index: 3;
   color: white;
-  top: -8vh;
+  top: -12vh;
   font-size: 2rem;
   transition: 0.3s;
+  min-width: 40%;
   width: auto;
   height: 8vh;
   display: flex;
   flex-direction: row;
   align-items: center;
   justify-content: center;
-  padding: 5px;
   text-align: center;
+  padding: 40px 10px !important;
 }
 .banner span {
   font-family: "Inconsolata", monospace;
@@ -141,6 +138,9 @@ input::-webkit-inner-spin-button {
 }
 .success {
   background: #339900;
+}
+.reset {
+  background: #ffcc00;
 }
 .shake-horizontal {
   -webkit-animation: shake-horizontal 0.8s
@@ -203,6 +203,7 @@ input::-webkit-inner-spin-button {
   left: -100%;
   top: -100%;
   margin: 50px;
+  z-index: 3;
 }
 .active {
   top: 0 !important;
@@ -219,7 +220,7 @@ input::-webkit-inner-spin-button {
 #steps ul li {
   font-family: "Inconsolata", monospace;
   list-style: none;
-  z-index: 1;
+  z-index: 2;
   font-size: 1.2rem;
   background: hsl(211, 100%, 8%);
   padding: 9px;

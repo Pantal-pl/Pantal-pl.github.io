@@ -4,7 +4,7 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta http-equiv="ScreenOrientation" content="autoRotate:disabled">
+    <meta http-equiv="ScreenOrientation" content="autoRotate:disabled" />
     <title>Timer</title>
     <link rel="stylesheet" href="style.css" />
   </head>
@@ -27,7 +27,13 @@
       <span>Entered number must be greater than 0.</span>
     </div>
     <div class="banner success">
-      <span>Success. <br> You'll hear ring when count stops.</span>
+      <span
+        >Success. <br />
+        You'll hear ring when count stops.</span
+      >
+    </div>
+    <div class="banner reset">
+      <span>Done.</span>
     </div>
     <header id="title">
       <h1>Ergonomy timer</h1>
@@ -45,9 +51,7 @@
 
         <div class="start-stop-btn">
           <button type="button" class="btn" id="start">Start</button>
-          <button type="button" onClick="window.location.reload();" class="btn">
-            Reset
-          </button>
+          <button type="button" class="btn" id="reset">Reset</button>
         </div>
       </form>
     </section>
@@ -71,33 +75,36 @@
       const start = document.querySelector("#start");
       const alertBanner = document.querySelector(".alert");
       const successBanner = document.querySelector(".success");
+      const resetBanner = document.querySelector(".reset")
       const instruction = document.querySelector("#instruction");
       const steps = document.querySelector("#steps");
-      const body = document.querySelector("body");
+      const resetBtn = document.querySelector("#reset");
 
       function play() {
-        var audio = document.getElementById("audio");
+        const audio = document.getElementById("audio");
         audio.play();
       }
 
       function startTimer(userInput, display) {
-        var timer = userInput,
+        let timer = userInput,
           minutes,
           seconds;
-        if (userInput <= 1) {
+
+        if (userInput <= 0) {
           alertBanner.style.top = 0.1 + "vh";
           alertBanner.classList.add("shake-horizontal");
 
           setTimeout(function () {
-            alertBanner.style.top = -8 + "vh";
+            alertBanner.style.top = -12 + "vh";
             alertBanner.classList.remove("shake-horizontal");
           }, 3600);
         } else {
           successBanner.style.top = 0.1 + "vh";
           setTimeout(function () {
-            successBanner.style.top = -8 + "vh";
+            successBanner.style.top = -12 + "vh";
           }, 3600);
-          setInterval(function () {
+
+          const timerID = setInterval(function () {
             minutes = parseInt(timer / 60, 10);
             seconds = parseInt(timer % 60, 10);
 
@@ -107,21 +114,34 @@
             display.textContent = minutes + ":" + seconds;
 
             if (--timer < 0) {
-              timer = userInput;
-            }
-            if (timer === 1) {
+              display.textContent = "00:00";
               play();
+              userInput = null;
+              clearInterval(timerID);
             }
           }, 1000);
+          resetBtn.addEventListener("click", () => {
+            if (userInput > 0) {
+              display.textContent = "00:00";
+              userInput = null;
+              play();
+              clearInterval(timerID);
+            }
+            resetBanner.style.top = 0.1 + "vh";
+          setTimeout(function () {
+            resetBanner.style.top = -12 + "vh";
+          }, 1600);
+          });
         }
       }
 
       start.addEventListener("click", function start() {
         let userInput = document.querySelector("#userInput").value;
-        var time = 60 * userInput,
+        
+        let time = 60 * userInput,
           display = document.querySelector("#time");
         startTimer(time, display);
-        document.querySelector("#userInput").value = "";
+        document.querySelector("#userInput").value = null;
       });
       instruction.addEventListener("click", function () {
         steps.classList.toggle("active");
