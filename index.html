@@ -35,6 +35,9 @@
     <div class="banner reset">
       <span>Done.</span>
     </div>
+    <div class="banner stop">
+      <span>Timer has stopoed.</span>
+    </div>
     <header id="title">
       <h1>Ergonomy timer</h1>
     </header>
@@ -73,9 +76,11 @@
     </footer>
     <script>
       const start = document.querySelector("#start");
+      const banners = document.querySelectorAll(".banner");
       const alertBanner = document.querySelector(".alert");
       const successBanner = document.querySelector(".success");
-      const resetBanner = document.querySelector(".reset")
+      const resetBanner = document.querySelector(".reset");
+      const stopBanner = document.querySelector(".stop");
       const instruction = document.querySelector("#instruction");
       const steps = document.querySelector("#steps");
       const resetBtn = document.querySelector("#reset");
@@ -91,7 +96,7 @@
           seconds;
 
         if (userInput <= 0) {
-          alertBanner.style.top = 0.1 + "vh";
+          alertBanner.style.top = 0 + "vh";
           alertBanner.classList.add("shake-horizontal");
 
           setTimeout(function () {
@@ -99,7 +104,7 @@
             alertBanner.classList.remove("shake-horizontal");
           }, 3600);
         } else {
-          successBanner.style.top = 0.1 + "vh";
+          successBanner.style.top = 0 + "vh";
           setTimeout(function () {
             successBanner.style.top = -12 + "vh";
           }, 3600);
@@ -118,6 +123,10 @@
               play();
               userInput = null;
               clearInterval(timerID);
+              stopBanner.style.top = 0 + "vh";
+              setTimeout(function () {
+                stopBanner.style.top = -12 + "vh";
+              }, 2000);
             }
           }, 1000);
           resetBtn.addEventListener("click", () => {
@@ -127,17 +136,17 @@
               play();
               clearInterval(timerID);
             }
-            resetBanner.style.top = 0.1 + "vh";
-          setTimeout(function () {
-            resetBanner.style.top = -12 + "vh";
-          }, 1600);
+            resetBanner.style.top = 0 + "vh";
+            setTimeout(function () {
+              resetBanner.style.top = -12 + "vh";
+            }, 1600);
           });
         }
       }
 
       start.addEventListener("click", function start() {
         let userInput = document.querySelector("#userInput").value;
-        
+
         let time = 60 * userInput,
           display = document.querySelector("#time");
         startTimer(time, display);
