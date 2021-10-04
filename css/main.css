@@ -1,0 +1,239 @@
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@300&display=swap");
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Poppins", sans-serif;
+  color: #E9E9E9;
+}
+body {
+  background: rgb(22, 96, 229);
+  background: -moz-linear-gradient(
+    0deg,
+    rgba(22, 96, 229, 0.6755077030812324) 15%,
+    rgba(150, 7, 159, 0.49343487394957986) 100%
+  );
+  background: -webkit-linear-gradient(
+    0deg,
+    rgba(22, 96, 229, 0.6755077030812324) 15%,
+    rgba(150, 7, 159, 0.49343487394957986) 100%
+  );
+  background: linear-gradient(
+    0deg,
+    rgba(22, 96, 229, 0.6755077030812324) 15%,
+    rgba(150, 7, 159, 0.49343487394957986) 100%
+  );
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr="#1660e5",endColorstr="#96079f",GradientType=1);
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+}
+/* .future-forecast {
+  height: auto;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: space-evenly;
+  position: absolute;
+  bottom: 0;
+  height: 50vh;
+}
+.weather-forecast {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-around;
+  width: 100vw;
+}
+.weather-forecast-item {
+  background: rgba(255, 255, 255, 0.541);
+  width: calc(100vw / 7);
+  padding: 1em;
+  backdrop-filter: blur(10px);
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: space-evenly;
+  overflow-x: hidden;
+}
+.today {
+  background: rgba(255, 255, 255, 0.541);
+  backdrop-filter: blur(10px);
+  padding: 1em;
+  width: calc(2 * (100vw / 7));
+}
+.place-container {
+  position: absolute;
+  top: 0;
+  left: 0;
+  background: rgba(255, 255, 255, 0.541);
+  backdrop-filter: blur(100px);
+  padding: 1em;
+  width: calc(2 * (100vw / 7));
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+.date-container {
+  margin-left: calc(2 * (100vw / 7));
+  background: rgba(255, 255, 255, 0.541);
+  backdrop-filter: blur(10px);
+  padding: 1em;
+  position: absolute;
+  top: 0;
+  height: 50vh;
+  width: calc(5 * (100vw / 7));
+}
+.time-and-date {
+  position: absolute;
+  top: 0;
+  right: 0;
+  font-size: 48px;
+  margin: 1em;
+  text-align: right;
+}
+.others {
+  font-size: 22px;
+}
+#humidity {
+  font-size: 22px;
+} */
+/* Old shit */
+.cords-and-time {
+    width: auto;
+    min-height: 14vh;
+}
+.time-and-date {
+    position: absolute;
+    left: 0;
+    top: 0;
+    padding: 20px 0 0 20px;
+    font-size: 18px;
+}
+.place-container {
+    position: absolute;
+    top: 0;
+    right: 0;
+    padding: 20px 20px 0 0;
+    font-size: 10px;
+}
+.current-info {
+    display: flex;
+    flex-direction: column;
+}
+.today {
+    width: auto;
+    min-height: 27vh;
+    padding: 20px 20px 0 20px;
+}
+#today-day {
+    font-size: 34px;
+    text-align: right;
+    position: relative;
+}
+#today-day::after {
+    content: "";
+    width: 100px;
+    background: #FDFDFD;
+    height: 0.5px;
+    position: absolute;
+    bottom: 0;
+    right: 0;
+}
+#today-w-icon {
+    position: absolute;
+    right: 0;
+    padding-right: 3px;
+    width: 150px;
+    height: 150px;
+}
+.today-temp {
+    font-size: 38px;
+}
+.today-temp-first {
+    position: relative;
+}
+.today-temp-first::before {
+    content: "";
+    width: 90px;
+    background: #FDFDFD;
+    height: 0.5px;
+    position: absolute;
+    bottom: 0;
+}
+.others {
+    width: auto;
+    min-height: 40vh;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-template-rows: 1fr 1fr 1fr;
+    grid-template-areas: "feelsLike pressure humidity"
+                         "windSpeed sunrise sunrise"
+                         "dewPoint sunset sunset";
+    gap:20px;
+    padding: 20px;
+}
+.weather-item {
+    min-width: 80px;
+    min-height: 80px;
+    border-radius: 10px;
+    background: hsla(0, 0%, 98%, 0.171);
+    box-shadow: rgba(17, 12, 46, 0.15) 0px 48px 100px 0px;
+    font-size: 12px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-evenly;
+}
+.weather-item img {
+    transform: scale(0.6);
+}
+#humidity {
+grid-area: humidity;
+}
+#pressure {
+grid-area: pressure;
+}
+#wind-speed {
+grid-area: windSpeed;
+white-space: nowrap;
+}
+#dew-point {
+grid-area: dewPoint;
+}
+#feels-like {
+grid-area: feelsLike;
+}
+#sunrise {
+grid-area: sunrise;
+}
+#sunset {
+grid-area: sunset;    
+}
+#sunrise, #sunset {
+    width: auto;
+    display: flex;
+    flex-direction: row-reverse;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 15px;
+    position: relative;
+}
+#sunrise img, #sunset img{
+   width: 60px;
+   height: 60px;
+}
+.sun-time {
+    font-size: 24px;
+}
+.sun-time-first::after,.sun-time-second::after {
+    content: "AM";
+    width: 20px;
+    height: 20px;
+    font-size: 10px;
+    position: absolute;
+    margin-left: 2.6px;
+}
+.sun-time-second::after {
+    content: "PM";
+}
