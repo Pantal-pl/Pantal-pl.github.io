@@ -82,6 +82,7 @@ function showWeatherData(data) {
   countryEl.innerHTML = data.lat + " &#176;N " + data.lon + " &#176;E";
 
   currentWeatherItemsEl.innerHTML = `
+  <p id="details">Details</p>
     <div class="weather-item" id="humidity">
     <img src="images/humidity.png" alt="">
     <p>Humidity</p>
