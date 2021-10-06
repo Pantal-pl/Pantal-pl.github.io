@@ -31,6 +31,7 @@ body {
   position: fixed;
   z-index: 1;
   left: -100%;
+  transition: .25s;
 }
 .menu-button {
   width: 50px;
@@ -188,6 +189,51 @@ body {
 .weather-item p {
   color: #fafafa;
 }
+.weather-forecast-item{
+  width: auto;
+  min-height: 30vh;
+  position: relative;
+  margin: 20px;
+  margin-top: 0;
+  padding: 20px;
+  border-radius: 10px;
+  background: hsla(0, 0%, 98%, 0.171);
+  box-shadow: rgba(17, 12, 46, 0.15) 0px 48px 100px 0px;
+}
+.day {
+  font-size: 34px;
+}
+.temp {
+  font-size: 38px;
+  position: relative;
+}
+#temp-with-separator::before {
+  content: "";
+  width: 90px;
+  background: var(--separator);
+  height: 0.5px;
+  position: absolute;
+  bottom: 0;
+}
+#forecast-heading {
+  padding: 20px;
+  padding-top: 0;
+}
+#forecast-heading::before {
+  content: "";
+  transform: translateY(7px);
+  width: 90vw;
+  background: var(--separator);
+  height: 0.5px;
+  position: absolute;
+  bottom: 5px;
+}
+.weather-forecast-item img {
+  position: absolute;
+  right: 0;
+  top: 10%;
+  width: 150px;
+}
 #humidity {
   grid-area: humidity;
 }
@@ -254,28 +300,34 @@ body {
 ::-webkit-input-placeholder {
   color: #e9e9e9;
 }
-#submit {
+#submit,#current-location {
   cursor: pointer;
   border: 1px solid #e9e9e9;
   background: transparent;
-  width: 50px;
+  text-align: center;
+  width: 200px;
   height: 30px;
   border-radius: 11px;
   color: #e9e9e9;
 }
-#submit:hover {
+#submit:hover,#current-location:hover {
   transition: 0.25s;
   color: rgb(119, 69, 122);
   background: #e9e9e9;
 }
-#current-location {
+
+/* #current-location {
   cursor: pointer;
   position: absolute;
   right: 0;
   bottom: 0;
-  margin: 20px;
   background: transparent;
   border: none;
   width: 20px;
   height: 20px;
+  margin: 30px;
 }
+#current-location img {
+  width: 40px;
+  height: 40px;
+} */

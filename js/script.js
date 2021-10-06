@@ -16,6 +16,11 @@ const layer3 = document.getElementById("layer3");
 const currentLocationButton = document.getElementById("current-location");
 
 currentLocationButton.addEventListener("click", function () {
+  menu.classList.toggle("menu-active");
+  layer1.classList.toggle("layer1-active");
+  layer2.classList.toggle("layer3-active");
+  layer3.classList.toggle("layer2-active");
+  wantedLocation.value = "";
   getWeatherData();
 });
 
@@ -72,6 +77,10 @@ setInterval(() => {
 
 function getAnyLocationData() {
   submitButton.addEventListener("click", function () {
+    menu.classList.toggle("menu-active");
+    layer1.classList.toggle("layer1-active");
+    layer2.classList.toggle("layer3-active");
+    layer3.classList.toggle("layer2-active");
     fetch(
       "https://api.openweathermap.org/data/2.5/weather?q=" +
         wantedLocation.value +
@@ -166,7 +175,7 @@ function showAnyLocationData(data) {
     } else {
       otherDayForecast += `
       <div class="weather-forecast-item"> 
-          <div class="day" >${window.moment(day.dt * 1000).format("ddd")}</div>
+          <div class="day" >${day}</div>
           <img src="http://openweathermap.org/img/wn/${
             data.weather[0].icon
           }@2x.png" class="w-icon" />
@@ -276,9 +285,11 @@ function showWeatherData(data) {
           <div class="day" >${window.moment(day.dt * 1000).format("ddd")}</div>
           <img src="http://openweathermap.org/img/wn/${
             day.weather[0].icon
-          }@2x.png" class="w-icon" />
-          <div class="temp">Day - ${Math.floor(day.temp.day)}&#176; C</div>
-          <div class="temp">Night - ${Math.floor(day.temp.night)}&#176; C</div>
+          }@4x.png" class="w-icon" />
+          <div class="temp" id="temp-with-separator">${Math.floor(
+            day.temp.day
+          )}&#176; C</div>
+          <div class="temp">${Math.floor(day.temp.night)}&#176; C</div>
     </div>
       `;
     }
