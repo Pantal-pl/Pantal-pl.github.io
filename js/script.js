@@ -90,9 +90,13 @@ function getAnyLocationData() {
       .then((data) => {
         console.log(data);
         showAnyLocationData(data);
+        if (data.cod === 404) {
+          console.log("fuck");
+        }
       });
   });
 }
+
 getAnyLocationData();
 
 function showAnyLocationData(data) {
@@ -174,35 +178,29 @@ function showAnyLocationData(data) {
       `;
     } else {
       otherDayForecast += `
-      <div class="weather-forecast-item" id="weather-item-deactive${day}"> 
-            <div class="day" >${window
-              .moment(day.dt * 1000)
-              .format("ddd")}</div>
-            <img src="http://openweathermap.org/img/wn/${
-              day.weather[0].icon
-            }@4x.png" class="w-icon" />
-            <div class="temp" id="temp-with-separator">${Math.round(
-              day.temp.day
-            )}&#176; C</div>
-            <div class="temp">${Math.round(day.temp.night)}&#176; C</div>
-            <div class="future-forecast-description" id="description${day}">
+      <div class="weather-forecast-item" id="weather-item-deactive${idx}">
+            <div class=".future-forecast-no-description">
+            z
+            </div>
+            
+            <div class="future-forecast-description" id="description${idx}">
               <div class="future-forecast-description-item">
-                <img src="images/pressure.svg" alt="">
+                <img src="images/pressure.svg" alt="" />
                 <p>Pressure</p>
                 <p>${data.daily[idx].pressure} HpA</p>
               </div>
               <div class="future-forecast-description-item">
-                <img src="images/humidity.svg" alt="">
+                <img src="images/humidity.svg" alt="" />
                 <p>Humidity</p>
                 <p>${data.daily[idx].humidity}%</p>
               </div>
               <div class="future-forecast-description-item">
-                <img src="images/wind-speed.svg" alt="">
+                <img src="images/wind-speed.svg" alt="" />
                 <p>Wind Speed</p>
                 <p>${Math.round(data.daily[idx].wind_speed)} MpH</p>
               </div>
             </div>
-      </div>
+          </div>
       `;
     }
   });
@@ -300,35 +298,43 @@ function showWeatherData(data) {
     } else {
       otherDayForecast += `
       
-      <div class="weather-forecast-item" id="weather-forecast-item-1"> 
-            <div class="day" >${window
-              .moment(day.dt * 1000)
-              .format("ddd")}</div>
+      <div class="weather-forecast-item" id="weather-item-deactive${idx}">
+            <div class="day">
+              ${window.moment(day.dt * 1000).format("ddd")}
+            </div>
+            <div class="weather-description-item">
+            <p>${day.weather[0].description.charAt(0).toUpperCase() + day.weather[0].description.slice(1)}</p>
+            </div>
             <img src="http://openweathermap.org/img/wn/${
               day.weather[0].icon
-            }@4x.png" class="w-icon" />
-            <div class="temp" id="temp-with-separator">${Math.round(
-              day.temp.day
-            )}&#176; C</div>
-            <div class="temp">${Math.round(day.temp.night)}&#176; C</div>
-            <div class="future-forecast-description" id="description_${idx}">
+            }@4x.png" class="w-icon"/>
+
+
+            <div class="forecast-temperature">
+              <div class="temp" id="temp-with-separator">${Math.round(
+                day.temp.day
+              )}&#176; C
+              </div>
+              <div class="temp">${Math.round(day.temp.night)}&#176; C</div>
+            </div>
+            <div class="future-forecast-description" id="description${day}">
               <div class="future-forecast-description-item">
-                <img src="images/pressure.svg" alt="">
+                <img src="images/pressure.svg" alt="" />
                 <p>Pressure</p>
                 <p>${data.daily[idx].pressure} HpA</p>
               </div>
               <div class="future-forecast-description-item">
-                <img src="images/humidity.svg" alt="">
+                <img src="images/humidity.svg" alt="" />
                 <p>Humidity</p>
                 <p>${data.daily[idx].humidity}%</p>
               </div>
               <div class="future-forecast-description-item">
-                <img src="images/wind-speed.svg" alt="">
+                <img src="images/wind-speed.svg" alt="" />
                 <p>Wind Speed</p>
                 <p>${Math.round(data.daily[idx].wind_speed)} MpH</p>
               </div>
             </div>
-      </div>
+          </div>
       `;
     }
   });
@@ -368,16 +374,17 @@ const addLocation = (ev) => {
   document.getElementById("last-search-value").addEventListener("click", () => {
     document.getElementById("location").value = location.location;
   });
-  
+
   if (i === 3) {
-    document.querySelector("#LAST").removeChild(document.querySelector("#LAST").childNodes[0]);
+    document
+      .querySelector("#LAST")
+      .removeChild(document.querySelector("#LAST").childNodes[0]);
     i = 2;
-    console.log("removed")
+    console.log("removed");
   }
   i++;
 };
 
 document.addEventListener("DOMContentLoaded", () => {
   document.getElementById("submit").addEventListener("click", addLocation);
-  
 });
