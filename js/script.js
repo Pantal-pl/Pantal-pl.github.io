@@ -375,11 +375,11 @@ const addLocation = (ev) => {
     document.getElementById("location").value = location.location;
   });
 
-  if (i === 3) {
+  if (i === 4) {
     document
       .querySelector("#LAST")
       .removeChild(document.querySelector("#LAST").childNodes[0]);
-    i = 2;
+    i = 3;
     console.log("removed");
   }
   i++;
