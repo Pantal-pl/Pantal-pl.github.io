@@ -8,7 +8,11 @@
 }
 :root {
   --separator: rgba(252, 252, 252, 0.26);
-  --second-color:#7594ff;
+  --second-color:linear-gradient(
+    45deg,
+    rgb(35, 110, 250) 33%,
+    rgb(85, 133, 223) 100%
+  );;
 }
 body {
   background: rgb(22, 96, 229);
@@ -73,6 +77,8 @@ body {
   flex: 1;
   height:auto;
   display: flex;
+  min-height: 15vh;
+  position: relative;
   flex-direction: column;
   align-items: flex-end;
   justify-content: space-between;
@@ -194,10 +200,10 @@ body {
   padding: 30px 20px 20px 20px;
   position: relative;
 }
-#details {
-  font-size: 12px;
+#details {  
+  font-weight: bold;
   position: absolute;
-  top: 0;
+  top: -10px;
   padding-left: 20px;
 }
 #details::before {
@@ -231,7 +237,7 @@ body {
 }
 .weather-forecast-item {
   width: auto;
-  min-height: 25vh;
+  min-height: 200px;
   height: auto;
   position: relative;
   margin: 20px;

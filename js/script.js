@@ -90,9 +90,6 @@ function getAnyLocationData() {
       .then((data) => {
         console.log(data);
         showAnyLocationData(data);
-        if (data.cod === 404) {
-          console.log("fuck");
-        }
       });
   });
 }
@@ -119,7 +116,7 @@ function showAnyLocationData(data) {
     data.coord.lat + " &#176;N " + data.coord.lon + " &#176;E";
 
   currentWeatherItemsEl.innerHTML = `
-  <p id="details">Details</p>
+  <h2 id="details">Details</h2>
     <div class="weather-item" id="humidity">
     <img src="images/humidity.svg" alt="">
     <p>Humidity</p>
@@ -303,7 +300,10 @@ function showWeatherData(data) {
               ${window.moment(day.dt * 1000).format("ddd")}
             </div>
             <div class="weather-description-item">
-            <p>${day.weather[0].description.charAt(0).toUpperCase() + day.weather[0].description.slice(1)}</p>
+            <p>${
+              day.weather[0].description.charAt(0).toUpperCase() +
+              day.weather[0].description.slice(1)
+            }</p>
             </div>
             <img src="http://openweathermap.org/img/wn/${
               day.weather[0].icon
@@ -369,7 +369,7 @@ const addLocation = (ev) => {
     );
   document.querySelector(
     "#LAST"
-  ).innerHTML += `<span id="last-search-value" style="padding: 0 5px; margin:5px;">${location.location}</span>`;
+  ).innerHTML += `<span id="last-search-value" style="padding: 0 5px; margin:5px;">&bull; ${location.location}</span>`;
 
   document.getElementById("last-search-value").addEventListener("click", () => {
     document.getElementById("location").value = location.location;
@@ -380,7 +380,6 @@ const addLocation = (ev) => {
       .querySelector("#LAST")
       .removeChild(document.querySelector("#LAST").childNodes[0]);
     i = 3;
-    console.log("removed");
   }
   i++;
 };
