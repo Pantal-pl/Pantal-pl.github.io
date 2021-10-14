@@ -163,7 +163,7 @@ function showAnyLocationData(data) {
     if (idx === 0) {
       currentTempEl.innerHTML = `
       <div class="day" id="today-day">Today</div>
-      <img src="http://openweathermap.org/img/wn/${
+      <img src="https://openweathermap.org/img/wn/${
         data.weather[0].icon
       }@4x.png"  id="today-w-icon"  class="w-icon" />
       <div class="temp today-temp today-temp-first" >${Math.round(
@@ -282,7 +282,7 @@ function showWeatherData(data) {
     if (idx === 0) {
       currentTempEl.innerHTML = `
       <div class="day" id="today-day">Today</div>
-      <img src="http://openweathermap.org/img/wn/${
+      <img src="https://openweathermap.org/img/wn/${
         day.weather[0].icon
       }@4x.png"  id="today-w-icon"  class="w-icon" />
       <div class="temp today-temp today-temp-first" >${Math.round(
@@ -305,7 +305,7 @@ function showWeatherData(data) {
               day.weather[0].description.slice(1)
             }</p>
             </div>
-            <img src="http://openweathermap.org/img/wn/${
+            <img src="https://openweathermap.org/img/wn/${
               day.weather[0].icon
             }@4x.png" class="w-icon"/>
 
