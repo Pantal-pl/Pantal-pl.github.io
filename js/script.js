@@ -34,11 +34,12 @@ menuButton.addEventListener("click", () => {
 const days = [
   "Monday",
   "Tuesday",
-  "Wendsday",
+  "Wednesday",
   "Thursday",
   "Friday",
-  "Sunday",
   "Saturday",
+  "Sunday",
+
 ];
 const months = [
   "January",
@@ -72,7 +73,7 @@ setInterval(() => {
     " " +
     `<span id="am-pm"></span>${ampm}</div>`;
 
-  dateEl.innerHTML = days[day - 1] + ", " + date + " " + months[month];
+  dateEl.innerHTML = days[day-1] + ", " + date + " " + months[month];
 }, 1000);
 
 function getAnyLocationData() {
@@ -88,7 +89,6 @@ function getAnyLocationData() {
     )
       .then((response) => response.json())
       .then((data) => {
-        console.log(data);
         showAnyLocationData(data);
       });
   });
@@ -107,9 +107,11 @@ function showAnyLocationData(data) {
   )
     .then((res) => res.json())
     .then((data) => {
-      console.log(data);
       showWeatherData(data);
     });
+  // .catch(function(){
+  //   console.log("error")
+  // })
 
   timezone.innerHTML = data.sys.country + " / " + data.name;
   countryEl.innerHTML =
@@ -158,49 +160,49 @@ function showAnyLocationData(data) {
     </div>
   `;
 
-  let otherDayForecast = "";
-  data.daily.forEach((day, idx) => {
-    if (idx === 0) {
-      currentTempEl.innerHTML = `
-      <div class="day" id="today-day">Today</div>
-      <img src="https://openweathermap.org/img/wn/${
-        data.weather[0].icon
-      }@4x.png"  id="today-w-icon"  class="w-icon" />
-      <div class="temp today-temp today-temp-first" >${Math.round(
-        data.main.temp_max - 273.15
-      )} &#176;C</div>
-      <div class="temp today-temp today-temp-second" >${Math.round(
-        data.main.temp_min - 273.15
-      )} &#176;C</div>
-      `;
-    } else {
-      otherDayForecast += `
-      <div class="weather-forecast-item" id="weather-item-deactive${idx}">
-            <div class=".future-forecast-no-description">
-            z
-            </div>
-            
-            <div class="future-forecast-description" id="description${idx}">
-              <div class="future-forecast-description-item">
-                <img src="images/pressure.svg" alt="" />
-                <p>Pressure</p>
-                <p>${data.daily[idx].pressure} HpA</p>
-              </div>
-              <div class="future-forecast-description-item">
-                <img src="images/humidity.svg" alt="" />
-                <p>Humidity</p>
-                <p>${data.daily[idx].humidity}%</p>
-              </div>
-              <div class="future-forecast-description-item">
-                <img src="images/wind-speed.svg" alt="" />
-                <p>Wind Speed</p>
-                <p>${Math.round(data.daily[idx].wind_speed)} MpH</p>
-              </div>
-            </div>
-          </div>
-      `;
-    }
-  });
+  // let otherDayForecast = "";
+  // data.daily.forEach((day, idx) => {
+  //   if (idx === 0) {
+  //     currentTempEl.innerHTML = `
+  //     <div class="day" id="today-day">Today</div>
+  //     <img src="https://openweathermap.org/img/wn/${
+  //       data.weather[0].icon
+  //     }@4x.png"  id="today-w-icon"  class="w-icon" />
+  //     <div class="temp today-temp today-temp-first" >${Math.round(
+  //       data.main.temp_max - 273.15
+  //     )} &#176;C</div>
+  //     <div class="temp today-temp today-temp-second" >${Math.round(
+  //       data.main.temp_min - 273.15
+  //     )} &#176;C</div>
+  //     `;
+  //   } else {
+  //     otherDayForecast += `
+  //     <div class="weather-forecast-item" id="weather-item-deactive${idx}">
+  //           <div class="future-forecast-no-description">
+  //           z
+  //           </div>
+
+  //           <div class="future-forecast-description" id="description${day}">
+  //             <div class="future-forecast-description-item">
+  //               <img src="images/pressure.svg" alt="" />
+  //               <p>Pressure</p>
+  //               <p>${data.daily[idx].pressure} HpA</p>
+  //             </div>
+  //             <div class="future-forecast-description-item">
+  //               <img src="images/humidity.svg" alt="" />
+  //               <p>Humidity</p>
+  //               <p>${data.daily[idx].humidity}%</p>
+  //             </div>
+  //             <div class="future-forecast-description-item">
+  //               <img src="images/wind-speed.svg" alt="" />
+  //               <p>Wind Speed</p>
+  //               <p>${Math.round(data.daily[idx].wind_speed)} MpH</p>
+  //             </div>
+  //           </div>
+  //         </div>
+  //     `;
+  //   }
+  // });
 }
 
 function getWeatherData() {
@@ -212,7 +214,6 @@ function getWeatherData() {
     )
       .then((res) => res.json())
       .then((data) => {
-        console.log(data);
         showWeatherData(data);
       });
   });
@@ -294,7 +295,6 @@ function showWeatherData(data) {
       `;
     } else {
       otherDayForecast += `
-      
       <div class="weather-forecast-item" id="weather-item-deactive${idx}">
             <div class="day">
               ${window.moment(day.dt * 1000).format("ddd")}
@@ -308,8 +308,6 @@ function showWeatherData(data) {
             <img src="https://openweathermap.org/img/wn/${
               day.weather[0].icon
             }@4x.png" class="w-icon"/>
-
-
             <div class="forecast-temperature">
               <div class="temp" id="temp-with-separator">${Math.round(
                 day.temp.day
@@ -317,7 +315,7 @@ function showWeatherData(data) {
               </div>
               <div class="temp">${Math.round(day.temp.night)}&#176; C</div>
             </div>
-            <div class="future-forecast-description" id="description${day}">
+            <div class="future-forecast-description" id="description${idx}">
               <div class="future-forecast-description-item">
                 <img src="images/pressure.svg" alt="" />
                 <p>Pressure</p>
@@ -341,17 +339,6 @@ function showWeatherData(data) {
 
   weatherForecastEl.innerHTML = otherDayForecast;
 }
-
-// document.addEventListener('DOMContentLoaded', function(){
-//   console.log('log')
-//   const desc = document.querySelector("#description_1");
-//   const card = document.querySelector("#weather-forecast-item-1");
-//   card.addEventListener("click", () => {
-//   desc.classList.toggle("description-active");
-//   card.classList.toggle("card-active");
-// });
-
-// })
 
 let lastLocations = [];
 let i = 0;
@@ -384,6 +371,13 @@ const addLocation = (ev) => {
   i++;
 };
 
-document.addEventListener("DOMContentLoaded", () => {
-  document.getElementById("submit").addEventListener("click", addLocation);
-});
+document.getElementById("submit").addEventListener("click", addLocation);
+
+// const desc = document.querySelector("#description1");
+// const card = document.querySelector("#weather-item-deactive1");
+
+// card.addEventListener("click", () => {
+//   console.log("log");
+//   desc.classList.toggle("description-active");
+//   card.classList.toggle("card-active");
+// });
