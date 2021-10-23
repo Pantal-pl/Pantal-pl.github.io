@@ -209,7 +209,8 @@ function showWeatherData(data) {
     menu.style = menuButton.style = body.style ="background: linear-gradient(20deg,rgba(35, 110, 250, 0.863) 42%,rgba(85, 133, 223, 1) 100%";
   } 
   else if (weatherDescription === "Clouds") 
-  {
+  { 
+    document.querySelector(".clouds").style = "display:block"
     snow.style = "display:none;"
     document.querySelector("#canvas").style = "display:none;"
     menu.style = menuButton.style = body.style ="background: linear-gradient(20deg,rgba(132, 135, 139, 0.863) 22%,rgb(106, 108, 112) 100%);";
