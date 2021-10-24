@@ -540,6 +540,7 @@ canvas, #canvas {
   flex-direction: column;
   align-items: center;
   justify-content: space-evenly;
+  -webkit-backdrop-filter: blur(10px);
   backdrop-filter: blur(10px);
 }
 .weather-item img {
@@ -560,6 +561,7 @@ canvas, #canvas {
   border-radius: 10px;
   background: hsla(0, 0%, 98%, 0.171);
   box-shadow: rgba(17, 12, 46, 0.15) 0px 48px 100px 0px;
+  -webkit-backdrop-filter: blur(10px);
   backdrop-filter: blur(10px);
   cursor: pointer;
 }
