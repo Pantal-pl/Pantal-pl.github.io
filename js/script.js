@@ -317,7 +317,7 @@ function showWeatherData(data) {
       `;
     } else {
       otherDayForecast += `
-      <div class="weather-forecast-item" id="weather-item-deactive${idx}">
+      <div class="weather-forecast-item">
             <div class="day">
               ${window.moment(day.dt * 1000).format("ddd")}
             </div>
@@ -336,23 +336,6 @@ function showWeatherData(data) {
               )}&#176; C
               </div>
               <div class="temp">${Math.round(day.temp.night)}&#176; C</div>
-            </div>
-            <div class="future-forecast-description" id="description${idx}">
-              <div class="future-forecast-description-item">
-                <img src="images/pressure.svg" alt="" />
-                <p>Pressure</p>
-                <p>${data.daily[idx].pressure} HpA</p>
-              </div>
-              <div class="future-forecast-description-item">
-                <img src="images/humidity.svg" alt="" />
-                <p>Humidity</p>
-                <p>${data.daily[idx].humidity}%</p>
-              </div>
-              <div class="future-forecast-description-item">
-                <img src="images/wind-speed.svg" alt="" />
-                <p>Wind Speed</p>
-                <p>${Math.round(data.daily[idx].wind_speed)} MpH</p>
-              </div>
             </div>
           </div>
       `;
@@ -393,7 +376,9 @@ const addLocation = (ev) => {
   i++;
 };
 
+
 submitButton.addEventListener("click", addLocation);
+
 // const desc = document.querySelector("#description1");
 // const card = document.querySelector("#weather-item-deactive1");
 
@@ -402,3 +387,22 @@ submitButton.addEventListener("click", addLocation);
 //   desc.classList.toggle("description-active");
 //   card.classList.toggle("card-active");
 // });
+
+
+{/* <div class="future-forecast-description" id="description${idx}">
+<div class="future-forecast-description-item">
+  <img src="images/pressure.svg" alt="" />
+  <p>Pressure</p>
+  <p>${data.daily[idx].pressure} HpA</p>
+</div>
+<div class="future-forecast-description-item">
+  <img src="images/humidity.svg" alt="" />
+  <p>Humidity</p>
+  <p>${data.daily[idx].humidity}%</p>
+</div>
+<div class="future-forecast-description-item">
+  <img src="images/wind-speed.svg" alt="" />
+  <p>Wind Speed</p>
+  <p>${Math.round(data.daily[idx].wind_speed)} MpH</p>
+</div>
+</div> */}

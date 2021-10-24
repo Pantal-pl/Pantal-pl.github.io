@@ -41,7 +41,7 @@ canvas, #canvas {
 
 }
 #cloud1{
-  animation: cloud1 15s infinite;
+  animation: cloud1 55s infinite;
 }
 @keyframes cloud1 {
   0%{
@@ -140,6 +140,7 @@ canvas, #canvas {
 }
 .alert {
   left: -10px;
+  z-index: 999;
   background: var(--alert);
   width: calc(100% + 20px);
 }
@@ -652,7 +653,7 @@ canvas, #canvas {
 /* Detailes description for future forecast item */
 .future-forecast-description {
   position: absolute;
-  left: -130%;
+  left: 0;
   top: 0;
   min-height: 30vh;
   width: 100%;
