@@ -1,0 +1,25 @@
+.header {
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    z-index:1;
+    &::after {
+        content: url(../images/header.svg);
+        position: absolute;
+        left: 0;
+        top: 0;
+        width: 100%;
+        z-index: -1;
+    }
+    & .header-text {
+        font-weight: normal;
+        color: $font-color-light;
+        padding-top: 0.2em;
+        font-size: 1.4em;
+    }
+}

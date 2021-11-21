@@ -1,0 +1,8 @@
+0. Save all colors, font and svg's  done!
+1. bottom menu and header !done
+2. create black overlayer !done
+3. add tips !done
+4. create input and search name !done
+5. create list of searched drinks
+6. create drink description
+7. create recently viewed drinks

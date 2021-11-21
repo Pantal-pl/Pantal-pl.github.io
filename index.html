@@ -4,126 +4,76 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Weather App</title>
-    <link rel="stylesheet" href="css/main.css" />
+    <title>Cocktail app</title>
+    <link rel="stylesheet" href="./dist/css/main.css" />
   </head>
   <body>
-    <div class="clouds">
-      <img src="images/cloud1.png" id="cloud1" alt="">
-      <img src="images/cloud1.png" id="cloud2" alt="">
-      <img src="images/cloud2.png" id="cloud3" alt="">
-      <img src="images/cloud2.png" id="cloud4" alt="">
-      <img src="images/cloud2.png" id="cloud5" alt="">
-      <img src="images/cloud1.png" id="cloud6" alt="">
-    </div>
-    <canvas id="canvas"></canvas>
-    <canvas id = "snowCanvas" title = "config to get your own snow effect"></canvas>
-    <div class="banner alert">
-      <span>You must enter city name.</span>
-    </div>
-    <div class="banner success">
-      <span>Success.</span>
-    </div>
-    <div
-      class="menu-button"
-      style="height: 70px; width: 70px; background: none"
-    >
-      <button class="menu-button">
-        <div id="icon">
-          <span id="layer1"></span>
-          <span id="layer2"></span>
-          <span id="layer3"></span>
-        </div>
-      </button>
-    </div>
-    <form onsubmit="return false" class="menu">
-      <input
-        type="text"
-        autocomplete="off"
-        autofocus="off"
-        autocapitalize="sentence"
-        placeholder="Enter city name"
-        id="location"
-      />
-      <div class="menu-bottom">
-        <div class="location-actions">
-          <input type="submit" value="Find >" id="submit" />
-          <input
-            type="submit"
-            value="Current location >"
-            id="current-location"
-          />
-        </div>
-        <div class="last-search">
-          <span style="border-left: 2px solid #e9e9e9; padding: 0 5px; position: absolute;top: 0;"
-            >Last search <img src="images/search.svg" /> :
-          </span>
-          <span id="last-search-value" style="padding-top: 40px;">
-            <span id="LAST"></span>
-          </span>
-        </div>
-      </div>
-    </form>
+    <div class="abstract-container"></div>
+    <header class="header">
+      <p class="header-text">Search for drink</p>
+    </header>
 
-    <section class="current-info">
-      <div class="date-container">
-        <!-- Time and date -->
-        <div class="cords-and-time">
-          <div class="time-and-date">
-            <div class="time" id="time"><span id="am-pm"></span></div>
-            <div class="date" id="date"></div>
-          </div>
-          <!-- Time-zone, country and cords -->
-          <div class="place-container">
-            <div class="time-zone" id="time-zone"></div>
-            <div id="country" class="country"></div>
-          </div>
+    <nav class="bottom-nav">
+      <a href="" id="menu-option1"
+        ><img src="./dist/images/dice.svg" alt=""
+      /></a>
+      <a href="" id="menu-option2"
+        ><img src="./dist/images/search.svg" alt=""
+      /></a>
+      <a href="" id="menu-option3"
+        ><img src="./dist/images/history.svg" alt=""
+      /></a>
+    </nav>
+    <li class="drink-list"></li>
+    <!-- <section class="drink-description">
+      <div class="drink-image-and-instruction">
+        <img class="drink-image" src="./dist/images/test.png" alt="" />
+        <div class="drink-instruction">
+          <span>Instruction:</span>
+          <br><br>
+          <p>
+            Shake all ingredients with ice, strain into a cocktail glass, and serve.
+          </p>
         </div>
-        <!-- Today forecast -->
-        <div class="today" id="current-temp">
-          <img src="" class="w-icon" />
-          <div class="day"></div>
-          <div class="temp">&#176; C</div>
-          <div class="temp">&#176; C</div>
         </div>
-        <!-- Today weather spec -->
-
-        <div class="others" id="current-weather-items"></div>
-      </div>
-
-      <div class="future-forecast">
-        <h2 id="forecast-heading">Future forecast</h2>
-        <!-- Future forecast for next 7 days -->
-        <div id="weather-forecast" class="weather-forecast">
-          
+        <div class="drink-ingredients">
+          <span>Ingredients:</span>
+          <br><br>
+          <p>1/2 oz Malibu rum</p>
+          <p>Blackberry brandy</p>
+          <p>Orange juice</p>
+          <p>Pineapple juice</p>
+          <p>Cranberry juice</p>
         </div>
+      <button class="back-button">Back</button>
+    </section> -->
+    <section class="tutorial tutorial1">
+      <div class="tutorial-inside">
+        <div class="tips-counter">Tips 1/3</div>
+        <div class="tips-text"><p>Press for random cocktail.</p></div>
+        <button class="next next1">Next</button>
+        <button class="skip">Skip</button>
       </div>
     </section>
-    <footer id="information">
-      <span>Pantal © 2021</span>
-      <a href="https://github.com/Pantal-pl" target="blank">
-        Github
-        <svg
-          xmlns="http://www.w3.org/2000/svg"
-          width="24"
-          height="24"
-          viewBox="0 0 24 24"
-        >
-          <path
-            d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"
-          />
-        </svg>
-      </a>
-    </footer>
-    <script
-      src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.1/moment.min.js"
-      integrity="sha512-qTXRIMyZIFb8iQcfjXWCO8+M5Tbc38Qi5WzdPOYZHIlZpzBHG3L3by84BBBOiRGiEb7KKtAOAs5qYdUiZiQNNQ=="
-      crossorigin="anonymous"
-      referrerpolicy="no-referrer"
-    ></script>
-    
-    <script src="js/snow.js"></script>
-    <script src="js/script.js"></script>
-    <script src="js/rain.js"></script>
+    <section class="tutorial tutorial2">
+      <div class="tutorial-inside">
+        <div class="tips-counter">Tips 2/3</div>
+        <div class="tips-text"><p>Press and search for typed cocktail.</p></div>
+        <button class="next next2">Next</button>
+        <button class="skip">Skip</button>
+      </div>
+    </section>
+    <section class="tutorial tutorial3">
+      <div class="tutorial-inside">
+        <div class="tips-counter">Tips 3/3</div>
+        <div class="tips-text"><p>Press to show recently viewed drinks.</p></div>
+        <button class="next">Next</button>
+        <button class="finish">Finish</button>
+      </div>
+    </section>
+    <script src="./dist/js/script.js"></script>
+    <script src="./dist/js/animatedBackground.js"></script>
+    <script defer src="./dist/js/tutorial.js"></script>
+    <script defer src="./dist/js/searchDrink.js"></script>
   </body>
 </html>
