@@ -43,7 +43,7 @@
         &:focus{
             border: none;
             outline: 4px dashed $main-color;
-
+            border-radius: 20px;
         }
     }
     & .search-button {

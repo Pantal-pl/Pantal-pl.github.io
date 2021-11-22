@@ -7,24 +7,26 @@
     left: 0;
     top: 0;
     padding: 0 1em 3em 1em;
+    margin-top: 15vh;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
     color: $font-color-dark;
     & .drink-image-and-instruction {
         width: 100%;
-        min-height: 50%;
+        height: 50%;
+        max-height: auto;
         display: flex;
         flex-direction: row;
-        align-items:center;
+        align-items:flex-start;
         justify-content: space-between;
         flex:1;
         & img{
-            width:35%;
+            width:45%;
             border-radius: 20px;
         }
         & .drink-instruction {
-            width: 60%;
+            width: 50%;
             & span {
                 font-size: 1.4em;
                 font-weight: bold;
@@ -39,6 +41,8 @@
             }
             & p {
                 line-height: 1.2em;
+                height: 40vw;
+                overflow: scroll;
             }
         }
     }

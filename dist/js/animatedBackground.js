@@ -27,4 +27,4 @@ setInterval(() => {
     abstracts[i].style.left = `${getRandomInt(5, 88)}%`;
     abstracts[i].style.transform = `rotate(${getRandomInt(20, 180)}deg)`;
   }
-}, 10000);
+}, 25000);

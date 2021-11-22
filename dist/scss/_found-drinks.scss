@@ -6,7 +6,7 @@
         min-height: 100vh;
         position: absolute;
         left: 0;
-        top: 5vw;
+        top: 12vw;
         padding: 0.7em;
         padding-bottom: 5em;
         & ul{
@@ -44,6 +44,7 @@
             }
             & .show-drink-button {
                 @include smallButton;
+                z-index: 2;
             }
         }
     }

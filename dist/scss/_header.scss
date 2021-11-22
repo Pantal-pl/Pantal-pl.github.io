@@ -1,5 +1,5 @@
 .header {
-    position: absolute;
+    position: fixed;
     left: 0;
     top: 0;
     width: 100%;
@@ -7,7 +7,7 @@
     flex-direction: row;
     align-items: center;
     justify-content: center;
-    z-index:1;
+    z-index:3;
     &::after {
         content: url(../images/header.svg);
         position: absolute;
