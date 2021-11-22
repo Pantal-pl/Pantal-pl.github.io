@@ -1,18 +1,33 @@
 const wantedDrink = document.querySelector(".wanted-drink");
 const searchButton = document.querySelector(".search-button");
-const drinkForm = document.querySelector(".drink-form");
 const drinkList = document.querySelector(".drink-list");
 const drinkDescription = document.querySelector(".drink-description");
 const randomButton = document.querySelector("#menu-option1");
+const searchBottomButton = document.querySelector("#menu-option2")
 let headerText = document.querySelector(".header-text");
+const searchScreen = document.querySelector(".search-screen")
 let drinkNames = [];
 let drinkImages = [];
 let drinkCategory = [];
 let backButtons = []
+let buttonClicked = true
 
+searchBottomButton.addEventListener("click",()=>{
+  if(buttonClicked === false) {
+    drinkList.innerHTML = ""
+    drinkDescription.innerHTML = ""
+    drinkForm.style.display = "block"
+    drinkList.style.display = "none"
+    drinkDescription.style.display = "none"
+    buttonClicked = true
+  }else if(buttonClicked === true){
+  }
+})
 randomButton.addEventListener("click", () => {
-  drinkForm.remove();
-  drinkList.remove()
+  buttonClicked = false
+  drinkList.style.display = "none"
+  drinkDescription.style.display = "inline-flex"
+  drinkForm.style.display = "none"
   function getRandomDrinkData() {
     fetch(`https://www.thecocktaildb.com/api/json/v1/1/random.php`)
       .then((response) => response.json())
@@ -48,11 +63,11 @@ randomButton.addEventListener("click", () => {
         data.drinks[0][`strMeasure${j}`] === null ||
         data.drinks[0][`strMeasure${j}`] == ""
       ) {
-        document.querySelector(".drink-ingredients").innerHTML += `<p> ${j}." " ${
+        document.querySelector(".drink-ingredients").innerHTML += `<p> <strong>${j}</strong>.  ${
           data.drinks[0][`strIngredient${j}`]
         }</p>`;
       } else {
-        document.querySelector(".drink-ingredients").innerHTML += `<p> ${j}. ${
+        document.querySelector(".drink-ingredients").innerHTML += `<p> <strong>${j}</strong>. ${
           data.drinks[0][`strMeasure${j}`]
         } ${data.drinks[0][`strIngredient${j}`]}</p>`;
       }
@@ -71,6 +86,7 @@ function getDrinkData() {
     });
 }
 function showDrinkData(data) {
+  buttonClicked = false
   headerText.textContent = `Found: ${data.drinks.length} drinks`;
   for (let i = 0; i < data.drinks.length; i++) {
     drinkNames[i] = data.drinks[i].strDrink;
@@ -112,6 +128,7 @@ function showDrinkData(data) {
         </div>
       <button class="back-button">Back</button>`
       );
+      drinkDescription.style.display = "inline-flex"
 
       for (let j = 1; j < 15; j++) {
         if (
@@ -123,33 +140,33 @@ function showDrinkData(data) {
           data.drinks[i][`strMeasure${j}`] === null ||
           data.drinks[i][`strMeasure${j}`] == ""
         ) {
-          document.querySelector(".drink-ingredients").innerHTML += `<p> ${j}.${
+          document.querySelector(".drink-ingredients").innerHTML += `<p> <strong>${j}</strong>.${
             data.drinks[i][`strIngredient${j}`]
           }</p>`;
         } else {
           document.querySelector(
             ".drink-ingredients"
-          ).innerHTML += `<p> ${j}. ${data.drinks[i][`strMeasure${j}`]} ${
+          ).innerHTML += `<p> <strong>${j}</strong>. ${data.drinks[i][`strMeasure${j}`]} ${
             data.drinks[i][`strIngredient${j}`]
           }</p>`;
         }
       }
-      // backButtons = document.getElementsByClassName("back-button")
-      // backButtons[i].addEventListener("click", ()=>{
-      //   drinkDescription.insertAdjacentHTML('afterend','')
-      //   drinkList.style.display = "block"
-      // })
+
     });
 
   }
 }
 
 searchButton.addEventListener("click", () => {
+  drinkList.style.display = "block"
   if (wantedDrink.value) {
-    drinkForm.remove();
+    drinkForm.style.display = "none"
     getDrinkData();
     wantedDrink.value = "";
     showDrinkData();
+    drinkList.style.display = "inline-flex"
+   buttonClicked = false
+
   } else {
     console.log("err");
   }

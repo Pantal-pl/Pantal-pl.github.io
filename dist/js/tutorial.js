@@ -6,17 +6,19 @@ const nextButton1 = document.querySelector(".next1")
 const nextButton2 = document.querySelector(".next2")
 const finishButton = document.querySelector(".finish")
 const skipButtons = document.querySelectorAll(".skip");
+const drinkForm = document.querySelector(".drink-form");
+
 let endTutorial = false;
 for(let i = 0; i < skipButtons.length; ++i){
   skipButtons[i].addEventListener("click",()=>{
     turorial1.style.left = "-100%";
     turorial2.style.left = "-100%";
     turorial3.style.left = "-100%";
-    body.innerHTML += `<form class="drink-form" onsubmit="return false"><section class="search-screen">
+    drinkForm.innerHTML += `<section class="search-screen">
     <div><label for="wanted-drink">Drink name:</label></div>
     <input autocomplete="off"  type="text" name="wanted-drink" required class="wanted-drink" placeholder="Enter drink name...">
     <button type="submit" class="search-button">Search</button>
-    </section></form>`
+    </section>`
     endTutorial = true;
     localStorage.setItem('endTutorial', endTutorial)
     location.reload();
@@ -34,11 +36,11 @@ finishButton.addEventListener("click",()=>{
   turorial3.style.left = "-100%";
   endTutorial = true;
   localStorage.setItem('endTutorial', endTutorial)
-  body.innerHTML += `<form class="drink-form" onsubmit="return false"><section class="search-screen">
+  drinkForm.innerHTML += `<section class="search-screen">
   <div><label for="wanted-drink">Drink name:</label></div>
   <input autocomplete="off"  type="text" name="wanted-drink" required class="wanted-drink" placeholder="Enter drink name...">
   <button type="submit" class="search-button">Search</button>
-</section></form>`
+</section>`
 location.reload();
 })
 
@@ -46,9 +48,9 @@ location.reload();
   turorial1.style.left = "-100%";
   turorial2.style.left = "-100%";
   turorial3.style.left = "-100%";
-  body.innerHTML += `<form class="drink-form" onsubmit="return false"><section class="search-screen">
+  drinkForm.innerHTML += `<section class="search-screen">
   <div><label for="wanted-drink">Drink name:</label></div>
   <input autocomplete="off" type="text" name="wanted-drink" required class="wanted-drink" placeholder="Enter drink name...">
   <button type="submit" class="search-button">Search</button>
-</section></form>`
+</section>`
 }
