@@ -164,8 +164,7 @@ searchButton.addEventListener("click", () => {
     getDrinkData();
     wantedDrink.value = "";
     showDrinkData();
-    drinkList.style.display = "inline-flex"
-   buttonClicked = false
+    buttonClicked = false
 
   } else {
     console.log("err");
