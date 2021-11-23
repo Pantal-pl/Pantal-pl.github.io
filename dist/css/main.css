@@ -30,6 +30,7 @@
   position: fixed;
   left: 0;
   top: 0;
+  padding-top: 0.7vh;
   width: 100%;
   display: -webkit-box;
   display: -ms-flexbox;
@@ -60,7 +61,7 @@
   font-weight: normal;
   color: #EDD2CB;
   padding-top: 0.2em;
-  font-size: 1.4em;
+  font-size: 1.2em;
 }
 
 .bottom-nav {
@@ -93,7 +94,7 @@
 }
 
 .bottom-nav a {
-  margin-bottom: 0.5em;
+  margin-bottom: 0.3em;
   cursor: pointer;
   width: 40px;
   height: 40px;
@@ -489,11 +490,11 @@ li ul .show-drink-button {
 
 .drink-description {
   width: 100%;
-  min-height: 100vh;
-  position: absolute;
+  position: relative;
   left: 0;
-  top: 0;
-  padding: 0 1em 3em 1em;
+  top: 16vh;
+  gap: 7vh;
+  padding: 0 1em 6em 1em;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -526,9 +527,18 @@ li ul .show-drink-button {
           justify-content: space-between;
 }
 
-.drink-description .drink-image-and-instruction img {
-  width: 45%;
+.drink-description .drink-image-and-instruction .drink-name-and-img {
+  width: 55%;
+}
+
+.drink-description .drink-image-and-instruction .drink-name-and-img img {
+  width: 80%;
   border-radius: 20px;
+}
+
+.drink-description .drink-image-and-instruction .drink-name-and-img .drink-name {
+  font-size: 1.2em;
+  font-weight: bold;
 }
 
 .drink-description .drink-image-and-instruction .drink-instruction {

@@ -16,7 +16,7 @@ for(let i = 0; i < skipButtons.length; ++i){
     turorial3.style.left = "-100%";
     drinkForm.innerHTML += `<section class="search-screen">
     <div><label for="wanted-drink">Drink name:</label></div>
-    <input autocomplete="off"  type="text" name="wanted-drink" required class="wanted-drink" placeholder="Enter drink name...">
+    <input oninvalid="this.setCustomValidity('Enter drink name.')" autocomplete="off"  type="text" name="wanted-drink" required class="wanted-drink" placeholder="Enter drink name...">
     <button type="submit" class="search-button">Search</button>
     </section>`
     endTutorial = true;
@@ -38,7 +38,7 @@ finishButton.addEventListener("click",()=>{
   localStorage.setItem('endTutorial', endTutorial)
   drinkForm.innerHTML += `<section class="search-screen">
   <div><label for="wanted-drink">Drink name:</label></div>
-  <input autocomplete="off"  type="text" name="wanted-drink" required class="wanted-drink" placeholder="Enter drink name...">
+  <input oninvalid="this.setCustomValidity('Enter drink name.')"  autocomplete="off"  type="text" name="wanted-drink" required class="wanted-drink" placeholder="Enter drink name...">
   <button type="submit" class="search-button">Search</button>
 </section>`
 location.reload();
@@ -50,7 +50,7 @@ location.reload();
   turorial3.style.left = "-100%";
   drinkForm.innerHTML += `<section class="search-screen">
   <div><label for="wanted-drink">Drink name:</label></div>
-  <input autocomplete="off" type="text" name="wanted-drink" required class="wanted-drink" placeholder="Enter drink name...">
+  <input oninvalid="this.setCustomValidity('Enter drink name.')"  autocomplete="off" type="text" name="wanted-drink" required class="wanted-drink" placeholder="Enter drink name...">
   <button type="submit" class="search-button">Search</button>
 </section>`
 }

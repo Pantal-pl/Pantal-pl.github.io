@@ -2,11 +2,11 @@
 
 .drink-description {
     width: 100%;
-    min-height: 100vh;
-    position: absolute;
+    position: relative;
     left: 0;
-    top: 0;
-    padding: 0 1em 3em 1em;
+    top: 16vh;
+    gap: 7vh;
+    padding: 0 1em 6em 1em;
     display: flex;
     flex-direction: column;
     justify-content: space-evenly;
@@ -19,9 +19,16 @@
         flex-direction: row;
         align-items:flex-start;
         justify-content: space-between;
-        & img{
-            width:45%;
+        & .drink-name-and-img{
+            width: 55%;
+           & img{
+            width:80%;
             border-radius: 20px;
+           }
+           & .drink-name{
+            font-size: 1.2em;
+            font-weight: bold;
+           }
         }
         & .drink-instruction {
             width: 50%;
