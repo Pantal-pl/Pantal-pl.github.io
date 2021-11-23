@@ -5,13 +5,15 @@ const drinkDescription = document.querySelector(".drink-description");
 const randomButton = document.querySelector("#menu-option1");
 const searchBottomButton = document.querySelector("#menu-option2");
 const recentlyViewedDrinksButton = document.querySelector("#menu-option3");
-let headerText = document.querySelector(".header-text");
 const searchScreen = document.querySelector(".search-screen");
+let headerText = document.querySelector(".header-text");
+
 let drinkNames = [];
 let drinkImages = [];
 let drinkCategory = [];
-let backButtons = [];
+
 let buttonClicked = true;
+let i = 0
 let sessionStorageIndex = 0;
 searchBottomButton.addEventListener("click", () => {
   drinkForm.style.display = "block";
@@ -20,8 +22,7 @@ searchBottomButton.addEventListener("click", () => {
     drinkList.innerHTML = "";
     drinkDescription.innerHTML = "";
     drinkForm.style.display = "block";
-    drinkList.style.display = "none";
-    drinkDescription.style.display = "none";
+    drinkDescription.style.display = drinkList.style.display = "none";
     buttonClicked = true;
   } else if (buttonClicked === true) {
   }
@@ -29,9 +30,8 @@ searchBottomButton.addEventListener("click", () => {
 });
 randomButton.addEventListener("click", () => {
   buttonClicked = false;
-  drinkList.style.display = "none";
+  drinkForm.style.display = drinkList.style.display = "none";
   drinkDescription.style.display = "inline-flex";
-  drinkForm.style.display = "none";
   function getRandomDrinkData() {
     fetch(`https://www.thecocktaildb.com/api/json/v1/1/random.php`)
       .then((response) => response.json())
@@ -41,10 +41,12 @@ randomButton.addEventListener("click", () => {
       });
   }
   getRandomDrinkData();
+   
   function showRandomDrinkData(data) {
+    
     headerText.textContent = data.drinks[0].strDrink;
     drinkDescription.innerHTML = `<div class="drink-image-and-instruction">
-    <div class="drink-name-and-img"><img class="drink-image" src="${data.drinks[0].strDrinkThumb}" alt="" /><p class="drink-name">Name: ${data.drinks[0].strDrink}</p></div>
+    <div class="drink-name-and-img"><img class="drink-image" src="${data.drinks[0].strDrinkThumb}" alt="" /><p class="drink-name">${data.drinks[0].strDrink}</p><p>${data.drinks[0].strCategory}</p><p class="difficulty" id="difficulty${i}"></p></div>
     <div class="drink-instruction">
       <span>Instruction:</span>
       <br><br>
@@ -53,11 +55,11 @@ randomButton.addEventListener("click", () => {
       </p>
     </div>
     </div>
-    <div class="drink-ingredients">
+    <div class="drink-ingredients" id="drink-ingredients${i}">
       <span>Ingredients:</span>
       <br><br>
-    </div>
-  <button class="back-button">Back</button>`;
+    </div>`;
+    
     for (let j = 1; j < 15; j++) {
       if (
         data.drinks[0][`strIngredient${j}`] === null ||
@@ -80,13 +82,23 @@ randomButton.addEventListener("click", () => {
           data.drinks[0][`strIngredient${j}`]
         }</p>`;
       }
+      if(document.getElementById(`drink-ingredients${i}`).getElementsByTagName('p').length <=4){
+        document.getElementById(`difficulty${i}`).innerHTML = 'Difficulty: <img src="./dist/images/star.svg"/><img src="./dist/images/empty-star.svg"/><img src="./dist/images/empty-star.svg"/>'
+      }else if(document.getElementById(`drink-ingredients${i}`).getElementsByTagName('p').length<=7){
+        document.getElementById(`difficulty${i}`).innerHTML = 'Difficulty:  <img src="./dist/images/star.svg"/> <img src="./dist/images/star.svg"/><img src="./dist/images/empty-star.svg"/>'
+      }else{
+        document.getElementById(`difficulty${i}`).innerHTML = 'Difficulty:  <img src="./dist/images/star.svg"/> <img src="./dist/images/star.svg"/> <img src="./dist/images/star.svg"/>'
+      }
     }
     sessionStorage.setItem(
       `drink${sessionStorageIndex}`,
       drinkDescription.outerHTML
     );
     sessionStorageIndex++;
-    sessionStorage.setItem("sessionStorageIndex", sessionStorageIndex);
+    sessionStorage.setItem("sessionStorageIndex", sessionStorageIndex);   
+
+    i++;
+    
   }
   document.querySelector(".recentlyViewed").style.display = "none";
 });
@@ -129,7 +141,7 @@ function showDrinkData(data) {
       drinkDescription.insertAdjacentHTML(
         "beforeend",
         `<div class="drink-image-and-instruction">
-        <div class="drink-name-and-img"><img class="drink-image" src="${drinkImages[i]}" alt="" /><p class="drink-name">Name:${drinkNames[i]}</p></div>
+        <div class="drink-name-and-img"><img class="drink-image" src="${drinkImages[i]}" alt="" /><p class="drink-name">${drinkNames[i]}</p><p>${data.drinks[i].strCategory}</p><p class="difficulty" id="difficulty${i}"></p></div>
         <div class="drink-instruction">
           <span>Instruction:</span>
           <br><br>
@@ -138,14 +150,14 @@ function showDrinkData(data) {
           </p>
         </div>
         </div>
-        <div class="drink-ingredients">
+        <div class="drink-ingredients" id="drink-ingredients${i}">
           <span>Ingredients:</span>
           <br><br>
         </div>
       <button class="back-button">Back</button>`
       );
 
-      drinkDescription.style.display = "block";
+      drinkDescription.style.display = "inline-flex";
 
       for (let j = 1; j < 15; j++) {
         if (
@@ -168,6 +180,13 @@ function showDrinkData(data) {
           ).innerHTML += `<p> <b>${j}</b>. ${
             data.drinks[i][`strMeasure${j}`]
           } ${data.drinks[i][`strIngredient${j}`]}</p>`;
+        }
+        if(document.getElementById(`drink-ingredients${i}`).getElementsByTagName('p').length <=4){
+          document.getElementById(`difficulty${i}`).innerHTML = 'Difficulty: <img src="./dist/images/star.svg"/><img src="./dist/images/empty-star.svg"/><img src="./dist/images/empty-star.svg"/>'
+        }else if(document.getElementById(`drink-ingredients${i}`).getElementsByTagName('p').length<=7){
+          document.getElementById(`difficulty${i}`).innerHTML = 'Difficulty:  <img src="./dist/images/star.svg"/> <img src="./dist/images/star.svg"/><img src="./dist/images/empty-star.svg"/>'
+        }else{
+          document.getElementById(`difficulty${i}`).innerHTML = 'Difficulty:  <img src="./dist/images/star.svg"/> <img src="./dist/images/star.svg"/> <img src="./dist/images/star.svg"/>'
         }
       }
 
