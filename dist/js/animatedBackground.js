@@ -1,7 +1,7 @@
 let abstractContainer = document.querySelector(".abstract-container");
 const figures = ["square", "hex", "triangle"];
 const abstracts = [];
-let j = 0;
+// let j = 0;
 function getRandomInt(min, max) {
   min = Math.ceil(min);
   max = Math.floor(max);

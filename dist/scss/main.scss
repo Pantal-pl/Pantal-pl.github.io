@@ -8,3 +8,7 @@
 body {
     background: $background-color;
 }
+.recentlyViewed {
+    display: flex;
+    flex-direction: column-reverse;
+}
