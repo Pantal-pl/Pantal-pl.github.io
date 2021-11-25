@@ -1,7 +1,11 @@
 const recentlyViewedDrinksButton = document.querySelector("#menu-option3");
 let isRecentlyViewedExist = false;
-recentlyViewedDrinksButton.addEventListener("click", () => {
-
+recentlyViewedDrinksButton.addEventListener("click", () => 
+{
+  if(isAlertBannerExist === true){
+    document.querySelector(".alert").classList.remove("alert-active")
+    isAlertBannerExist = false
+  }
   if (isRecentlyViewedExist === false) {
     headerText.textContent = "Recently Viewed";
     drinkDescription.style.display = "none";
@@ -18,7 +22,7 @@ recentlyViewedDrinksButton.addEventListener("click", () => {
     body.append(recentlyViewed);
     isRecentlyViewedExist = true;
   } else if (isRecentlyViewedExist === true) {
-    document.querySelector(".recentlyViewed").remove(); 
+    document.querySelector(".recentlyViewed").remove();
     isRecentlyViewedExist = false;
     headerText.textContent = "Recently Viewed";
     drinkDescription.style.display = "none";

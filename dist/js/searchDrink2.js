@@ -7,11 +7,12 @@ const {
   searchButton,
 } = variables();
 variables();
-let backButtons = []
+let backButtons = [];
 let headerText = document.querySelector(".header-text");
 let bottomSearchButtonIsClicked = true;
 let i = 0;
 let sessionStorageIndex = 0;
+let isAlertBannerExist = false;
 searchBottomButton.addEventListener("click", () => {
   drinkForm.style.display = "block";
   headerText.textContent = "Search for drink";
@@ -21,6 +22,10 @@ searchBottomButton.addEventListener("click", () => {
     drinkForm.style.display = "block";
     drinkDescription.style.display = drinkList.style.display = "none";
     bottomSearchButtonIsClicked = true;
+  }
+  if(isAlertBannerExist === true){
+    document.querySelector(".alert").classList.remove("alert-active")
+    isAlertBannerExist = false
   }
   document.querySelector(".recentlyViewed").style.display = "none";
 });
@@ -41,11 +46,14 @@ randomButton.addEventListener("click", () => {
   function showRandomDrinkData(data) {
     headerText.textContent = data.drinks[0].strDrink;
     createDrinkDescription(data, 0); //data, dataIndex
-    let allBackButtons = [...document.querySelectorAll(".back-button")]
-    allBackButtons.forEach(element => {
-      element.style.display = "none"
+    let allBackButtons = [...document.querySelectorAll(".back-button")];
+    allBackButtons.forEach((element) => {
+      element.style.display = "none";
     });
-
+  }
+  if(isAlertBannerExist === true){
+    document.querySelector(".alert").classList.remove("alert-active")
+    isAlertBannerExist = false
   }
   document.querySelector(".recentlyViewed").style.display = "none";
 });
@@ -66,6 +74,10 @@ searchButton.addEventListener("click", () => {
       headerText.style.fontWeight = "normal";
     }, 2000);
   }
+  if(isAlertBannerExist === true){
+    document.querySelector(".alert").classList.remove("alert-active")
+    isAlertBannerExist = false
+  }
   document.querySelector(".recentlyViewed").style.display = "none";
 });
 
@@ -84,7 +96,7 @@ function variables() {
     randomButton,
     wantedDrink,
     searchButton,
-    searchScreen
+    searchScreen,
   };
 }
 function getDrinkData() {
@@ -93,6 +105,10 @@ function getDrinkData() {
   )
     .then((response) => response.json())
     .then((data) => {
+      if (data.drinks === null) {
+        document.querySelector(".alert").classList.add("alert-active")
+        isAlertBannerExist = true
+      }
       console.log(data);
       showDrinkData(data);
     });
@@ -121,6 +137,10 @@ function showDrinkData(data) {
       createDrinkDescription(data, i);
     });
   }
+  if(isAlertBannerExist === true){
+    document.querySelector(".alert").classList.remove("alert-active")
+    isAlertBannerExist = false
+  }
 }
 function createDrinkDescription(data, i) {
   headerText.textContent = data.drinks[i].strDrink;
@@ -141,20 +161,20 @@ function createDrinkDescription(data, i) {
       <span>Ingredients:</span>
       <br /><br />
     </div>`;
-      const backButton = document.createElement('button')
-      backButton.setAttribute('class','back-button')
-      backButton.setAttribute("id",`back-button${i}`)
-      backButton.textContent = "Back"
-      drinkDescription.insertAdjacentHTML('beforeend',backButton.outerHTML)
-      backButtons[i] = document.getElementById(`back-button${i}`)
-      backButtons.forEach(element => {
-        element.addEventListener("click",()=>{
-          drinkDescription.style.display = "none"
-          drinkList.style.display = "list-item"
-          drinkList.innerHTML = ""
-          showDrinkData(data)
-        })
-      });
+  const backButton = document.createElement("button");
+  backButton.setAttribute("class", "back-button");
+  backButton.setAttribute("id", `back-button${i}`);
+  backButton.textContent = "Back";
+  drinkDescription.insertAdjacentHTML("beforeend", backButton.outerHTML);
+  backButtons[i] = document.getElementById(`back-button${i}`);
+  backButtons.forEach((element) => {
+    element.addEventListener("click", () => {
+      drinkDescription.style.display = "none";
+      drinkList.style.display = "list-item";
+      drinkList.innerHTML = "";
+      showDrinkData(data);
+    });
+  });
   for (let j = 1; j < 15; j++) {
     if (
       data.drinks[i][`strIngredient${j}`] === null ||
@@ -204,4 +224,8 @@ function createDrinkDescription(data, i) {
   sessionStorageIndex++;
   sessionStorage.setItem("sessionStorageIndex", sessionStorageIndex);
   i++;
+  if(isAlertBannerExist === true){
+    document.querySelector(".alert").classList.remove("alert-active")
+    isAlertBannerExist = false
+  }
 }
