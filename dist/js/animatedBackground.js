@@ -16,6 +16,7 @@ for (let i = 0; i < 15; i++) {
   abstracts[i].style.left = `${getRandomInt(5, 88)}%`;
   abstracts[i].style.transform = `rotate(${getRandomInt(20, 180)}deg)`;
 }
+
 setInterval(() => {
   abstractContainer.innerHTML = "";
   for (let i = 0; i < 15; i++) {
@@ -27,4 +28,4 @@ setInterval(() => {
     abstracts[i].style.left = `${getRandomInt(5, 88)}%`;
     abstracts[i].style.transform = `rotate(${getRandomInt(20, 180)}deg)`;
   }
-}, 25000);
+}, 10000);

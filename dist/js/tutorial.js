@@ -19,54 +19,43 @@ function hidingTutorial(){
   drinkForm.append(tutorial);
 
 }
-// menuButtonMark(1)
+
 for (let i = 0; i < skipButtons.length; ++i) {
   skipButtons[i].addEventListener("click", () => {
     hidingTutorial()
     endTutorial = true;
     localStorage.setItem("endTutorial", endTutorial);
     location.reload();
-    // setInterval(() => {
-    //   document.querySelector("#menu-option1").style.outline = "none"
-    // }, 1);  
-    // setInterval(() => {
-    //   document.querySelector("#menu-option2").style.outline = "none"
-    // }, 1);  
-    // setInterval(() => {
-    //   document.querySelector("#menu-option").style.outline = "none"
-    // }, 1);
+
   });
 }
+document.querySelector("#menu-option1").style.outline = "6px dashed white"
 nextButton1.addEventListener("click", () => {
   turorial1.style.left = "-100%";
   turorial2.style.left = "0";
-  // setInterval(() => {
-  //   document.querySelector("#menu-option1").style.outline = "none"
-  // }, 0);
-  // menuButtonMark(2)
+  document.querySelector("#menu-option1").style.outline = "none"
+  document.querySelector("#menu-option2").style.outline = "6px dashed white"
 
 });
 nextButton2.addEventListener("click", () => {
   turorial2.style.left = "-100%";
   turorial3.style.left = "0";
-  // setInterval(() => {
-  //   document.querySelector("#menu-option2").style.outline = "none"
-  // }, 0);
-  // menuButtonMark(3)
+  document.querySelector("#menu-option2").style.outline = "none"
+  document.querySelector("#menu-option3").style.outline = "6px dashed white"
 });
 finishButton.addEventListener("click", () => {
   turorial3.style.left = "-100%";
   endTutorial = true;
   localStorage.setItem("endTutorial", endTutorial);
   drinkForm.append(tutorial);
+  document.querySelector("#menu-option3").style.outline = "none"
   location.reload();
-  // setInterval(() => {
-  //   document.querySelector("#menu-option3").style.outline = "none"
-  // }, 0);
 });
 
 if (localStorage.getItem("endTutorial") === "true" || endTutorial === "true") {
   hidingTutorial()
+  document.querySelector("#menu-option1").style.outline = "none"
+
 }
 function tutorialVariables() {
   let body = document.querySelector("body");
@@ -80,12 +69,3 @@ function tutorialVariables() {
   const drinkForm = document.querySelector(".drink-form");
   return {body, turorial3, turorial2, turorial1, drinkForm, skipButtons, nextButton1, nextButton2, finishButton };
 }
-// function menuButtonMark(menuButtonNumber){
-//   document.querySelector(`#menu-option${menuButtonNumber}`).style.outline = "5px solid white" 
-//   setInterval(() => {
-//     document.querySelector(`#menu-option${menuButtonNumber}`).style.outline = "none" 
-//   }, 1000);
-//   setInterval(() => {
-//     document.querySelector(`#menu-option${menuButtonNumber}`).style.outline = "5px solid white" 
-//   }, 2000);
-// }

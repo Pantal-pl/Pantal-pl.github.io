@@ -12,16 +12,16 @@
         content: url(../images/menu.svg);
         position: absolute;
         left: 0;
-        bottom: -0.2em;
+        bottom: -0.15em;
         width: 100%;
         z-index: -1;
+        transform: scale(1.1);
     }
     & a {
-        
-        margin-bottom: 0.3em;
+        margin-bottom: 0.5em;
         cursor: pointer;
-        width: 40px;
-        height: 40px;
+        width: 13vw;
+        height: 13vw;
         background:$font-color-dark;
         border-radius: 50%;
         display: flex;
@@ -32,7 +32,7 @@
             transform: translateY(-0.4em) scale(1.2);
         }
         & img {
-            width: 1.5em;
+            width: 7vw;
             padding: 0.5em 0;
         }
     }

@@ -16,14 +16,15 @@
   max-height: 100vh;
   overflow: hidden;
   z-index: -2;
+  -webkit-transition: all 5s ease-in-out;
+  transition: all 5s ease-in-out;
 }
 
 .abstract {
   position: fixed;
   z-index: -2;
-  -webkit-transition: 15s;
-  transition: 15s;
-  overflow: hidden;
+  -webkit-transition: all 5s;
+  transition: all 5s;
 }
 
 .header {
@@ -88,16 +89,18 @@
   content: url(../images/menu.svg);
   position: absolute;
   left: 0;
-  bottom: -0.2em;
+  bottom: -0.15em;
   width: 100%;
   z-index: -1;
+  -webkit-transform: scale(1.1);
+          transform: scale(1.1);
 }
 
 .bottom-nav a {
-  margin-bottom: 0.3em;
+  margin-bottom: 0.5em;
   cursor: pointer;
-  width: 40px;
-  height: 40px;
+  width: 13vw;
+  height: 13vw;
   background: #361D32;
   border-radius: 50%;
   display: -webkit-box;
@@ -121,7 +124,7 @@
 }
 
 .bottom-nav a img {
-  width: 1.5em;
+  width: 7vw;
   padding: 0.5em 0;
 }
 
@@ -161,7 +164,7 @@
 
 .tutorial .tutorial-inside .next, .tutorial .tutorial-inside .finish {
   right: 1em;
-  bottom: 6em;
+  top: 80vh;
 }
 
 .tutorial .tutorial-inside .skip {
@@ -224,14 +227,15 @@
   max-height: 100vh;
   overflow: hidden;
   z-index: -2;
+  -webkit-transition: all 5s ease-in-out;
+  transition: all 5s ease-in-out;
 }
 
 .abstract {
   position: fixed;
   z-index: -2;
-  -webkit-transition: 15s;
-  transition: 15s;
-  overflow: hidden;
+  -webkit-transition: all 5s;
+  transition: all 5s;
 }
 
 .search-screen {
@@ -343,14 +347,15 @@
   max-height: 100vh;
   overflow: hidden;
   z-index: -2;
+  -webkit-transition: all 5s ease-in-out;
+  transition: all 5s ease-in-out;
 }
 
 .abstract {
   position: fixed;
   z-index: -2;
-  -webkit-transition: 15s;
-  transition: 15s;
-  overflow: hidden;
+  -webkit-transition: all 5s;
+  transition: all 5s;
 }
 
 li {
@@ -472,14 +477,15 @@ li ul .show-drink-button {
   max-height: 100vh;
   overflow: hidden;
   z-index: -2;
+  -webkit-transition: all 5s ease-in-out;
+  transition: all 5s ease-in-out;
 }
 
 .abstract {
   position: fixed;
   z-index: -2;
-  -webkit-transition: 15s;
-  transition: 15s;
-  overflow: hidden;
+  -webkit-transition: all 5s;
+  transition: all 5s;
 }
 
 .drink-description {

@@ -11,12 +11,12 @@
     max-height: 100vh;
     overflow: hidden;
     z-index: -2;
+    transition:all 5s ease-in-out;
 }
 .abstract {
     position: fixed;
     z-index: -2;
-    transition: 15s;
-    overflow: hidden;
+    transition:all 5s;
 }
 
 $main-color: #F55951;
