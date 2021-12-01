@@ -1,76 +1,203 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Cocktail app</title>
-    <link rel="stylesheet" href="./dist/css/main.css" />
-    <link rel="manifest" href="manifest.json">
-  </head>
-  <body>
-    <div class="alert">
-      <img src="./dist/images/undraw_taken_re_yn20.svg" alt="">
-      <p>Typed drink doesn't match to any drinks. 
-       <br> Please, try again.</p>
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>RS Studio</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,200;0,400;0,500;1,100&display=swap"
+        rel="stylesheet">
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <script src="https://kit.fontawesome.com/e53d2f1c5c.js" crossorigin="anonymous"></script>
+
+    <!-- meta -->
+    <meta name="description" content="I'm webdeveloper who creating landpages, brand website and more">
+    <!-- Znaczniki JSON-LD wygenerowane przez Asystenta do oznaczania danych Google. -->
+</head>
+
+<body onload="followMouse();">
+
+    <script>
+        AOS.init();
+    </script>
+
+    <div class="wave-animation">
+
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320">
+            <path fill="#e63946" fill-opacity="1"
+                d="M0,96L48,128C96,160,192,224,288,240C384,256,480,224,576,186.7C672,149,768,107,864,122.7C960,139,1056,213,1152,224C1248,235,1344,181,1392,154.7L1440,128L1440,320L1392,320C1344,320,1248,320,1152,320C1056,320,960,320,864,320C768,320,672,320,576,320C480,320,384,320,288,320C192,320,96,320,48,320L0,320Z">
+            </path>
+        </svg>
+
+        <svg id="w2" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320">
+            <path fill="#e63946" fill-opacity="0.8"
+                d="M0,320L48,288C96,256,192,192,288,181.3C384,171,480,213,576,202.7C672,192,768,128,864,128C960,128,1056,192,1152,224C1248,256,1344,256,1392,256L1440,256L1440,320L1392,320C1344,320,1248,320,1152,320C1056,320,960,320,864,320C768,320,672,320,576,320C480,320,384,320,288,320C192,320,96,320,48,320L0,320Z">
+            </path>
+        </svg>
+        <svg id="w3" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320">
+            <path fill="#e63946" fill-opacity="0.6"
+                d="M0,288L48,250.7C96,213,192,139,288,133.3C384,128,480,192,576,197.3C672,203,768,149,864,117.3C960,85,1056,75,1152,106.7C1248,139,1344,213,1392,250.7L1440,288L1440,320L1392,320C1344,320,1248,320,1152,320C1056,320,960,320,864,320C768,320,672,320,576,320C480,320,384,320,288,320C192,320,96,320,48,320L0,320Z">
+            </path>
+        </svg>
 
     </div>
-    <div class="abstract-container"></div>
-    <header class="header">
-      <p class="header-text">Search for drink</p>
-    </header>
-
-    <nav class="bottom-nav">
-      <a href="#" id="menu-option1"
-        ><img src="./dist/images/dice.svg" alt=""
-      /></a>
-      <a href="#" id="menu-option2"
-        ><img src="./dist/images/search.svg" alt=""
-      /></a>
-      <a href="#" id="menu-option3"
-        ><img src="./dist/images/history.svg" alt=""
-      /></a>
-    </nav>
-
-    <li class="drink-list" style="display: none"></li>
-    <section class="drink-description" style="display: none"></section>
-    <form class="drink-form" onsubmit="return false"></form>
-
-    <section class="tutorial tutorial1">
-      <div class="tutorial-inside">
-        <div class="tips-counter">Tips 1/3</div>
-        <div class="tips-text"><p>Press for random cocktail.</p></div>
-        <button class="next next1">Next</button>
-        <button class="skip">Skip</button>
-      </div>
-    </section>
-    <section class="tutorial tutorial2">
-      <div class="tutorial-inside">
-        <div class="tips-counter">Tips 2/3</div>
-        <div class="tips-text"><p>Press and search for typed cocktail.</p></div>
-        <button class="next next2">Next</button>
-        <button class="skip">Skip</button>
-      </div>
-    </section>
-    <section class="tutorial tutorial3">
-      <div class="tutorial-inside">
-        <div class="tips-counter">Tips 3/3</div>
-        <div class="tips-text">
-          <p>Press to show recently viewed drinks.</p>
+    <div class="wrap">
+        <div id="ball"></div>
+        <div class="blob">
+            <svg viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
+                <path fill="#e63946" fill-opacity="0.4"
+                    d="M38,-31.6C50.9,-25.2,63.9,-12.6,64.7,0.8C65.6,14.3,54.2,28.6,41.4,38C28.6,47.4,14.3,52,3,48.9C-8.3,45.9,-16.5,35.4,-30.7,25.9C-44.9,16.5,-65.1,8.3,-68,-3C-71,-14.2,-56.9,-28.5,-42.7,-34.8C-28.5,-41.2,-14.2,-39.6,-0.8,-38.8C12.6,-38,25.2,-37.9,38,-31.6Z"
+                    transform="translate(100 100)" />
+            </svg>
         </div>
-        <button class="next">Next</button>
-        <button class="finish">Finish</button>
-      </div>
-    </section>
+        <div class="blob2">
+            <svg viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
+                <path fill="#e63946" fill-opacity="0.4"
+                    d="M54.9,-55.3C69.6,-40.2,78.9,-20.1,76.5,-2.4C74.1,15.3,60,30.6,45.3,38.8C30.6,47.1,15.3,48.2,-2.4,50.6C-20,53,-40,56.5,-51.6,48.3C-63.3,40,-66.5,20,-63.3,3.2C-60.1,-13.6,-50.4,-27.1,-38.8,-42.3C-27.1,-57.4,-13.6,-74.1,3.3,-77.4C20.1,-80.6,40.2,-70.5,54.9,-55.3Z"
+                    transform="translate(100 100)" />
+            </svg>
+        </div>
+        <div class="thumb">
+            <img src="image/like.svg" alt="like thumb image">
+        </div>
+        <div class="mobile-menu">
+            <ul>
+                <li><a href="index.html" class="active-text">Home</a></li>
+                <li><a href="about.html">About</a></li>
+                <li><a href="projects.html">Projects</a></li>
+            </ul>
+        </div>
+        <div class="mobile-down-menu">
+            <div class="portfolio"><a href="projects.html"><img src="image/briefcase.svg"
+                        alt="button link with briefcase image"></a></div>
+            <div class="home"><a href="index.html"><img src="image/home.svg"
+                        alt="home button which returning you on home page"></a></div>
+            <!-- <div class="contact"><a href="contact.html"><img src="image/phone-call.svg"
+                        alt="contact button with phone image"></a>
+            </div> -->
+        </div>
+        <div class="social-bar">
+            <a aria-label="youtube-link" href="youtube.com">
+                <div class="yt"><i class="fab fa-youtube"></i></div>
+            </a>
+            <a aria-label="facebook-link" href="facebook.com">
+                <div class="fb"><i class="fab fa-facebook-f"></i></div>
+            </a>
+            <a aria-label="linkedin-link" href="linkedin.com">
+                <div class="in"><i class="fab fa-linkedin-in"></i></div>
+            </a>
+        </div>
+        <main>
+
+            <section class="menu">
+                <h1>Logo</h1>
+                <nav>
+                    <li><a href="#" class="active-text">Home</a></li>
+                    <li><a href="about.html">About</a></li>
+                    <li><a href="projects.html">Projects</a></li>
+                    <!-- <li><a href="contact.html">Contact</a></li> -->
+
+                </nav>
+                <button aria-label="menu-open" class="btn"> <i class="fa fa-bars"></i></button>
+
+            </section>
+            <section class="content">
+                <div class="card-left" data-aos="fade-right" data-aos-anchor="#example-anchor" data-aos-offset="500"
+                    data-aos-duration="500">
+
+                    <h2>Dive into my work</h2>
+                    <br><br>
+                    <p>I deal with widely understood web design, I specialize in warm and modernistic styles.
+                        I specialize in warm and modernistic styles.</p>
+
+                    <p>I also have skills which allow me to
+                        optimize my projects for SEO.
+
+                    </p>
+                    <p>I am skilled in writing texts as a Copywriter. </p>
+                    <!-- <p>Zajmuje się szeroko pojętym tworzeniem stron internetowych, specjalizuję
+                        się w ciepłych oraz modernistycznych stylach.</p>
+    
+                    <p>Posiadam również umiejętności, które pozwalają mi na
+                        optymalizacje moich projektów pod kątem SEO.</p>
+    
+                    <p>Umiejętnie potrafie pisać teksty jako Copywriter. </p> -->
+                    <br>
+                    <br>
+                    <a href="projects.html" class="read-a"><button class="read">See my work</button></a>
+                </div>
+                <div class="card-right" data-aos="fade-left" data-aos-anchor="#example-anchor" data-aos-offset="500"
+                    data-aos-duration="500">
+                    <img src="image/about.png" alt="">
+                </div>
+
+            </section>
+
+        </main>
+    </div>
     <script>
-      if('serviceWorker' in navigator) {
-        navigator.serviceWorker.register('/service-worker.js')
-      }
+        const btn = document.querySelector('.btn');
+        const menu = document.querySelector('.mobile-menu');
+        const like = document.querySelector('.thumb');
+        const read = document.querySelector('.read');
+
+        btn.addEventListener('click', function () {
+            menu.classList.toggle('active');
+        })
+        menu.addEventListener('click', function () {
+            menu.classList.toggle('active');
+        })
+        read.addEventListener('click', function () {
+            like.classList.toggle('active-thumb');
+            setTimeout(function () {
+                window.open('projects.html');
+            }, 1500)
+        })
+        var $ = document.querySelector.bind(document);
+        var $on = document.addEventListener.bind(document);
+        var followMouse = function () {
+            key = requestAnimationFrame(followMouse);
+
+            if (!x || !y) {
+                x = xmouse;
+                y = ymouse;
+            } else {
+                dx = (xmouse - x) * 0.125;
+                dy = (ymouse - y) * 0.125;
+                if (Math.abs(dx) + Math.abs(dy) < 0.1) {
+                    x = xmouse;
+                    y = ymouse;
+                } else {
+                    x += dx;
+                    y += dy;
+                }
+            }
+            ball.style.left = x + 'px';
+            ball.style.top = $(".wrap").scrollTop + y + 'px';
+        };
+
+        var xmouse, ymouse;
+        var ball = $('#ball');
+        var x = void 0,
+            y = void 0,
+            dx = void 0,
+            dy = void 0,
+            tx = 0,
+            ty = 0,
+            key = -1;
+
+        $on('mousemove', function (e) {
+            xmouse = e.clientX || e.pageX;
+            ymouse = e.clientY || e.pageY;
+        });
     </script>
-    <script src="./dist/js/animatedBackground.js"></script>
-    <script defer src="./dist/js/tutorial.js"></script>
-    <script defer src="./dist/js/searchDrink2.js"></script>
-    <script defer src="./dist/js/recentlyViewed.js"></script>
-  
-  </body>
+    <script src="js/writing.js"></script>
+
+</body>
+
 </html>
