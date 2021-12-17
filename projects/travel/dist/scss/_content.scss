@@ -226,7 +226,7 @@ $small-device: 400px;
         background: #9ccc9c;
         &::before {
             position: absolute;
-            content: url(../dist/images/mask.svg);
+            content: url(../images/mask.svg);
             bottom: 0;
             width: 100%;
             overflow: hidden;

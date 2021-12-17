@@ -498,7 +498,7 @@
 
 .main-content .prices::before {
   position: absolute;
-  content: url(../dist/images/mask.svg);
+  content: url(../images/mask.svg);
   bottom: 0;
   width: 100%;
   overflow: hidden;
