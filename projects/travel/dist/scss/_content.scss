@@ -152,7 +152,7 @@ $small-device: 400px;
         position: relative;
         &::before {
             position: absolute;
-            content: url(/dist/images/mask.svg);
+            content: url(../images/mask.svg);
             bottom: -1%;
             width: 100%;
             overflow: hidden;
@@ -197,7 +197,7 @@ $small-device: 400px;
         }
         &::before {
             position: absolute;
-            content: url(/projects/travel/dist/images/poland-house.jpg);
+            content: url(../images/mask2.svg);
             bottom: -1%;
             width: 100%;
             overflow: hidden;
