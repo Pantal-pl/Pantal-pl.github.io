@@ -152,7 +152,7 @@ $small-device: 400px;
         position: relative;
         &::before {
             position: absolute;
-            content: url(./dist/images/mask.svg);
+            content: url(../dist/images/mask.svg);
             bottom: -1%;
             width: 100%;
             overflow: hidden;
@@ -197,7 +197,7 @@ $small-device: 400px;
         }
         &::before {
             position: absolute;
-            content: url(./dist/images/mask2.svg);
+            content: url(../dist/images/mask2.svg);
             bottom: -1%;
             width: 100%;
             overflow: hidden;
@@ -226,7 +226,7 @@ $small-device: 400px;
         background: #9ccc9c;
         &::before {
             position: absolute;
-            content: url(./dist/images/mask.svg);
+            content: url(../dist/images/mask.svg);
             bottom: 0;
             width: 100%;
             overflow: hidden;
