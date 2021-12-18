@@ -20,7 +20,7 @@ $small-device:565px;
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    background: url(../dist/images/canada-house-mask.svg);
+    background: url(../images/canada-house-mask.svg);
     @include img;
     & .house-name{
         margin-top: 2em;
@@ -75,7 +75,7 @@ $small-device:565px;
             }
             & .lobby{
                 min-height:50vh;
-                background: url(../dist/images/lobby.jpg);
+                background: url(../images/lobby.jpg);
                 @include img;
                 &:hover {
                     @include imgHover;
@@ -88,7 +88,7 @@ $small-device:565px;
             }
             & .sypialnia {
                 min-height:40vh;
-                background: url(../dist/images/sypialnia.jpg);
+                background: url(../images/sypialnia.jpg);
                 @include img;
                 &:hover {
                     @include imgHover;
@@ -123,7 +123,7 @@ $small-device:565px;
                 }
                 & .zyrandol {
                     min-height:100vh;
-                    background: url(../dist/images/zyrandol.jpg);
+                    background: url(../images/zyrandol.jpg);
                     @include img;
                     &:hover {
                         @include imgHover;
@@ -131,7 +131,7 @@ $small-device:565px;
                 }
                 & .sofa {
                     min-height:100vh;
-                    background: url(../dist/images/sofa.jpg);
+                    background: url(../images/sofa.jpg);
                     @include img;
                     &:hover {
                         @include imgHover;
