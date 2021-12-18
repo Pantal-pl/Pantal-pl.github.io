@@ -87,7 +87,7 @@
 }
 
 .navbar img {
-  width: 3.2%;
+  width: 10%;
 }
 
 .navbar-mobile {
@@ -141,7 +141,7 @@
   position: fixed;
   border-radius: 25px;
   right: 5%;
-  bottom: 3%;
+  bottom: 5%;
   z-index: 4;
   border: none;
   display: -webkit-box;
@@ -351,7 +351,8 @@
 }
 
 .main-content .card img {
-  width: 35%;
+  width: 180px;
+  height: auto;
   border-radius: 100%;
   aspect-ratio: 1/1;
 }
@@ -602,6 +603,330 @@
   animation: jello-horizontal 0.9s both;
 }
 
+.houses-content {
+  width: 100%;
+  min-height: 100vh;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  background: url(/dist/images/canada-house-mask.svg);
+  width: 100%;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  -webkit-transition: .25s ease-in-out;
+  transition: .25s ease-in-out;
+  -webkit-filter: grayscale(0.4);
+          filter: grayscale(0.4);
+}
+
+.houses-content .house-name {
+  margin-top: 2em;
+  padding: 1em 0;
+  text-align: center;
+  position: relative;
+}
+
+@media (max-width: 565px) {
+  .houses-content .house-name {
+    margin-top: 0;
+  }
+}
+
+.houses-content .house-name::after {
+  content: "";
+  position: absolute;
+  width: 100%;
+  height: 2px;
+  background: #DFC47F;
+  bottom: 0.4em;
+  left: 0;
+  text-align: center;
+}
+
+.houses-content .house-name::before {
+  content: "";
+  position: absolute;
+  width: 30px;
+  background: #fff;
+  z-index: 2;
+  border: 2px solid #DFC47F;
+  -webkit-transform: rotate(45deg);
+          transform: rotate(45deg);
+  height: 30px;
+  bottom: -.03em;
+  left: 45%;
+}
+
+.houses-content .house-information {
+  width: 100%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  padding: 1em;
+}
+
+@media (max-width: 565px) {
+  .houses-content .house-information {
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+            flex-direction: column;
+  }
+}
+
+.houses-content .house-information .house-information-left {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  width: 49%;
+  min-height: 90vh;
+  gap: 40px 0;
+}
+
+@media (max-width: 565px) {
+  .houses-content .house-information .house-information-left {
+    width: 100%;
+  }
+}
+
+.houses-content .house-information .house-information-left .lobby {
+  min-height: 50vh;
+  background: url(/dist/images/lobby.jpg);
+  width: 100%;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  -webkit-transition: .25s ease-in-out;
+  transition: .25s ease-in-out;
+  -webkit-filter: grayscale(0.4);
+          filter: grayscale(0.4);
+}
+
+.houses-content .house-information .house-information-left .lobby:hover {
+  -webkit-filter: grayscale(0);
+          filter: grayscale(0);
+  -webkit-transform: scale(1.05);
+          transform: scale(1.05);
+  -webkit-transform-origin: 50% 50%;
+          transform-origin: 50% 50%;
+}
+
+.houses-content .house-information .house-information-left p {
+  font-size: 1.4em;
+  width: 100%;
+  min-height: 8vh;
+}
+
+.houses-content .house-information .house-information-left .sypialnia {
+  min-height: 40vh;
+  background: url(/dist/images/sypialnia.jpg);
+  width: 100%;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  -webkit-transition: .25s ease-in-out;
+  transition: .25s ease-in-out;
+  -webkit-filter: grayscale(0.4);
+          filter: grayscale(0.4);
+}
+
+.houses-content .house-information .house-information-left .sypialnia:hover {
+  -webkit-filter: grayscale(0);
+          filter: grayscale(0);
+  -webkit-transform: scale(1.05);
+          transform: scale(1.05);
+  -webkit-transform-origin: 50% 50%;
+          transform-origin: 50% 50%;
+}
+
+.houses-content .house-information .house-information-right {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  width: 49%;
+  min-height: 100%;
+}
+
+@media (max-width: 565px) {
+  .houses-content .house-information .house-information-right {
+    width: 100%;
+  }
+}
+
+.houses-content .house-information .house-information-right p {
+  font-size: 1.4em;
+}
+
+.houses-content .house-information .house-information-right .house-images {
+  width: 100%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  -webkit-box-align: end;
+      -ms-flex-align: end;
+          align-items: flex-end;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  margin-top: 1em;
+  gap: 1em;
+}
+
+@media (max-width: 565px) {
+  .houses-content .house-information .house-information-right .house-images {
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+            flex-direction: column;
+  }
+}
+
+.houses-content .house-information .house-information-right .house-images .zyrandol {
+  min-height: 100vh;
+  background: url(/dist/images/zyrandol.jpg);
+  width: 100%;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  -webkit-transition: .25s ease-in-out;
+  transition: .25s ease-in-out;
+  -webkit-filter: grayscale(0.4);
+          filter: grayscale(0.4);
+}
+
+.houses-content .house-information .house-information-right .house-images .zyrandol:hover {
+  -webkit-filter: grayscale(0);
+          filter: grayscale(0);
+  -webkit-transform: scale(1.05);
+          transform: scale(1.05);
+  -webkit-transform-origin: 50% 50%;
+          transform-origin: 50% 50%;
+}
+
+.houses-content .house-information .house-information-right .house-images .sofa {
+  min-height: 100vh;
+  background: url(/dist/images/sofa.jpg);
+  width: 100%;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  -webkit-transition: .25s ease-in-out;
+  transition: .25s ease-in-out;
+  -webkit-filter: grayscale(0.4);
+          filter: grayscale(0.4);
+}
+
+.houses-content .house-information .house-information-right .house-images .sofa:hover {
+  -webkit-filter: grayscale(0);
+          filter: grayscale(0);
+  -webkit-transform: scale(1.05);
+          transform: scale(1.05);
+  -webkit-transform-origin: 50% 50%;
+          transform-origin: 50% 50%;
+}
+
+footer {
+  width: 100%;
+  min-height: 25vh;
+  bottom: 0;
+  position: relative;
+  background: #9ccc9c;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: space-evenly;
+      -ms-flex-pack: space-evenly;
+          justify-content: space-evenly;
+  margin: 0 !important;
+  gap: 15px 0;
+  padding-top: 15px;
+}
+
+footer img {
+  width: 50pt;
+}
+
+footer span {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  gap: 0 20px;
+  min-width: 20%;
+}
+
+footer span a {
+  text-decoration: none;
+  font-size: 1.5em;
+  color: #353535;
+  cursor: pointer;
+  -webkit-transition: .25s ease-in-out;
+  transition: .25s ease-in-out;
+}
+
+footer span a:hover {
+  -webkit-transform: scale(1.1);
+          transform: scale(1.1);
+}
+
 *, ::before, ::after {
   padding: 0;
   margin: 0;
@@ -611,22 +936,14 @@
   scroll-behavior: smooth;
 }
 
-.nav-scrolled {
-  background: #353535 !important;
-  color: #d5d5d5 !important;
-}
-
-/* width */
 ::-webkit-scrollbar {
   width: 10px;
 }
 
-/* Track */
 ::-webkit-scrollbar-track {
   background: #353535;
 }
 
-/* Handle */
 ::-webkit-scrollbar-thumb {
   background: #9ccc9c;
 }

@@ -105,7 +105,8 @@ $small-device: 561px;
             font-size: 2em
         }
         & img {
-            width: 35%;
+            width: 180px;
+            height: auto;
             border-radius: 100%;
             aspect-ratio: 1/1;
         }
@@ -212,7 +213,7 @@ $small-device: 561px;
             background: rgb(22,96,229);
             background: -moz-linear-gradient(0deg, rgba(22,96,229,0) 0%, rgba(213,213,213,1) 100%);
             background: -webkit-linear-gradient(0deg, rgba(22,96,229,0) 0%, rgba(213,213,213,1) 100%);
-            background: linear-gradient(0deg, rgba(22,96,229,0) 0%, rgba(213,213,213,1) 100%);
+            background: linear-gradient(0deg, rgba(22,96,229,0) 0%, rgb(213, 213, 213) 100%);
             filter: progid:DXImageTransform.Microsoft.gradient(startColorstr="#1660e5",endColorstr="#d5d5d5",GradientType=1);
             width: 100%;
         }

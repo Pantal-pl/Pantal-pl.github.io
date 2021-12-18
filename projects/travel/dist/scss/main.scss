@@ -1,5 +1,8 @@
 @import 'navbar';
 @import 'content';
+@import 'houses';
+@import 'footer';
+$navbar-bg-gray:rgba(213, 213, 213, 1);
 
 *, ::before,::after {
     padding: 0;
@@ -8,23 +11,13 @@
     font-family: 'Lato', sans-serif;
     scroll-behavior: smooth;
 }
-$navbar-bg-gray:rgba(213, 213, 213, 1);
-$small-device: 400px;
-.nav-scrolled {
-    background:#353535 !important;
-    color:#d5d5d5 !important;
-}
-/* width */
-::-webkit-scrollbar {
-    width: 10px;
-  }
-  
-  /* Track */
+
+  ::-webkit-scrollbar {
+      width: 10px;
+    }
   ::-webkit-scrollbar-track {
     background: #353535;
   }
-  
-  /* Handle */
   ::-webkit-scrollbar-thumb {
     background: #9ccc9c;
   }
@@ -41,16 +34,18 @@ $small-device: 400px;
     color: #353535;
 
   }
-  
+
   table.GeneratedTable td, table.GeneratedTable th {
     border-width: 3px;
     border-color: #9ccc9c;
     border-style: solid;
     padding: 3px;
+
   }
   table.GeneratedTable td:hover {
     color: #e7e7e7;
     background: #353535;
+    
   }
   
   table.GeneratedTable thead {

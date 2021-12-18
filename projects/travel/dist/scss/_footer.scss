@@ -1,0 +1,35 @@
+footer {
+    width: 100%;
+    min-height: 25vh;
+    bottom: 0;
+    position: relative;
+    background: #9ccc9c;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-evenly;
+    margin: 0 !important;
+    gap: 15px 0;
+    padding-top: 15px;
+    & img{
+        width:50pt;
+    }
+    & span {
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        justify-content: center;
+        gap: 0 20px;
+        min-width: 20%;
+        & a {
+            text-decoration: none;
+            font-size: 1.5em;
+            color:#353535;
+            cursor: pointer;
+            transition: .25s ease-in-out;
+            &:hover {
+                transform: scale(1.1);
+            }
+        }
+    }
+}
