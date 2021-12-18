@@ -619,7 +619,7 @@
   -webkit-box-pack: center;
       -ms-flex-pack: center;
           justify-content: center;
-  background: url(./dist/images/canada-house-mask.svg);
+  background: url(../dist/images/canada-house-mask.svg);
   width: 100%;
   background-position: center;
   background-repeat: no-repeat;
@@ -719,7 +719,7 @@
 
 .houses-content .house-information .house-information-left .lobby {
   min-height: 50vh;
-  background: url(./dist/images/lobby.jpg);
+  background: url(../dist/images/lobby.jpg);
   width: 100%;
   background-position: center;
   background-repeat: no-repeat;
@@ -747,7 +747,7 @@
 
 .houses-content .house-information .house-information-left .sypialnia {
   min-height: 40vh;
-  background: url(./dist/images/sypialnia.jpg);
+  background: url(../dist/images/sypialnia.jpg);
   width: 100%;
   background-position: center;
   background-repeat: no-repeat;
@@ -825,7 +825,7 @@
 
 .houses-content .house-information .house-information-right .house-images .zyrandol {
   min-height: 100vh;
-  background: url(./dist/images/zyrandol.jpg);
+  background: url(../dist/images/zyrandol.jpg);
   width: 100%;
   background-position: center;
   background-repeat: no-repeat;
@@ -847,7 +847,7 @@
 
 .houses-content .house-information .house-information-right .house-images .sofa {
   min-height: 100vh;
-  background: url(./dist/images/sofa.jpg);
+  background: url(../dist/images/sofa.jpg);
   width: 100%;
   background-position: center;
   background-repeat: no-repeat;
