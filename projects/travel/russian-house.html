@@ -41,7 +41,7 @@
         background-position: center;
         background-repeat: no-repeat;
         background-size: cover;
-        animation: photoAnimationLeft 1.5s ;
+        /* animation: photoAnimationLeft 1.5s; */
       }
       .photo2 {
         min-height: 40vh;
@@ -50,8 +50,7 @@
         background-position: center;
         background-repeat: no-repeat;
         background-size: cover;
-        animation: photoAnimationLeft 1.5s ;
-
+        /* animation: photoAnimationLeft 1.5s; */
       }
       .photo3 {
         min-height: 100vh;
@@ -60,7 +59,7 @@
         background-position: center;
         background-repeat: no-repeat;
         background-size: cover;
-        animation: photoAnimationRight 1.5s ;
+        /* animation: photoAnimationRight 1.5s; */
       }
       .photo4 {
         min-height: 100vh;
@@ -69,23 +68,10 @@
         background-position: center;
         background-repeat: no-repeat;
         background-size: cover;
-        animation: photoAnimationRight 1.5s ;
+        /* animation: photoAnimationRight 1.5s; */
       }
-      @keyframes photoAnimationLeft {
-        from{
-          transform: translateX(-100%);
-        }
-        to{
-          transform: translateX(0);
-        }
-      }
-      @keyframes photoAnimationRight {
-        from{
-          transform: translateX(100%);
-        }
-        to{
-          transform: translateX(0);
-        }
+      .houses-list {
+        background: #d4d4d4 !important;
       }
     </style>
   </head>
@@ -94,7 +80,18 @@
       <nav class="navbar-navigation">
         <ul class="navbar-navigation__links">
           <li class="link"><a href="index.html#locations">Locations</a></li>
-          <li class="link"><a href="index.html#houses">Houses</a></li>
+          <li id="houses-link" class="link">
+            <a href="index.html#houses"
+              >Houses
+              <div class="houses-list">
+                <ul>
+                  <li><a href="canada-house.html">Edmonton</a></li>
+                  <li><a href="russian-house.html">Nowosybirsk</a></li>
+                  <li><a href="poland-house.html">Bieszczady</a></li>
+                </ul>
+              </div></a
+            >
+          </li>
           <li class="link"><a href="index.html#pricing">Pricing</a></li>
         </ul>
       </nav>
@@ -196,12 +193,26 @@
         <span><a href="mailto:test@mail.test">E-mail:test@mail.test</a></span>
       </footer>
     </main>
+    <script defer src="./dist/js/script.js"></script>
+
+    <script
+      src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.4.2/gsap.min.js"
+      integrity="sha512-pCPP9sfLW9T7EZiw725jUl+ux032sjGhFE+ZAx00C1iO55ZmZJWpfNGbDf2ZF5b0UqxRqSW548PbZEWmH+S7pA=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    ></script>
+    <script
+      src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.4.2/ScrollTrigger.min.js"
+      integrity="sha512-YkmzZl/xoJ+yOJ5YaZ8kBmyQB0jpLQDQpErTSgDsdipDcE1al6Z8TZseXLJLf3it/kRrFRJEpGC2C/jBbIF+Ng=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    ></script>
     <script>
       const navbar = document.querySelector(".navbar");
       const footer = document.querySelector("footer");
 
       navbar.style.background = footer.style.background = "#d4d4d4";
     </script>
-    <script defer src="./dist/js/script.js"></script>
+    <script src="./dist/js/smooth-move-house.js"></script>
   </body>
 </html>

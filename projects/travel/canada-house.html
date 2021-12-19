@@ -13,15 +13,18 @@
       rel="stylesheet"
     />
     <style>
-        ::-webkit-scrollbar {
+      ::-webkit-scrollbar {
         width: 10px;
-        }
-        ::-webkit-scrollbar-track {
-          background: #353535;
-        }
-        ::-webkit-scrollbar-thumb {
-          background: #DFC47F;
-        }
+      }
+      ::-webkit-scrollbar-track {
+        background: #353535;
+      }
+      ::-webkit-scrollbar-thumb {
+        background: #dfc47f;
+      }
+      .houses-list {
+        background: #dfc47f !important;
+      }
     </style>
   </head>
   <body>
@@ -29,11 +32,24 @@
       <nav class="navbar-navigation">
         <ul class="navbar-navigation__links">
           <li class="link"><a href="index.html#locations">Locations</a></li>
-          <li class="link"><a href="index.html#houses">Houses</a></li>
+          <li id="houses-link" class="link">
+            <a href="index.html#houses"
+              >Houses
+              <div class="houses-list">
+                <ul>
+                  <li><a href="canada-house.html">Edmonton</a></li>
+                  <li><a href="russian-house.html">Nowosybirsk</a></li>
+                  <li><a href="poland-house.html">Bieszczady</a></li>
+                </ul>
+              </div></a
+            >
+          </li>
           <li class="link"><a href="index.html#pricing">Pricing</a></li>
         </ul>
       </nav>
-      <a href="index.html"><img src="./dist/images/mountain-svgrepo-com.svg" alt="logo" /></a>
+      <a href="index.html"
+        ><img src="./dist/images/mountain-svgrepo-com.svg" alt="logo"
+      /></a>
     </header>
     <button class="toggle-menu">
       <span></span>
@@ -42,9 +58,13 @@
     </button>
     <nav class="navbar-mobile">
       <ul class="navbar__links-mobile">
-        <li class="link link-mobile"><a href="index.html#locations">Locations</a></li>
+        <li class="link link-mobile">
+          <a href="index.html#locations">Locations</a>
+        </li>
         <li class="link link-mobile"><a href="index.html#houses">Houses</a></li>
-        <li class="link link-mobile"><a href="index.html#pricing">Pricing</a></li>
+        <li class="link link-mobile">
+          <a href="index.html#pricing">Pricing</a>
+        </li>
       </ul>
     </nav>
     <main class="houses-content">
@@ -77,18 +97,18 @@
             <p>
               Lorem ipsum dolor, sit amet consectetur adipisicing elit. Id modi
             </p>
-            <br>
+            <br />
             <p>
               possimus quo suscipit vel, nemo nostrum veritatis hic! Eos
               laboriosam necessitatibus perspiciatis! Iusto, error, veritatis
               esse
             </p>
-            <br>
+            <br />
             <p>
               suscipit deserunt beatae in temporibus ea distinctio, itaque
               adipisci! Repudiandae id ex quibusdam nemo exercitationem alias!
             </p>
-            <br>
+            <br />
             <p>
               Optio voluptatum pariatur facilis consequuntur praesentium earum
               blanditiis.
@@ -100,10 +120,18 @@
           </div>
         </div>
       </section>
-    <picture style="display: inline-flex;">
-      <img style="width: 50%; padding: 1em;" src="dist/images/canada-house-min.jpg" alt="">
-      <img style="width: 50%; padding: 1em;" src="dist/images/canada-house-background.jpg" alt="">
-    </picture>
+      <picture style="display: inline-flex">
+        <img
+          style="width: 50%; padding: 1em"
+          src="dist/images/canada-house-min.jpg"
+          alt=""
+        />
+        <img
+          style="width: 50%; padding: 1em"
+          src="dist/images/canada-house-background.jpg"
+          alt=""
+        />
+      </picture>
       <footer>
         <img src="./dist/images/mountain-svgrepo-com.svg" alt="" />
         <span
@@ -117,12 +145,27 @@
         <span><a href="mailto:test@mail.test">E-mail:test@mail.test</a></span>
       </footer>
     </main>
+
+    <script defer src="./dist/js/script.js"></script>
+    <script
+      src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.4.2/gsap.min.js"
+      integrity="sha512-pCPP9sfLW9T7EZiw725jUl+ux032sjGhFE+ZAx00C1iO55ZmZJWpfNGbDf2ZF5b0UqxRqSW548PbZEWmH+S7pA=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    ></script>
+    <script
+      src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.4.2/ScrollTrigger.min.js"
+      integrity="sha512-YkmzZl/xoJ+yOJ5YaZ8kBmyQB0jpLQDQpErTSgDsdipDcE1al6Z8TZseXLJLf3it/kRrFRJEpGC2C/jBbIF+Ng=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    ></script>
     <script>
       const navbar = document.querySelector(".navbar");
       const footer = document.querySelector("footer");
 
       navbar.style.background = footer.style.background = "#DFC47F";
     </script>
-    <script defer src="./dist/js/script.js"></script>
+    <script src="./dist/js/smooth-move-house.js"></script>
+
   </body>
 </html>

@@ -31,6 +31,20 @@ $small-device:650px;
             & .link {
                 margin: 0 2em;
                 font-size: 1.5em;
+                & .houses-list {
+                    position: absolute;
+                    width: auto;
+                    flex-direction: column;
+                    align-items: center;
+                    justify-content: space-between;
+                    background: #9ccc9c;
+                    padding: 0.5em;
+                    display: none;
+                    & ul {
+                        list-style: none;
+                        
+                    }
+                }
                 & a {
                     color: #353535;
                     text-decoration: none;
@@ -47,6 +61,7 @@ $small-device:650px;
                         transform: scaleX(1);
                         transform-origin: 0% 100%;
                     }
+              
                 }
             }
         }
