@@ -77,13 +77,13 @@ $small-device:650px;
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    background: #9ccc9c;
+    background: #fff;
     position: fixed;
     left: -100%;
-    background: url(../images/navbar-bg.png);
-    background-position: center;
-    background-repeat: no-repeat;
-    background-size: cover;
+    // background: url(../images/navbar-bg.png);
+    // background-position: center;
+    // background-repeat: no-repeat;
+    // background-size: cover;
     z-index: 3;
     top: 0;
     transition: .25s ease-in-out;
@@ -134,4 +134,25 @@ $small-device:650px;
 .navbar-mobile-active {
     left: 0;
     overflow: hidden;
+}
+.span-navbar {
+    transition: .25s ease-in-out;
+}
+.span-active1{
+    transform: rotate(-321deg);
+    width: 40px !important;
+    transform-origin: left top;
+}
+.span-active2{
+    opacity: 0;
+    transition: none;
+    
+}
+.span-active3{
+    transform: rotate(320deg);
+    width: 40px !important;
+    transform-origin: left bottom;
+}
+.toggleMenuBtn-active{
+    padding-left: 11px;
 }
