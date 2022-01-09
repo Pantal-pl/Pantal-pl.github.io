@@ -2,7 +2,7 @@
 @import 'start-screen';
 .interviewScreen {
     width: 100%;
-    min-height: 70vh;
+    height: 100vh;
     background: $bg-color;
     & .heading {
         position: fixed;
@@ -76,7 +76,7 @@
                     background: $secondary-color;
                     color: $font-color-dark;
                     font-size: 2.2rem;
-                    border-radius: 3rem;
+                    border-radius:40rem;
                     cursor: pointer;
                 }
             }

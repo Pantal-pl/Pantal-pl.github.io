@@ -399,7 +399,7 @@
 
 .interviewScreen {
   width: 100%;
-  min-height: 70vh;
+  height: 100vh;
   background: #FAFAFA;
 }
 
@@ -499,7 +499,7 @@
   background: #F8E46C;
   color: #3F3D56;
   font-size: 2.2rem;
-  border-radius: 3rem;
+  border-radius: 40rem;
   cursor: pointer;
 }
 
