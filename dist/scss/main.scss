@@ -1,0 +1,13 @@
+@import 'start-screen';
+@import 'interview';
+@import 'variables';
+*,::after,::before {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
+}
+.optionActive{
+    background: $font-color-dark !important;
+    color: $font-color-light !important;
+}
