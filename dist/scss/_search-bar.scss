@@ -170,6 +170,7 @@
         padding-left: 1rem;
       }
       & select {
+        -webkit-appearance: none;
         width: 30vw;
         background: $font-color-light;
         color: $font-color-dark;

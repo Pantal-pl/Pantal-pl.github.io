@@ -917,6 +917,7 @@
 }
 
 .menuBar .row2 #searchBy select {
+  -webkit-appearance: none;
   width: 30vw;
   background: #FAFAFA;
   color: #3F3D56;
