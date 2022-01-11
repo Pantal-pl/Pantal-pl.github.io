@@ -11,4 +11,6 @@
 .optionActive{
     background: $font-color-dark !important;
     color: $font-color-light !important;
+    -webkit-animation: jello-horizontal 0.7s both;
+	        animation: jello-horizontal 0.7s both;
 }

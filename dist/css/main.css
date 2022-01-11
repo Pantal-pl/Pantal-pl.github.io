@@ -496,7 +496,7 @@
   -webkit-appearance: none;
   -webkit-transition: .25s ease-in-out;
   transition: .25s ease-in-out;
-  padding: 1.2rem 1.7rem;
+  padding: 1rem 1.4rem;
   margin: 0 .5rem;
   border: none;
   background: #F8E46C;
@@ -620,11 +620,6 @@
     -webkit-transform: scale3d(1, 1, 1);
     transform: scale3d(1, 1, 1);
   }
-}
-
-.jello-horizontal {
-  -webkit-animation: jello-horizontal 0.7s both;
-  animation: jello-horizontal 0.7s both;
 }
 
 /* ----------------------------------------------
@@ -999,5 +994,7 @@
 .optionActive {
   background: #3F3D56 !important;
   color: #FAFAFA !important;
+  -webkit-animation: jello-horizontal 0.7s both;
+  animation: jello-horizontal 0.7s both;
 }
 /*# sourceMappingURL=main.css.map */
