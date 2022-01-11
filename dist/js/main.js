@@ -1,14 +1,17 @@
 const API_KEY = "1bd21e7db7a94a10b01a3ec4e055080d";
+const body = document.querySelector("body");
+const insertScreen = (elToInsert) => {
+  body.appendChild(elToInsert);
+};
 import { startScreenEl } from "./modules/startScreen.mjs";
 import {
   interviewScreenEl,
   logicForInterviewScreen,
 } from "./modules/interviewScreen.mjs";
-const body = document.querySelector("body");
-const insertScreen = (elToInsert) => {
-  body.appendChild(elToInsert);
-};
+
+
 insertScreen(startScreenEl);
+
 const startBtn = document.querySelector(".start-btn");
 
 startBtn.addEventListener("click", () => {

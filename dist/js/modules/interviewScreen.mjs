@@ -1,10 +1,13 @@
 const interviewScreenEl = document.createElement("section");
 interviewScreenEl.setAttribute("class", "interviewScreen");
 const body = document.querySelector("body");
+import { searchBarEl, logicForSearchBar } from "./searchBar.mjs";
+
 
 interviewScreenEl.insertAdjacentHTML(
   "beforeend",
   `      <h1 class="heading">Interview</h1>
+  <div class="warningBanner"></div>
 <form onsubmit="return false">
   <div class="interviewElement intolerances">
     <label>Choose your intolerances:</label>
@@ -64,7 +67,6 @@ interviewScreenEl.insertAdjacentHTML(
 </form>
 <button class="saveBtn">Save</button>
 `
-
 );
 
 export { interviewScreenEl };
@@ -82,6 +84,7 @@ const logicForInterviewScreen = () => {
   const cusineEl = document.querySelectorAll(
     ".cusine .interviewElementInputs input"
   );
+  const warningBanner = document.querySelector(".warningBanner");
   const EvForEveryOption = (objectOption, typeOption) => {
     objectOption.forEach((option) => {
       option.addEventListener("click", () => {
@@ -92,7 +95,11 @@ const logicForInterviewScreen = () => {
             console.log(intolerances);
           } else if (typeOption === "diet") {
             if (diet.length > 0) {
-              console.log("you can choose only one diet");
+              warningBanner.classList.add("warningBannerActive");
+              warningBanner.textContent = "You can pick max one diet"
+              setTimeout(() => {
+                warningBanner.classList.remove("warningBannerActive");
+              }, 1850);
               option.classList.remove("optionActive");
             } else {
               diet.push(option.value);
@@ -104,32 +111,42 @@ const logicForInterviewScreen = () => {
           }
         } else {
           if (typeOption === "intolerances") {
-            intolerances.pop();
+            intolerances = intolerances.filter((item) => item !== option.value);
             console.log(intolerances);
           } else if (typeOption === "diet") {
             diet.pop();
             console.log(diet);
           } else {
-            cusine.pop();
+            cusine = cusine.filter((item) => item !== option.value);
             console.log(cusine);
           }
         }
       });
     });
   };
+
   EvForEveryOption(intolerancesEl, "intolerances");
   EvForEveryOption(dietEl, "diet");
   EvForEveryOption(cusineEl, "cusine");
+  // Save button action
   const saveBtn = document.querySelector(".saveBtn");
   saveBtn.addEventListener("click", () => {
-    if (intolerances.length == 0 || diet.length == 0 || cusine.length == 0) {
-      console.log("error");
+    if (cusine.length == 0) {
+      warningBanner.classList.add("warningBannerActive");
+      warningBanner.textContent = "Choose at least one cusine"
+      setTimeout(() => {
+        warningBanner.classList.remove("warningBannerActive");
+      }, 1850);
     } else {
       localStorage.setItem("intolerances", intolerances);
       localStorage.setItem("diet", diet);
       localStorage.setItem("cusine", cusine);
       body.lastChild.remove();
+      body.appendChild(searchBarEl);
+      logicForSearchBar();
     }
   });
+  //
 };
+ 
 export { logicForInterviewScreen };
