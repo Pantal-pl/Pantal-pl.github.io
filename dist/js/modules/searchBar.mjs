@@ -28,8 +28,9 @@ searchBarEl.insertAdjacentHTML(
     <p>Search by:</p>
     <select name="searchBy">
       <option value=""></option>
-      <option value="name">Name</option>
-      <option value="Ingredients">Ingredients</option>
+      <option value="dishName">dishName</option>
+      <option value="ingredients">Ingredients</option>
+      <option value="cusine">cusine</option>
     </select>
   </label>
   <button class="searchButton">Search</button>

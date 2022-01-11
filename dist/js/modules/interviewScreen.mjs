@@ -89,6 +89,7 @@ const logicForInterviewScreen = () => {
     objectOption.forEach((option) => {
       option.addEventListener("click", () => {
         option.classList.toggle("optionActive");
+        option.classList.toggle("jello-horizontal");
         if (option.classList.value === "optionActive") {
           if (typeOption === "intolerances") {
             intolerances.push(option.value);
@@ -101,6 +102,7 @@ const logicForInterviewScreen = () => {
                 warningBanner.classList.remove("warningBannerActive");
               }, 1850);
               option.classList.remove("optionActive");
+              option.classList.remove("jello-horizontal");
             } else {
               diet.push(option.value);
               console.log(diet);
