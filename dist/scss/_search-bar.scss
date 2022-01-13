@@ -90,43 +90,17 @@
           margin: 0 0.5rem;
           cursor: pointer;
           position: relative;
+          & div{
+            width: 10vw;
+            border-radius: 20%;
+            height: 10vw;
+          }
           & p {
               text-align: center;
               position: absolute;
               bottom: -1.9rem;
               left: 50%;
               transform: translateX(-50%);
-          }
-          &:last-child::after {
-            content: "";
-            position: absolute;
-            width: 10px;
-            height: 17px;
-            border-bottom: 3px solid green;
-            border-right: 3px solid green;
-            top: 45%;
-            left: 50%;
-            transform: translate(-50%, -50%) rotate(40deg);
-          }
-          &:first-child::after {
-            content: "";
-            width: 3px;
-            height: 17px;
-            position: absolute;
-            background: red;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%) rotate(-45deg);
-          }
-          &:first-child::before {
-            content: "";
-            width: 3px;
-            height: 17px;
-            position: absolute;
-            background: red;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%) rotate(45deg);
           }
         }
       }
@@ -188,4 +162,35 @@
       margin-top: 1rem;
     }
   }
+}
+.optionYesActive {
+  position: absolute;
+  width: 10px !important;
+  height: 17px !important;
+  border-radius: 0 !important;
+  border-bottom: 3px solid green;
+  border-right: 3px solid green;
+  top: 45%;
+  left: 50%;
+  transform: translate(-50%, -50%) rotate(40deg);
+}
+.optionNoActive {
+  width: 3px !important;
+  height: 17px !important;
+  border-radius: 0 !important;
+  position: absolute;
+  background: red;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%) rotate(-45deg);
+}
+.optionNoActive2{
+  width: 3px !important;
+  height: 17px !important;
+  border-radius: 0 !important;
+  position: absolute;
+  background: red;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%) rotate(90deg);
 }

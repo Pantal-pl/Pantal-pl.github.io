@@ -1,0 +1,78 @@
+@import 'variables';
+.homePage {
+    min-height: 100vh;
+    background: $bg-color;
+    margin-top: 18vh;
+    display: flex;
+    flex-direction: column;
+    & .homePageElement{
+        min-height: 40vh;
+        padding-left: 1rem;
+        & .headingElement {
+            background: $primary-color;
+            padding: 1rem 1.3rem;
+            color: $font-color-light;
+            border-radius: 30rem;
+            width: 11ch;
+            text-align: center;
+            position: relative;
+            &::before{
+                position: absolute;
+                content: "";
+                width: 1.5rem;
+                height: 1.5rem;
+                background: $primary-color;
+                border-radius: 50%;
+                left: -.3rem;
+                top: -.2rem;
+            }
+            &::after{
+                position: absolute;
+                content: "";
+                width: 1.5rem;
+                height: 1.5rem;
+                background: $primary-color;
+                border-radius: 50%;
+                right: -.2rem;
+                bottom:-.2rem;
+            }
+        }
+        & .foodItems{
+            display: flex;
+            justify-content: flex-start;
+            overflow-x: scroll;
+            padding-bottom: 5rem;
+            &::-webkit-scrollbar {
+                width: 0;
+            }
+            & .foodItem {
+                margin: 1.3rem 1.8rem 0 0;
+                background: $bg-color;
+                box-shadow: 5px 12px 35px rgba(0, 0, 0, 0.274);
+                cursor: pointer;
+                width: 19rem;
+                height: 19rem;
+                border-radius: 2.8rem;
+                position: relative;
+                display: flex;
+                & .foodImage {
+                    background-position: center;
+                    background-repeat: no-repeat;
+                    background-size: cover;
+                    aspect-ratio: 1/1;
+                    width: 60%;
+                    height: 60%;
+                    border-radius: 2.8rem 0 2.8rem 0;
+                }
+                & .tags {
+                    @include tags;
+                }
+                & h2 {
+                    position: absolute;
+                    left: 1rem;
+                    bottom: 1.8rem;
+                }
+            }
+        }
+    }
+}

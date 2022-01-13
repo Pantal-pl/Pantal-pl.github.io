@@ -2,7 +2,7 @@ const interviewScreenEl = document.createElement("section");
 interviewScreenEl.setAttribute("class", "interviewScreen");
 const body = document.querySelector("body");
 import { searchBarEl, logicForSearchBar } from "./searchBar.mjs";
-
+import {homePageEl, logicForHomePage} from "./homePageScreen.mjs"
 
 interviewScreenEl.insertAdjacentHTML(
   "beforeend",
@@ -144,6 +144,8 @@ const logicForInterviewScreen = () => {
       body.lastChild.remove();
       body.appendChild(searchBarEl);
       logicForSearchBar();
+      body.appendChild(homePageEl)
+      logicForHomePage()
     }
   });
   //

@@ -1,0 +1,150 @@
+@import "variables";
+.foodInformation {
+  margin: 18vh 1rem 0 1rem;
+  & .foodDescription {
+    width: 100%;
+    background: $bg-color;
+    border-radius: 2.8rem;
+    box-shadow: 5px 12px 35px rgba(0, 0, 0, 0.288);
+    & .imageAndTags {
+      display: flex;
+      flex-direction: row;
+      align-items: center;
+      position: relative;
+      & .foodImage {
+        background-image: url(https://www.warzywizm.pl/wp-content/uploads/2021/07/A-WYBRANE-P1128074-auto-30-scaled-1.jpg);
+        background-position: center;
+        background-repeat: no-repeat;
+        background-size: cover;
+        aspect-ratio: 1/1;
+        width: 70%;
+        height: 50%;
+        border-radius: 2.8rem 0 2.8rem 0;
+      }
+      & .addToFavouriteBtn {
+        position: absolute;
+        left: 1rem;
+        top: 1rem;
+        display: grid;
+        place-items: center;
+        border: none;
+        background: $bg-color;
+        border-radius: 100%;
+        padding: 0.3rem;
+        cursor: pointer;
+        & img {
+          width: 2.2rem;
+          height: 2.2rem;
+        }
+      }
+      & .tags {
+        @include tags;
+        flex: 1;
+        margin: 0;
+        gap: 0;
+      }
+    }
+    & .description {
+      padding: 1rem;
+      h1 {
+        position: relative;
+        &::before {
+          position: absolute;
+          content: "";
+          left: -0.45rem;
+          top: 0;
+          width: 12px;
+          height: 12px;
+          border-left: 2px solid $primary-color;
+          border-top: 2px solid $primary-color;
+        }
+        &::after {
+          position: absolute;
+          content: "";
+          bottom: 0;
+          width: 12px;
+          height: 12px;
+          border-right: 2px solid $primary-color;
+          border-bottom: 2px solid $primary-color;
+        }
+      }
+    }
+    & h2 {
+      border-bottom: 2px solid $primary-color;
+      width: min-content;
+    }
+    & p {
+      text-indent: 0.5rem;
+      margin-top: 1.2rem;
+    }
+    & ul {
+      list-style: decimal;
+      & li {
+        margin: 5px 0 5px 1rem;
+      }
+    }
+  }
+  & .backButton {
+    border: none;
+    width: 10rem;
+    height: 10rem;
+    background: $secondary-color;
+    border-radius: 100%;
+    right: -5rem;
+    bottom: -5rem;
+    position: fixed;
+    cursor: pointer;
+    z-index: 2;
+    box-shadow: 8px 0px 39px rgba(0, 0, 0, 0.25);
+    &::before {
+      content: "Back";
+      position: absolute;
+      left: 1.5rem;
+      top: 2.2rem;
+      font-size: 1.1rem;
+      font-weight: bold;
+      transform: rotate(-45deg);
+    }
+  }
+  & .similarRecipes {
+    margin-top: 4rem;
+    display: flex;
+    justify-content: flex-start;
+    overflow-x: scroll;
+    padding-bottom: 5rem;
+    position: relative;
+
+    &::-webkit-scrollbar {
+      width: 0;
+    }
+    & h2 {
+      border-bottom: 2px solid $primary-color;
+      width: fit-content;
+      position: absolute;
+      left: 0;
+      top: 0;
+    }
+    & .similarRecipe {
+      margin: 4rem 1.5rem 0 0;
+    //   width: calc(50% - 1.5rem);
+    //   height: 50% !important;
+      background: $bg-color;
+      box-shadow: 5px 12px 35px rgba(0, 0, 0, 0.274);
+      border-radius: 2.8rem;
+
+      & .similarRecipe-foodImage {
+        background-image: url(https://www.warzywizm.pl/wp-content/uploads/2021/07/A-WYBRANE-P1128074-auto-30-scaled-1.jpg);
+        background-position: center;
+        background-repeat: no-repeat;
+        background-size: cover;
+        aspect-ratio: 1/1;
+        border-radius: 2.8rem 0 2.8rem 0;
+        filter: saturate(115%);
+      }
+      & p {
+        text-align: center;
+        padding: 0.5rem 1.5rem;
+      }
+    }
+  }
+}

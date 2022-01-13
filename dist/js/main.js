@@ -1,4 +1,3 @@
-const API_KEY = "1bd21e7db7a94a10b01a3ec4e055080d";
 const body = document.querySelector("body");
 const insertScreen = (elToInsert) => {
   body.appendChild(elToInsert);
@@ -20,6 +19,3 @@ startBtn.addEventListener("click", () => {
   logicForInterviewScreen();
 });
 
-// fetch(`https://api.spoonacular.com/recipes/complexSearch?apiKey=${API_KEY}&query=pasta`)
-//   .then((response) => response.json())
-//   .then((data) => console.log(data));

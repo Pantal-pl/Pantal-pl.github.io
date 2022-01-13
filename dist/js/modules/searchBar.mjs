@@ -9,9 +9,11 @@ searchBarEl.insertAdjacentHTML(
     <p>Instruction required?</p>
     <div id="instructionRequiredOption">
       <div class="option optionYes">
+      <div></div>
         <p>Yes</p>
       </div>
       <div class="option optionNo">
+      <div><div></div></div>
         <p>No</p>
       </div>
     </div>
@@ -54,6 +56,18 @@ const logicForSearchBar = () => {
     });
   };
   swipeDownMenuBar()
-
+  const instructionRequiredYes = document.querySelector(".optionYes div")
+  const instructionRequiredNo = document.querySelector(".optionNo div")
+  const instructionRequiredNo2 = document.querySelector(".optionNo div div")
+  instructionRequiredYes.addEventListener("click",()=>{
+    instructionRequiredYes.classList.add("optionYesActive")
+    instructionRequiredNo.classList.remove("optionNoActive")
+    instructionRequiredNo2.classList.remove("optionNoActive2")
+  })
+  instructionRequiredNo.addEventListener("click",()=>{
+    instructionRequiredNo.classList.add("optionNoActive")
+    instructionRequiredNo2.classList.add("optionNoActive2")
+    instructionRequiredYes.classList.remove("optionYesActive")
+  })
 };
 export { searchBarEl, logicForSearchBar };
