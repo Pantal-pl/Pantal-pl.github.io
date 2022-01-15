@@ -36,7 +36,7 @@ const logicForHomePage = () => {
   let favouriteElement = document.querySelector(".favouriteElement .foodItems");
   let viewedElement = document.querySelector(".viewedElement .foodItems");
 
-  const API_KEY = "0181a3cead634af79d0a244227d8c8f4";
+  const API_KEY = "d24907b73f464e4fa95b561c830c06ca";
 
   getFoodData();
   function getFoodData() {
@@ -68,12 +68,14 @@ const logicForHomePage = () => {
       "beforeend",
       `
         <div class="foodItem" id=foodItem${i}>
+      <div class="foodImageAndTags">
       <div class="foodImage"></div>
       <div class="tags">
         <h3>About:</h3>
         <p>${recipesInformation[i].readyInMinutes} min.</p>
         <p>Servings: ${recipesInformation[i].servings}</p>
         <p>${recipesInformation[i].cuisines[0]}</p>
+      </div>
       </div>
       <h2>${recipesInformation[i].title}</h2>
     </div>`
