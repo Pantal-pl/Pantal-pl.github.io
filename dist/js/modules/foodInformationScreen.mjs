@@ -17,6 +17,7 @@ function createFoodInformationEl(element) {
         <h3>About</h3>
         <p>${element.dishTypes[0]}</p>
         <p>${element.cuisines[0]}</p>
+        <p>Servings: ${element.servings}</p>
       </div>
     </div>
     <div class="description">
@@ -41,71 +42,65 @@ function createFoodInformationEl(element) {
 
   <div class="similarRecipes">
     <h2>Similar recipes</h2>
-
-    <div class="similarRecipe">
-      <div class="similarRecipe-foodImage"></div>
-      <p>Spaghetti</p>
-    </div>
-    <div class="similarRecipe">
-      <div class="similarRecipe-foodImage"></div>
-      <p>Spaghetti</p>
-    </div>
-    <div class="similarRecipe">
-      <div class="similarRecipe-foodImage"></div>
-      <p>Spaghetti</p>
-    </div>
-    <div class="similarRecipe">
-      <div class="similarRecipe-foodImage"></div>
-      <p>Spaghetti</p>
-    </div>
-    <div class="similarRecipe">
-      <div class="similarRecipe-foodImage"></div>
-      <p>Spaghetti</p>
-    </div>
-    <div class="similarRecipe">
-      <div class="similarRecipe-foodImage"></div>
-      <p>Spaghetti</p>
-    </div>
-    <div class="similarRecipe">
-      <div class="similarRecipe-foodImage"></div>
-      <p>Spaghetti</p>
-    </div>
-    <div class="similarRecipe">
-      <div class="similarRecipe-foodImage"></div>
-      <p>Spaghetti</p>
-    </div>
   </div>`
   );
   body.appendChild(foodInformationEL);
 }
 const logicForFoodInformationEl = (element) => {
   console.log(element);
+  let similarRecipesArr = [];
   let homePageEl = document.querySelector(".homePage");
   homePageEl.style.display = "none";
   createFoodInformationEl(element);
   let recipeDescription = document.querySelector(".description p");
   if (recipeDescription.innerText === "null") {
     recipeDescription.innerText = "Instruction not found :(";
-  }else {
-    let recipeDescriptionString = recipeDescription.innerText
-    recipeDescriptionString = recipeDescriptionString.replace(/\./g, '. <br/> <br/>')
-    recipeDescription.innerHTML = recipeDescriptionString
-
+  } else {
+    let recipeDescriptionString = recipeDescription.innerText;
+    recipeDescriptionString = recipeDescriptionString.replace(
+      /\./g,
+      ". <br/> <br/>"
+    );
+    recipeDescription.innerHTML = recipeDescriptionString;
   }
- 
+
   let recipeIngredients = document.querySelector(".description ul");
   element.extendedIngredients.forEach((line) => {
     recipeIngredients.innerHTML += `<li>${line.originalString}</li>`;
   });
 
-  let descriptionFoodImage = document.querySelector(".foodDescription .imageAndTags .foodImage");
+  let descriptionFoodImage = document.querySelector(
+    ".foodDescription .imageAndTags .foodImage"
+  );
   descriptionFoodImage.style.backgroundImage = `url(${element.image})`;
 
-  const backButton = document.querySelector(".backButton")
-  backButton.addEventListener("click",function(){
-  homePageEl.style.display = "flex";
-  body.lastChild.remove()
-  window.scrollTo(0,0)
-  })
+  const backButton = document.querySelector(".backButton");
+  backButton.addEventListener("click", function () {
+    homePageEl.style.display = "flex";
+    body.lastChild.remove();
+    window.scrollTo(0, 0);
+  });
+  let similarRecipes = document.querySelector(".similarRecipes");
+  fetch(
+    `https://api.spoonacular.com/recipes/${element.id}/similar?apiKey=1bd21e7db7a94a10b01a3ec4e055080d`
+  )
+    .then((response) => response.json())
+    .then((similarRecipe) => {
+      similarRecipesArr.push(similarRecipe);
+      console.log(similarRecipesArr);
+      similarRecipesArr.forEach((recipe, index) => {
+        console.log(recipe);
+        console.log(index);
+        recipe.forEach((element)=>{
+          similarRecipes.insertAdjacentHTML(
+            "beforeend",
+            `<div class="similarRecipe">
+            <p>${element.title}</p>
+          </div>`
+          );
+        })
+        // document.querySelector(".similarRecipe-foodImage").style.backgroundImage = `url(${similarRecipe.image})`
+      });
+    });
 };
 export { logicForFoodInformationEl };

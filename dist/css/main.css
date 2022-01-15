@@ -1206,7 +1206,6 @@
 }
 
 .searchResults .searchResult .foodImage {
-  background-image: url(https://www.warzywizm.pl/wp-content/uploads/2021/07/A-WYBRANE-P1128074-auto-30-scaled-1.jpg);
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
@@ -1264,7 +1263,6 @@
   border-radius: 2.8rem;
   -webkit-box-shadow: 5px 12px 35px rgba(0, 0, 0, 0.288);
           box-shadow: 5px 12px 35px rgba(0, 0, 0, 0.288);
-  list-style: none;
 }
 
 .foodInformation .foodDescription .imageAndTags {
@@ -1361,6 +1359,8 @@
   position: absolute;
   content: "";
   bottom: 0;
+  -webkit-transform: translateX(-5px);
+          transform: translateX(-5px);
   width: 12px;
   height: 12px;
   border-right: 2px solid #E84317;
@@ -1381,12 +1381,18 @@
   font-size: 1.2rem;
 }
 
+.foodInformation .foodDescription ol li {
+  font-size: 1.2rem;
+  list-style: none !important;
+}
+
 .foodInformation .foodDescription ul {
   list-style: decimal;
 }
 
 .foodInformation .foodDescription ul li {
   margin: 5px 0 5px 1rem;
+  font-size: 1.1rem;
 }
 
 .foodInformation .backButton {
