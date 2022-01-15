@@ -16,7 +16,7 @@
         background-repeat: no-repeat;
         background-size: cover;
         aspect-ratio: 1/1;
-        width: 70%;
+        width: 64%;
         height: 50%;
         border-radius: 2.8rem 0 2.8rem 0;
       }
@@ -89,7 +89,7 @@
     & ul {
       list-style: decimal;
       & li {
-        margin: 5px 0 5px 1rem;
+        margin: 5px 0 5px 1.2rem;
         font-size: 1.1rem;
 
       }
@@ -101,8 +101,8 @@
     height: 10rem;
     background: $secondary-color;
     border-radius: 100%;
-    right: -5rem;
-    bottom: -5rem;
+    right: -4.5rem;
+    bottom: -4.5rem;
     position: fixed;
     cursor: pointer;
     z-index: 2;
@@ -110,7 +110,7 @@
     &::before {
       content: "Back";
       position: absolute;
-      left: 1.5rem;
+      left: 1.7rem;
       top: 2.2rem;
       font-size: 1.1rem;
       font-weight: bold;

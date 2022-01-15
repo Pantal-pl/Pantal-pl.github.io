@@ -53,26 +53,32 @@
                 border-radius: 2.8rem;
                 display: flex;
                 flex-direction: column;
-                justify-content: space-evenly;
+                justify-content: space-between;
                 & .foodImageAndTags {
                     display: flex;
-                    justify-content: center;
+                    justify-content: flex-start;
                     align-items: flex-start;
+                    min-width: 20rem;
                     & .foodImage {
                         background-position: center;
                         background-repeat: no-repeat;
                         background-size: cover;
                         aspect-ratio: 1/1;
-                        width: 100%;
-                        height: 100%;
+                        width: 60%;
                         border-radius: 2.8rem 0 2.8rem 0;
                     }
                     & .tags {
                         @include tags;
+                        text-align: center;
+                        flex: 1 0;
                     }
                 }
                 & h2 {
                     padding: 1rem;
+                    flex: 1;
+                    align-items: center;
+                    justify-content: flex-start;
+                    display: flex;
                 }
             }
         }

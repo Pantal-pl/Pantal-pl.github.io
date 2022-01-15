@@ -82,7 +82,7 @@ const logicForFoodInformationEl = (element) => {
   });
   let similarRecipes = document.querySelector(".similarRecipes");
   fetch(
-    `https://api.spoonacular.com/recipes/${element.id}/similar?apiKey=d24907b73f464e4fa95b561c830c06ca`
+    `https://api.spoonacular.com/recipes/${element.id}/similar?apiKey=db22c329eb244f1b95697cf26a5f7d12`
   )
     .then((response) => response.json())
     .then((similarRecipe) => {
