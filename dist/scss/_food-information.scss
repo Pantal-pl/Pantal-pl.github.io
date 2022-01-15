@@ -41,6 +41,7 @@
         flex: 1;
         margin: 0;
         gap: 0;
+        text-align: center;
       }
     }
     & .description {
@@ -71,11 +72,14 @@
     & h2 {
       border-bottom: 2px solid $primary-color;
       width: min-content;
+      margin-top: 1rem;
     }
     & p {
       text-indent: 0.5rem;
       margin-top: 1.2rem;
+      font-size: 1.2rem;
     }
+    list-style: none;
     & ul {
       list-style: decimal;
       & li {

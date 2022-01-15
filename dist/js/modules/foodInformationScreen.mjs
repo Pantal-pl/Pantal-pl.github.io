@@ -1,5 +1,5 @@
 import { logicForHomePage } from "./homePageScreen.mjs";
-
+const body = document.querySelector("body");
 function createFoodInformationEl(element) {
   const foodInformationEL = document.createElement("section");
   foodInformationEL.setAttribute("class", "foodInformation");
@@ -76,7 +76,6 @@ function createFoodInformationEl(element) {
     </div>
   </div>`
   );
-  let body = document.querySelector("body");
   body.appendChild(foodInformationEL);
 }
 const logicForFoodInformationEl = (element) => {
@@ -87,13 +86,26 @@ const logicForFoodInformationEl = (element) => {
   let recipeDescription = document.querySelector(".description p");
   if (recipeDescription.innerText === "null") {
     recipeDescription.innerText = "Instruction not found :(";
+  }else {
+    let recipeDescriptionString = recipeDescription.innerText
+    recipeDescriptionString = recipeDescriptionString.replace(/\./g, '. <br/> <br/>')
+    recipeDescription.innerHTML = recipeDescriptionString
+
   }
  
   let recipeIngredients = document.querySelector(".description ul");
   element.extendedIngredients.forEach((line) => {
-    recipeIngredients.innerHTML += `<li>${line.name}</li>`;
+    recipeIngredients.innerHTML += `<li>${line.originalString}</li>`;
   });
-  let foodImage = document.querySelector(".foodImage");
-  foodImage.style.backgroundImage = `url(${element.image})`;
+
+  let descriptionFoodImage = document.querySelector(".foodDescription .imageAndTags .foodImage");
+  descriptionFoodImage.style.backgroundImage = `url(${element.image})`;
+
+  const backButton = document.querySelector(".backButton")
+  backButton.addEventListener("click",function(){
+  homePageEl.style.display = "flex";
+  body.lastChild.remove()
+  window.scrollTo(0,0)
+  })
 };
 export { logicForFoodInformationEl };

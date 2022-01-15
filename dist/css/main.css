@@ -1264,6 +1264,7 @@
   border-radius: 2.8rem;
   -webkit-box-shadow: 5px 12px 35px rgba(0, 0, 0, 0.288);
           box-shadow: 5px 12px 35px rgba(0, 0, 0, 0.288);
+  list-style: none;
 }
 
 .foodInformation .foodDescription .imageAndTags {
@@ -1328,6 +1329,7 @@
           flex: 1;
   margin: 0;
   gap: 0;
+  text-align: center;
 }
 
 .foodInformation .foodDescription .imageAndTags .tags p {
@@ -1370,11 +1372,13 @@
   width: -webkit-min-content;
   width: -moz-min-content;
   width: min-content;
+  margin-top: 1rem;
 }
 
 .foodInformation .foodDescription p {
   text-indent: 0.5rem;
   margin-top: 1.2rem;
+  font-size: 1.2rem;
 }
 
 .foodInformation .foodDescription ul {
