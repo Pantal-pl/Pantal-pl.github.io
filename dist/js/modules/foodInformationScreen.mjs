@@ -1,9 +1,12 @@
-const foodInformationEL = document.createElement("section");
-foodInformationEL.setAttribute("class", "foodInformation");
+import { logicForHomePage } from "./homePageScreen.mjs";
 
-foodInformationEL.insertAdjacentHTML(
-  "beforeend",
-  `
+function createFoodInformationEl(element) {
+  const foodInformationEL = document.createElement("section");
+  foodInformationEL.setAttribute("class", "foodInformation");
+
+  foodInformationEL.insertAdjacentHTML(
+    "beforeend",
+    `
   <div class="foodDescription">
     <div class="imageAndTags">
       <div class="foodImage"></div>
@@ -12,23 +15,15 @@ foodInformationEL.insertAdjacentHTML(
       </button>
       <div class="tags">
         <h3>About</h3>
-        <p>Pasta</p>
-        <p>Italian</p>
+        <p>${element.dishTypes[0]}</p>
+        <p>${element.cuisines[0]}</p>
       </div>
     </div>
     <div class="description">
-      <h1>Spaghetti</h1>
+      <h1>${element.title}</h1>
       <h2>Instructions</h2>
       <p>
-        Lorem ipsum dolor, sit amet consectetur adipisicing elit. Quaerat,
-        aliquam rerum saepe ipsa fugit neque! Obcaecati at ut, consequatur
-        est quia tempore possimus, porro perspiciatis praesentium ducimus
-        soluta corrupti iure.
-      </p>
-      <p>
-        Lorem ipsum dolor, sit amet consectetur adipisicing elit. Quasi
-        soluta laboriosam magnam dolor temporibus corrupti explicabo! At
-        accusamus nemo officia?
+        ${element.instructions}
       </p>
       <br />
       <h2>Ingredients</h2>
@@ -80,5 +75,25 @@ foodInformationEL.insertAdjacentHTML(
       <p>Spaghetti</p>
     </div>
   </div>`
-);
-export { foodInformationEL };
+  );
+  let body = document.querySelector("body");
+  body.appendChild(foodInformationEL);
+}
+const logicForFoodInformationEl = (element) => {
+  console.log(element);
+  let homePageEl = document.querySelector(".homePage");
+  homePageEl.style.display = "none";
+  createFoodInformationEl(element);
+  let recipeDescription = document.querySelector(".description p");
+  if (recipeDescription.innerText === "null") {
+    recipeDescription.innerText = "Instruction not found :(";
+  }
+ 
+  let recipeIngredients = document.querySelector(".description ul");
+  element.extendedIngredients.forEach((line) => {
+    recipeIngredients.innerHTML += `<li>${line.name}</li>`;
+  });
+  let foodImage = document.querySelector(".foodImage");
+  foodImage.style.backgroundImage = `url(${element.image})`;
+};
+export { logicForFoodInformationEl };

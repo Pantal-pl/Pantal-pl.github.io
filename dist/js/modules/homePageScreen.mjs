@@ -1,4 +1,4 @@
-import { foodInformationEL } from "./foodInformationScreen.mjs";
+import { logicForFoodInformationEl } from "./foodInformationScreen.mjs";
 const homePageEl = document.createElement("section");
 homePageEl.setAttribute("class", "homePage");
 homePageEl.insertAdjacentHTML(
@@ -29,21 +29,15 @@ const logicForHomePage = () => {
   let recipesInformation = [];
   let recipesId = [];
   let i = 0;
-  let j = 0;
   let intolerances = localStorage.getItem("intolerances");
   let cusine = localStorage.getItem("cusine");
   let diet = localStorage.getItem("diet");
   let tryThisElement = document.querySelector(".tryThisElement .foodItems");
   let favouriteElement = document.querySelector(".favouriteElement .foodItems");
   let viewedElement = document.querySelector(".viewedElement .foodItems");
-  const API_KEY = "4a15b02aaf8447afa196362d0199e7cc";
-  const mapsItems = (recipesInformation) => {
-    document.getElementById(`foodItem${j}`).addEventListener("click", () => {
-      console.log(j+1);
-      
-    });
-    j++;
-  };
+
+  const API_KEY = "5e6721f5e3094a01894b5443b727b231";
+
   getFoodData();
   function getFoodData() {
     fetch(
@@ -68,12 +62,8 @@ const logicForHomePage = () => {
           insertFoodData(recipesInformation);
         });
     });
-
-    // console.log(recipesInformation);
   }
-
   function insertFoodData(recipesInformation) {
-    console.log(recipesInformation);
     tryThisElement.insertAdjacentHTML(
       "beforeend",
       `
@@ -88,16 +78,19 @@ const logicForHomePage = () => {
       <h2>${recipesInformation[i].title}</h2>
     </div>`
     );
-
     let foodImages = document.querySelectorAll(
       ".tryThisElement .foodItems .foodItem .foodImage"
     );
-    foodImages.forEach((element, index) => {
-      element.style.backgroundImage = `url(${recipesInformation[index].image})`;
-    });
-    mapsItems(recipesInformation);
+    foodImages[i].style.backgroundImage = `url(${recipesInformation[i].image})`
+    let foodItems = document.querySelectorAll(
+      ".tryThisElement .foodItems .foodItem"
+    );
+    foodItems[i].addEventListener(
+      "click",
+      logicForFoodInformationEl.bind(this, recipesInformation[i])
+    );
     i++;
-
   }
 };
+
 export { homePageEl, logicForHomePage };
