@@ -81,7 +81,7 @@
   position: absolute;
   bottom: 0;
   right: 0;
-  border-radius: 60px 0 0 60px;
+  border-radius: 60px 0 0 0;
   padding: 1.5rem;
   text-align: center;
   display: -webkit-box;
@@ -297,7 +297,7 @@
   position: absolute;
   bottom: 0;
   right: 0;
-  border-radius: 60px 0 0 60px;
+  border-radius: 60px 0 0 0;
   padding: 1.5rem;
   text-align: center;
   display: -webkit-box;
@@ -1081,7 +1081,7 @@
       -ms-flex-pack: start;
           justify-content: flex-start;
   overflow-x: scroll;
-  padding-bottom: 5rem;
+  padding: 2.4rem 0;
 }
 
 .homePage .homePageElement .foodItems::-webkit-scrollbar {
@@ -1089,7 +1089,7 @@
 }
 
 .homePage .homePageElement .foodItems .foodItem {
-  margin: 1.3rem 1.8rem 0 0;
+  margin-right: 1.8rem;
   background: #FAFAFA;
   -webkit-box-shadow: 5px 12px 35px rgba(0, 0, 0, 0.274);
           box-shadow: 5px 12px 35px rgba(0, 0, 0, 0.274);
@@ -1411,18 +1411,28 @@
   font-size: 1.2rem;
 }
 
+.foodInformation .foodDescription ol {
+  margin-top: 1.5rem;
+}
+
 .foodInformation .foodDescription ol li {
+  margin: 5px 0 5px 1.4rem;
   font-size: 1.2rem;
-  list-style: none !important;
+  list-style: decimal !important;
+  padding-left: 0.3rem;
+  list-style: none;
 }
 
 .foodInformation .foodDescription ul {
   list-style: decimal;
+  margin-top: 1.5rem;
 }
 
 .foodInformation .foodDescription ul li {
-  margin: 5px 0 5px 1.2rem;
-  font-size: 1.1rem;
+  margin: 5px 0 5px 1.4rem;
+  font-size: 1.2rem;
+  list-style: decimal !important;
+  padding-left: 0.3rem;
 }
 
 .foodInformation .backButton {
@@ -1451,8 +1461,18 @@
           transform: rotate(-45deg);
 }
 
-.foodInformation .similarRecipes {
-  margin-top: 4rem;
+.foodInformation .similarRecipesSection {
+  margin-top: 3.5rem;
+}
+
+.foodInformation .similarRecipesSection h2 {
+  border-bottom: 2px solid #E84317;
+  width: -webkit-fit-content;
+  width: -moz-fit-content;
+  width: fit-content;
+}
+
+.foodInformation .similarRecipesSection .similarRecipes {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -1464,29 +1484,23 @@
   position: relative;
 }
 
-.foodInformation .similarRecipes::-webkit-scrollbar {
+.foodInformation .similarRecipesSection .similarRecipes::-webkit-scrollbar {
   width: 0;
 }
 
-.foodInformation .similarRecipes h2 {
-  border-bottom: 2px solid #E84317;
-  width: -webkit-fit-content;
-  width: -moz-fit-content;
-  width: fit-content;
-  position: absolute;
-  left: 0;
-  top: 0;
-}
-
-.foodInformation .similarRecipes .similarRecipe {
-  margin: 4rem 1.5rem 0 0;
+.foodInformation .similarRecipesSection .similarRecipes .similarRecipe {
+  margin: 2.4rem 1.5rem 0 0;
   background: #FAFAFA;
   -webkit-box-shadow: 5px 12px 35px rgba(0, 0, 0, 0.274);
           box-shadow: 5px 12px 35px rgba(0, 0, 0, 0.274);
   border-radius: 2.8rem;
+  display: -ms-grid;
+  display: grid;
+  place-items: center;
+  min-width: 10rem;
 }
 
-.foodInformation .similarRecipes .similarRecipe .similarRecipe-foodImage {
+.foodInformation .similarRecipesSection .similarRecipes .similarRecipe .similarRecipe-foodImage {
   background-image: url(https://www.warzywizm.pl/wp-content/uploads/2021/07/A-WYBRANE-P1128074-auto-30-scaled-1.jpg);
   background-position: center;
   background-repeat: no-repeat;
@@ -1497,7 +1511,7 @@
           filter: saturate(115%);
 }
 
-.foodInformation .similarRecipes .similarRecipe p {
+.foodInformation .similarRecipesSection .similarRecipes .similarRecipe p {
   text-align: center;
   padding: 0.5rem 1.5rem;
 }

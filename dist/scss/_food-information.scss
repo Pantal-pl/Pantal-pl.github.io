@@ -1,4 +1,10 @@
 @import "variables";
+@mixin listStyle {
+  margin: 5px 0 5px 1.4rem;
+  font-size: 1.2rem;
+  list-style: decimal !important;
+  padding-left: 0.3rem;
+}
 .foodInformation {
   margin: 18vh 1rem 0 1rem;
   & .foodDescription {
@@ -81,17 +87,18 @@
       font-size: 1.2rem;
     }
     & ol {
+      margin-top: 1.5rem;
       & li {
-      font-size: 1.2rem;
-      list-style: none !important; 
+        @include listStyle;
+      list-style: none;
+
       }
     }
     & ul {
       list-style: decimal;
+      margin-top: 1.5rem;
       & li {
-        margin: 5px 0 5px 1.2rem;
-        font-size: 1.1rem;
-
+        @include listStyle;
       }
     }
   }
@@ -117,44 +124,45 @@
       transform: rotate(-45deg);
     }
   }
-  & .similarRecipes {
-    margin-top: 4rem;
-    display: flex;
-    justify-content: flex-start;
-    overflow-x: scroll;
-    padding-bottom: 5rem;
-    position: relative;
-
-    &::-webkit-scrollbar {
-      width: 0;
-    }
+  & .similarRecipesSection {
+    margin-top: 3.5rem;
     & h2 {
       border-bottom: 2px solid $primary-color;
       width: fit-content;
-      position: absolute;
-      left: 0;
-      top: 0;
     }
-    & .similarRecipe {
-      margin: 4rem 1.5rem 0 0;
-    //   width: calc(50% - 1.5rem);
-    //   height: 50% !important;
-      background: $bg-color;
-      box-shadow: 5px 12px 35px rgba(0, 0, 0, 0.274);
-      border-radius: 2.8rem;
+    & .similarRecipes {
+      display: flex;
+      justify-content: flex-start;
+      overflow-x: scroll;
+      padding-bottom: 5rem;
+      position: relative;
 
-      & .similarRecipe-foodImage {
-        background-image: url(https://www.warzywizm.pl/wp-content/uploads/2021/07/A-WYBRANE-P1128074-auto-30-scaled-1.jpg);
-        background-position: center;
-        background-repeat: no-repeat;
-        background-size: cover;
-        aspect-ratio: 1/1;
-        border-radius: 2.8rem 0 2.8rem 0;
-        filter: saturate(115%);
+      &::-webkit-scrollbar {
+        width: 0;
       }
-      & p {
-        text-align: center;
-        padding: 0.5rem 1.5rem;
+
+      & .similarRecipe {
+        margin: 2.4rem 1.5rem 0 0;
+        background: $bg-color;
+        box-shadow: 5px 12px 35px rgba(0, 0, 0, 0.274);
+        border-radius: 2.8rem;
+        display: grid;
+        place-items: center;
+        min-width: 10rem;
+
+        & .similarRecipe-foodImage {
+          background-image: url(https://www.warzywizm.pl/wp-content/uploads/2021/07/A-WYBRANE-P1128074-auto-30-scaled-1.jpg);
+          background-position: center;
+          background-repeat: no-repeat;
+          background-size: cover;
+          aspect-ratio: 1/1;
+          border-radius: 2.8rem 0 2.8rem 0;
+          filter: saturate(115%);
+        }
+        & p {
+          text-align: center;
+          padding: 0.5rem 1.5rem;
+        }
       }
     }
   }

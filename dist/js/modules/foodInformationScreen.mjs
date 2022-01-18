@@ -1,5 +1,13 @@
 import { logicForHomePage } from "./homePageScreen.mjs";
 const body = document.querySelector("body");
+let favouriteLocalStorage = [];
+// let isClicked = 0
+
+function arrayRemove(arr, value) {
+  return arr.filter(function (ele) {
+    return ele != value;
+  });
+}
 function createFoodInformationEl(element) {
   const foodInformationEL = document.createElement("section");
   foodInformationEL.setAttribute("class", "foodInformation");
@@ -10,8 +18,8 @@ function createFoodInformationEl(element) {
   <div class="foodDescription">
     <div class="imageAndTags">
       <div class="foodImage"></div>
-      <button class="addToFavouriteBtn">
-        <img src="/dist/images/Star 1.svg" alt="Add to favourite button" />
+      <button class="addToFavouriteBtn" id="">
+        <img src="/dist/images/Star 1.svg" alt="click to add to favourite" />
       </button>
       <div class="tags">
         <h3>About</h3>
@@ -39,20 +47,25 @@ function createFoodInformationEl(element) {
     </div>
   </div>
   <button class="backButton"></button>
-
-  <div class="similarRecipes">
+  <div class="similarRecipesSection">
     <h2>Similar recipes</h2>
-  </div>`
+    <div class="similarRecipes">
+    </div>
+  </div>
+  `
   );
   body.appendChild(foodInformationEL);
 }
 const logicForFoodInformationEl = (element) => {
   console.log(element);
   let similarRecipesArr = [];
+  isClicked=0;
   let homePageEl = document.querySelector(".homePage");
   homePageEl.style.display = "none";
   createFoodInformationEl(element);
+
   let recipeDescription = document.querySelector(".description p");
+
   if (recipeDescription.innerText === "null") {
     recipeDescription.innerText = "Instruction not found :(";
   } else {
@@ -63,6 +76,45 @@ const logicForFoodInformationEl = (element) => {
     );
     recipeDescription.innerHTML = recipeDescriptionString;
   }
+  let addToFavouriteBtn = document.querySelector(".addToFavouriteBtn");
+  let foodDescription = document.querySelector(".foodDescription");
+  addToFavouriteBtn.addEventListener("click", function () {
+    // isClicked++;
+    // console.log("isClicked" + isClicked)
+    // if ((isClicked >= 1)) {
+    //   if (
+    //     localStorage
+    //       .getItem(`favourite`)
+    //       .includes(document.querySelector(".foodDescription").outerHTML)
+    //   ) {
+    //     console.log("ds");
+    //     addToFavouriteBtn.id = "added";
+    //     addToFavouriteBtn.querySelector("img").src = "/dist/images/Star 2.svg";
+    //   }
+    // }else 
+    if (
+      favouriteLocalStorage.includes(foodDescription.outerHTML) === false &&
+      addToFavouriteBtn.id === ""
+    ) {
+      favouriteLocalStorage.push(foodDescription.outerHTML);
+      localStorage.setItem(`favourite`, favouriteLocalStorage);
+      addToFavouriteBtn.id = "added";
+      addToFavouriteBtn.querySelector("img").src = "/dist/images/Star 2.svg";
+    }
+     else if (
+      favouriteLocalStorage.includes(foodDescription.outerHTML) ||
+      addToFavouriteBtn.id === "added"
+    ) {
+      addToFavouriteBtn.id = "";
+      addToFavouriteBtn.querySelector("img").src = "/dist/images/Star 1.svg";
+      favouriteLocalStorage = arrayRemove(
+        favouriteLocalStorage,
+        foodDescription.outerHTML
+      );
+    }
+
+    console.log(favouriteLocalStorage);
+  });
 
   let recipeIngredients = document.querySelector(".description ul");
   element.extendedIngredients.forEach((line) => {
@@ -82,7 +134,7 @@ const logicForFoodInformationEl = (element) => {
   });
   let similarRecipes = document.querySelector(".similarRecipes");
   fetch(
-    `https://api.spoonacular.com/recipes/${element.id}/similar?apiKey=db22c329eb244f1b95697cf26a5f7d12`
+    `https://api.spoonacular.com/recipes/${element.id}/similar?apiKey=54469fac0202491d9b141937c36ec32d`
   )
     .then((response) => response.json())
     .then((similarRecipe) => {
@@ -91,15 +143,14 @@ const logicForFoodInformationEl = (element) => {
       similarRecipesArr.forEach((recipe, index) => {
         console.log(recipe);
         console.log(index);
-        recipe.forEach((element)=>{
+        recipe.forEach((element) => {
           similarRecipes.insertAdjacentHTML(
             "beforeend",
             `<div class="similarRecipe">
             <p>${element.title}</p>
           </div>`
           );
-        })
-        // document.querySelector(".similarRecipe-foodImage").style.backgroundImage = `url(${similarRecipe.image})`
+        });
       });
     });
 };

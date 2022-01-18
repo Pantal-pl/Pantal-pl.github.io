@@ -41,12 +41,12 @@
             display: flex;
             justify-content: flex-start;
             overflow-x: scroll;
-            padding-bottom: 5rem;
+            padding: 2.4rem 0;
             &::-webkit-scrollbar {
                 width: 0;
             }
             & .foodItem {
-                margin: 1.3rem 1.8rem 0 0;
+                margin-right:1.8rem;
                 background: $bg-color;
                 box-shadow: 5px 12px 35px rgba(0, 0, 0, 0.274);
                 cursor: pointer;

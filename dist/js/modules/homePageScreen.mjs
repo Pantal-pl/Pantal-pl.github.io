@@ -35,8 +35,8 @@ const logicForHomePage = () => {
   let tryThisElement = document.querySelector(".tryThisElement .foodItems");
   let favouriteElement = document.querySelector(".favouriteElement .foodItems");
   let viewedElement = document.querySelector(".viewedElement .foodItems");
-
-  const API_KEY = "db22c329eb244f1b95697cf26a5f7d12";
+  localStorage.setItem(`favourite`, []);
+  const API_KEY = "54469fac0202491d9b141937c36ec32d";
 
   getFoodData();
   function getFoodData() {
@@ -48,7 +48,15 @@ const logicForHomePage = () => {
         data.results.forEach((element) => {
           recipesId.push(element.id);
         });
-        searchByFoodId(recipesId);
+        if (recipesId.length === 0) {
+          tryThisElement.innerHTML = `
+          <div class="foodItem" style="height:15rem;display:grid;place-items:center;padding:0 1rem;text-align:center;">
+          <h1>Nothing matches your preferences :(</h1>
+
+          </div>`;
+        } else {
+          searchByFoodId(recipesId);
+        }
       });
   }
   function searchByFoodId() {
@@ -67,23 +75,23 @@ const logicForHomePage = () => {
     tryThisElement.insertAdjacentHTML(
       "beforeend",
       `
-        <div class="foodItem" id=foodItem${i}>
-      <div class="foodImageAndTags">
-      <div class="foodImage"></div>
-      <div class="tags">
-        <h3>About:</h3>
-        <p>${recipesInformation[i].readyInMinutes} min.</p>
-        <p>Servings: ${recipesInformation[i].servings}</p>
-        <p>${recipesInformation[i].cuisines[0]}</p>
-      </div>
-      </div>
-      <h2>${recipesInformation[i].title}</h2>
-    </div>`
+          <div class="foodItem" id=foodItem${i}>
+        <div class="foodImageAndTags">
+        <div class="foodImage"></div>
+        <div class="tags">
+          <h3>About:</h3>
+          <p>${recipesInformation[i].readyInMinutes} min.</p>
+          <p>Servings: ${recipesInformation[i].servings}</p>
+          <p>${recipesInformation[i].cuisines[0]}</p>
+        </div>
+        </div>
+        <h2>${recipesInformation[i].title}</h2>
+      </div>`
     );
     let foodImages = document.querySelectorAll(
       ".tryThisElement .foodItems .foodItem .foodImage"
     );
-    foodImages[i].style.backgroundImage = `url(${recipesInformation[i].image})`
+    foodImages[i].style.backgroundImage = `url(${recipesInformation[i].image})`;
     let foodItems = document.querySelectorAll(
       ".tryThisElement .foodItems .foodItem"
     );
