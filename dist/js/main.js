@@ -1,4 +1,6 @@
 const body = document.querySelector("body");
+localStorage.setItem(`favourite`, []);
+
 const insertScreen = (elToInsert) => {
   body.appendChild(elToInsert);
 };

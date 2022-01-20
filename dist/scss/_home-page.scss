@@ -5,6 +5,22 @@
     margin-top: 18vh;
     display: flex;
     flex-direction: column;
+    & .favouriteElement {
+       & .headingElement{
+           position: relative;
+           & button {
+               position: absolute;
+               top: 50%;
+               transform: translateY(-50%);
+               right: -2.5rem;
+               border: #fff;
+               padding: .5rem;
+               & img {
+                   width: 1.5rem;
+               }
+           }
+       }
+    }
     & .homePageElement{
         min-height: 40vh;
         padding-left: 1rem;

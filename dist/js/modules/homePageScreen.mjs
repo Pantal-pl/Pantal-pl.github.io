@@ -11,7 +11,7 @@ homePageEl.insertAdjacentHTML(
   </div>
 </div>
 <div class="homePageElement favouriteElement">
-  <h1 class="headingElement">Favourite</h1>
+  <h1 class="headingElement">Favourite<button><img src="dist/images/refresh-svgrepo-com.svg"/></button></h1>
   <div class="foodItems">
   
   </div>
@@ -35,8 +35,7 @@ const logicForHomePage = () => {
   let tryThisElement = document.querySelector(".tryThisElement .foodItems");
   let favouriteElement = document.querySelector(".favouriteElement .foodItems");
   let viewedElement = document.querySelector(".viewedElement .foodItems");
-  localStorage.setItem(`favourite`, []);
-  const API_KEY = "54469fac0202491d9b141937c36ec32d";
+  const API_KEY = "c7af2dc174ae45e1ada59835211ca534";
 
   getFoodData();
   function getFoodData() {
@@ -48,6 +47,7 @@ const logicForHomePage = () => {
         data.results.forEach((element) => {
           recipesId.push(element.id);
         });
+        console.log(recipesId);
         if (recipesId.length === 0) {
           tryThisElement.innerHTML = `
           <div class="foodItem" style="height:15rem;display:grid;place-items:center;padding:0 1rem;text-align:center;">
@@ -99,8 +99,8 @@ const logicForHomePage = () => {
       "click",
       logicForFoodInformationEl.bind(this, recipesInformation[i])
     );
+
     i++;
   }
 };
-
 export { homePageEl, logicForHomePage };
