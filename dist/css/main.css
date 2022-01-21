@@ -1045,13 +1045,28 @@
   top: 50%;
   -webkit-transform: translateY(-50%);
           transform: translateY(-50%);
-  right: -2.5rem;
-  border: #fff;
-  padding: .5rem;
+  right: -4.5rem;
+  background: #F8E46C;
+  border: none;
+  padding: .7rem;
+  border-radius: 100%;
+  display: -ms-grid;
+  display: grid;
+  place-items: center;
+  cursor: pointer;
+  -webkit-transition: -webkit-transform .25s ease-in-out;
+  transition: -webkit-transform .25s ease-in-out;
+  transition: transform .25s ease-in-out;
+  transition: transform .25s ease-in-out, -webkit-transform .25s ease-in-out;
 }
 
 .homePage .favouriteElement .headingElement button img {
-  width: 1.5rem;
+  width: 1.7rem;
+}
+
+.homePage .favouriteElement .headingElement button:active {
+  -webkit-transform: scale(1.2) translateY(-10px);
+          transform: scale(1.2) translateY(-10px);
 }
 
 .homePage .homePageElement {

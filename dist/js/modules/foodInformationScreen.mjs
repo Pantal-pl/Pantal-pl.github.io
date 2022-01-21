@@ -1,19 +1,23 @@
 const body = document.querySelector("body");
 let similarRecipesArr = []
 let favouritesIds = []
-let duplicates = []
-let i = 0
-function refresh(){
-    if(favouritesIds.length!=0){
+let favouritesRecipes = []
+let isEvExist = 0;
+
+function refresh(element){
+  console.log(element)
+  favouritesRecipes = []
+    if(favouritesIds.length>0){
       document.querySelector(".favouriteElement .foodItems").innerHTML = "<div></div>"
       favouritesIds.forEach((id,index)=>{
         fetch(
-          `https://api.spoonacular.com/recipes/${id}/information?apiKey=c7af2dc174ae45e1ada59835211ca534&includeNutrition=false`
+          `https://api.spoonacular.com/recipes/${id}/information?apiKey=d930cc8cdfcb4694a00727c8c32ef9d5&includeNutrition=false`
         )
         .then((response) => response.json())
         .then((favourite)=>{
+          favouritesRecipes.push(favourite)
           document.querySelector(".favouriteElement .foodItems").insertAdjacentHTML('beforeend',`
-          <div class="foodItem">
+          <div class="foodItem" id="favouriteItem${index}">
         <div class="foodImageAndTags">
         <div class="foodImage"></div>
         <div class="tags">
@@ -26,21 +30,26 @@ function refresh(){
         <h2>${favourite.title}</h2>
       </div>`)
       let foodImages = document.querySelectorAll(
-        ".tryThisElement .foodItems .foodItem .foodImage"
+        ".favouriteElement .foodItems .foodItem .foodImage"
       );
-      [...foodImages[index].style.backgroundImage] = `url(${favourite.image})`;
+      [...foodImages].reverse();
+      foodImages[index].style.backgroundImage = `url(${favourite.image})`;
+
         })
-      
-      })
-  
-    }else {
-      console.log("ss")
+      });
+      setTimeout(()=>{
+        document.querySelectorAll(".favouriteElement .foodItems .foodItem").forEach((item,index)=>{
+          item.addEventListener("click",()=>{
+            logicForFoodInformationEl(favouritesRecipes[index])
+            console.log(favouritesRecipes)
+          })
+          
+        })
+      },2000)
     }
-    [...document.querySelectorAll(".favouriteElement .foodItems .foodItem")].forEach((item)=>{
-      JSON.parse(duplicates.push(item.outerHTML))
-  })
-  console.log(duplicates)
+
 }
+
 function createFoodInformationEl(element) {
   const foodInformationEL = document.createElement("section");
   foodInformationEL.setAttribute("class", "foodInformation");
@@ -70,12 +79,6 @@ function createFoodInformationEl(element) {
       <br />
       <h2>Ingredients</h2>
       <ul>
-        <li>1 pound ground beef.</li>
-        <li>1 onion, chopped.</li>
-        <li>4 cloves garlic, minced.</li>
-        <li>1 small green bell pepper, diced.</li>
-        <li>1 (28 ounce) can diced tomatoes.</li>
-        <li>1 (16 ounce) can tomato sauce.</li>
       </ul>
     </div>
   </div>
@@ -94,7 +97,7 @@ const logicForFoodInformationEl = (element) => {
   console.log(element)
   let homePageEl = document.querySelector(".homePage");
   homePageEl.style.display = "none";
-
+  window.scrollTo(0, 0);
   createFoodInformationEl(element);
   let recipeDescription = document.querySelector(".description p");
 
@@ -122,10 +125,12 @@ const logicForFoodInformationEl = (element) => {
     addToFavouriteBtn.addEventListener("click",function(){
       if(JSON.parse(localStorage.getItem("favourite").includes(element.id))){
         favouritesIds = favouritesIds.filter(item => item != element.id)
-        return;
+        addToFavouriteBtn.querySelector("img").src = "dist/images/Star 1.svg"
       }else{
         favouritesIds.push(element.id)
         JSON.stringify(localStorage.setItem("favourite",favouritesIds))
+        addToFavouriteBtn.querySelector("img").src = "dist/images/Star 2.svg"
+
       }
     })
   const backButton = document.querySelector(".backButton");
@@ -136,14 +141,14 @@ const logicForFoodInformationEl = (element) => {
   });
   let similarRecipes = document.querySelector(".similarRecipes");
   fetch(
-    `https://api.spoonacular.com/recipes/${element.id}/similar?apiKey=c7af2dc174ae45e1ada59835211ca534`
+    `https://api.spoonacular.com/recipes/${element.id}/similar?apiKey=d930cc8cdfcb4694a00727c8c32ef9d5&number=6`
   )
     .then((response) => response.json())
     .then((similarRecipe) => {
+      similarRecipesArr = []
       similarRecipesArr.push(similarRecipe);
       console.log(similarRecipesArr);
-      similarRecipesArr.forEach((recipe, index) => {
-        console.log(recipe);
+      similarRecipesArr.forEach((recipe) => {
         recipe.forEach((element) => {
           similarRecipes.insertAdjacentHTML(
             "beforeend",
@@ -155,13 +160,10 @@ const logicForFoodInformationEl = (element) => {
       });
     });
 
-
-  console.log(favouritesIds.length)
-
-    if(i===1){
-      document.querySelector(".favouriteElement .headingElement button").addEventListener("click",refresh.bind(this))
+    if(isEvExist === 1){
+      document.querySelector(".favouriteElement .headingElement button").addEventListener("click",refresh.bind(this,element))
     }
-    i++;
+    isEvExist++
 };
 
 

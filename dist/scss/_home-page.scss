@@ -12,12 +12,22 @@
                position: absolute;
                top: 50%;
                transform: translateY(-50%);
-               right: -2.5rem;
-               border: #fff;
-               padding: .5rem;
+               right: -4.5rem;
+               background: $secondary-color;
+               border: none;
+               padding: .7rem;
+               border-radius: 100%;
+               display: grid;
+               place-items: center;
+               cursor: pointer;
+               transition: transform .25s ease-in-out;
                & img {
-                   width: 1.5rem;
+                   width: 1.7rem;
                }
+               &:active{
+                   transform: scale(1.2) translateY(-10px);
+               }
+
            }
        }
     }
