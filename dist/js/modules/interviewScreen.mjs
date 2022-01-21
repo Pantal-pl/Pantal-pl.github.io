@@ -1,6 +1,8 @@
 const interviewScreenEl = document.createElement("section");
 interviewScreenEl.setAttribute("class", "interviewScreen");
 const body = document.querySelector("body");
+localStorage.setItem(`favourite`, []); 
+
 import { searchBarEl, logicForSearchBar } from "./searchBar.mjs";
 import {homePageEl, logicForHomePage} from "./homePageScreen.mjs"
 
@@ -141,6 +143,7 @@ const logicForInterviewScreen = () => {
       localStorage.setItem("intolerances", intolerances);
       localStorage.setItem("diet", diet);
       localStorage.setItem("cusine", cusine);
+      localStorage.setItem("interviewDone","true")
       body.lastChild.remove();
       body.appendChild(searchBarEl);
       logicForSearchBar();
@@ -151,4 +154,4 @@ const logicForInterviewScreen = () => {
   //
 };
  
-export { logicForInterviewScreen };
+export { logicForInterviewScreen, searchBarEl,logicForSearchBar,homePageEl,logicForHomePage }

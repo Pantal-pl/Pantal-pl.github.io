@@ -1,9 +1,8 @@
 const body = document.querySelector("body");
 let similarRecipesArr = []
-let favouritesIds = []
 let favouritesRecipes = []
+let favouritesIds = []
 let isEvExist = 0;
-
 function refresh(element){
   console.log(element)
   favouritesRecipes = []
@@ -11,7 +10,7 @@ function refresh(element){
       document.querySelector(".favouriteElement .foodItems").innerHTML = "<div></div>"
       favouritesIds.forEach((id,index)=>{
         fetch(
-          `https://api.spoonacular.com/recipes/${id}/information?apiKey=d930cc8cdfcb4694a00727c8c32ef9d5&includeNutrition=false`
+          `https://api.spoonacular.com/recipes/${id}/information?apiKey=94af32634fb9436a89a681ccbed43c30&includeNutrition=false`
         )
         .then((response) => response.json())
         .then((favourite)=>{
@@ -45,7 +44,7 @@ function refresh(element){
           })
           
         })
-      },2000)
+      },1000)
     }
 
 }
@@ -125,6 +124,7 @@ const logicForFoodInformationEl = (element) => {
     addToFavouriteBtn.addEventListener("click",function(){
       if(JSON.parse(localStorage.getItem("favourite").includes(element.id))){
         favouritesIds = favouritesIds.filter(item => item != element.id)
+        localStorage.setItem("favourite",favouritesIds)
         addToFavouriteBtn.querySelector("img").src = "dist/images/Star 1.svg"
       }else{
         favouritesIds.push(element.id)
@@ -141,7 +141,7 @@ const logicForFoodInformationEl = (element) => {
   });
   let similarRecipes = document.querySelector(".similarRecipes");
   fetch(
-    `https://api.spoonacular.com/recipes/${element.id}/similar?apiKey=d930cc8cdfcb4694a00727c8c32ef9d5&number=6`
+    `https://api.spoonacular.com/recipes/${element.id}/similar?apiKey=94af32634fb9436a89a681ccbed43c30&number=6`
   )
     .then((response) => response.json())
     .then((similarRecipe) => {

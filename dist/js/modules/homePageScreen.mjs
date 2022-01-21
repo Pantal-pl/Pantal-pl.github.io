@@ -35,7 +35,7 @@ const logicForHomePage = () => {
   let tryThisElement = document.querySelector(".tryThisElement .foodItems");
   let favouriteElement = document.querySelector(".favouriteElement .foodItems");
   let viewedElement = document.querySelector(".viewedElement .foodItems");
-  const API_KEY = "d930cc8cdfcb4694a00727c8c32ef9d5";
+  const API_KEY = "94af32634fb9436a89a681ccbed43c30";
 
   getFoodData();
   function getFoodData() {
