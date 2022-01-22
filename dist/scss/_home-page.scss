@@ -86,6 +86,7 @@
                 flex-direction: column;
                 justify-content: space-between;
                 opacity: 0;
+
                 &.show {
                     -webkit-animation: bounce-in-top 1.1s both;
                     animation: bounce-in-top 1.1s both;
@@ -95,6 +96,7 @@
                     display: flex;
                     justify-content: flex-start;
                     align-items: flex-start;
+                    width: auto;
                     min-width: 20rem;
                     & .foodImage {
                         background-position: center;

@@ -10,7 +10,7 @@ function refresh(element){
       document.querySelector(".favouriteElement .foodItems").innerHTML = "<div></div>"
       favouritesIds.forEach((id,index)=>{
         fetch(
-          `https://api.spoonacular.com/recipes/${id}/information?apiKey=d97f82583d3c41fca98bb900146824f2&includeNutrition=false`
+          `https://api.spoonacular.com/recipes/${id}/information?apiKey=0c218b59f1534f84b79ff388ea544965&includeNutrition=false`
         )
         .then((response) => response.json())
         .then((favourite)=>{
@@ -44,7 +44,7 @@ function refresh(element){
           })
           
         })
-      },500)
+      },1000)
     }
 
 }
@@ -98,7 +98,8 @@ function createFoodInformationEl(element) {
 const logicForFoodInformationEl = (element) => {
   console.log(element)
   let homePageEl = document.querySelector(".homePage");
-  homePageEl.style.display = "none";
+  homePageEl.style.zIndex = "-99999";
+  homePageEl.style.opacity = "0";
   window.scrollTo(0, 0);
   createFoodInformationEl(element);
   let recipeDescription = document.querySelector(".description p");
@@ -135,16 +136,22 @@ const logicForFoodInformationEl = (element) => {
         addToFavouriteBtn.querySelector("img").src = "dist/images/Star 2.svg"
 
       }
+      addToFavouriteBtn.style.transform = "scale(1.2)"
+      setTimeout(function(){
+      addToFavouriteBtn.style.transform = "scale(1)"
+        
+      },500)
     })
   const backButton = document.querySelector(".backButton");
   backButton.addEventListener("click", function () {
-    homePageEl.style.display = "flex";
+    homePageEl.style.zIndex = "1";
+    homePageEl.style.opacity = "1";
     body.lastChild.remove();
     window.scrollTo(0, 0);
   });
   let similarRecipes = document.querySelector(".similarRecipes");
   fetch(
-    `https://api.spoonacular.com/recipes/${element.id}/similar?apiKey=d97f82583d3c41fca98bb900146824f2&number=6`
+    `https://api.spoonacular.com/recipes/${element.id}/similar?apiKey=0c218b59f1534f84b79ff388ea544965&number=6`
   )
     .then((response) => response.json())
     .then((similarRecipe) => {

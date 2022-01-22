@@ -34,7 +34,7 @@ const logicForHomePage = () => {
   let diet = localStorage.getItem("diet");
   let tryThisElement = document.querySelector(".tryThisElement .foodItems");
   let viewedElement = document.querySelector(".viewedElement .foodItems");
-  const API_KEY = "d97f82583d3c41fca98bb900146824f2";
+  const API_KEY = "0c218b59f1534f84b79ff388ea544965";
 
   getFoodData();
   function getFoodData() {
@@ -96,6 +96,16 @@ const logicForHomePage = () => {
       ".tryThisElement .foodItems .foodItem"
     );
 
+
+    foodItems[i].addEventListener(
+      "click",
+      logicForFoodInformationEl.bind(this, recipesInformation[i])
+    );
+    console.log(i)
+    i++;
+    let foodItemsObserver = document.querySelectorAll(
+      ".tryThisElement .foodItems .foodItem"
+    );
     const observer = new IntersectionObserver((entries) => {
       entries.forEach(entry =>{
         entry.target.classList.toggle("show",entry.isIntersecting)
@@ -104,18 +114,11 @@ const logicForHomePage = () => {
     },{
       threshold: 0.1,
     });
-    foodItems.forEach(item =>{
+    foodItemsObserver.forEach(item =>{
       observer.observe(item)
     })
-
-    foodItems[i].addEventListener(
-      "click",
-      logicForFoodInformationEl.bind(this, recipesInformation[i])
-    );
-
-    i++;
   }
-
-
+ 
 };
+
 export { homePageEl, logicForHomePage };

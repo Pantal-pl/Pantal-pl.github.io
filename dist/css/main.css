@@ -2077,6 +2077,7 @@
   -webkit-box-align: start;
       -ms-flex-align: start;
           align-items: flex-start;
+  width: auto;
   min-width: 20rem;
 }
 
@@ -2546,6 +2547,10 @@
 
 .foodInformation {
   margin: 18vh 1rem 0 1rem;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: calc(100% - 2rem);
 }
 
 .foodInformation .foodDescription {
@@ -2617,11 +2622,6 @@
   transition: -webkit-transform 0.45s ease-in-out;
   transition: transform 0.45s ease-in-out;
   transition: transform 0.45s ease-in-out, -webkit-transform 0.45s ease-in-out;
-}
-
-.foodInformation .foodDescription .imageAndTags .addToFavouriteBtn:hover {
-  -webkit-transform: scale(1.4);
-          transform: scale(1.4);
 }
 
 .foodInformation .foodDescription .imageAndTags .addToFavouriteBtn img {
