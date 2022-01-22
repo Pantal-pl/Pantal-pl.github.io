@@ -1,6 +1,7 @@
 @import "variables";
 .foodInformation {
   margin: 18vh 1rem 0 1rem;
+
   & .foodDescription {
     width: 100%;
     background: $bg-color;
@@ -16,13 +17,13 @@
       color: $font-color-light;
       display: grid;
       place-items: center;
-      transition: .25s ease-in-out;
+      transition: 0.25s ease-in-out;
       z-index: 3;
       font-size: 1.5rem;
-  }
-  & .warningBannerActive{
+    }
+    & .warningBannerActive {
       top: 0;
-  }
+    }
     & .imageAndTags {
       display: flex;
       flex-direction: row;
@@ -48,6 +49,10 @@
         border-radius: 100%;
         padding: 0.3rem;
         cursor: pointer;
+        transition: transform 0.45s ease-in-out;
+        &:hover {
+          transform: scale(1.4);
+        }
         & img {
           width: 2.2rem;
           height: 2.2rem;
@@ -101,8 +106,7 @@
       margin-top: 1.5rem;
       & li {
         @include listStyle;
-      list-style: none;
-
+        list-style: none;
       }
     }
     & ul {
@@ -125,6 +129,7 @@
     cursor: pointer;
     z-index: 2;
     box-shadow: 8px 0px 39px rgba(0, 0, 0, 0.25);
+    appearance: none;
     &::before {
       content: "Back";
       position: absolute;
@@ -133,6 +138,7 @@
       font-size: 1.1rem;
       font-weight: bold;
       transform: rotate(-45deg);
+      appearance: none;
     }
   }
   & .similarRecipesSection {

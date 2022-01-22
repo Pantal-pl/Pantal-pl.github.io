@@ -1,8 +1,3 @@
-const body = document.querySelector("body");
-
-const insertScreen = (elToInsert) => {
-  body.appendChild(elToInsert);
-};
 import { startScreenEl } from "./modules/startScreen.mjs";
 import {
   interviewScreenEl,
@@ -13,10 +8,15 @@ import {
   logicForHomePage
 } from "./modules/interviewScreen.mjs";
 
+const body = document.querySelector("body");
+
+const insertScreen = (elToInsert) => {
+  body.appendChild(elToInsert);
+};
 
 insertScreen(startScreenEl);
-
 const startBtn = document.querySelector(".start-btn");
+
 
 startBtn.addEventListener("click", () => {
   body.lastChild.remove();

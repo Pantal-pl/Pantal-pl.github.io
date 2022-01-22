@@ -10,7 +10,7 @@ function refresh(element){
       document.querySelector(".favouriteElement .foodItems").innerHTML = "<div></div>"
       favouritesIds.forEach((id,index)=>{
         fetch(
-          `https://api.spoonacular.com/recipes/${id}/information?apiKey=94af32634fb9436a89a681ccbed43c30&includeNutrition=false`
+          `https://api.spoonacular.com/recipes/${id}/information?apiKey=d97f82583d3c41fca98bb900146824f2&includeNutrition=false`
         )
         .then((response) => response.json())
         .then((favourite)=>{
@@ -44,7 +44,7 @@ function refresh(element){
           })
           
         })
-      },1000)
+      },500)
     }
 
 }
@@ -52,7 +52,10 @@ function refresh(element){
 function createFoodInformationEl(element) {
   const foodInformationEL = document.createElement("section");
   foodInformationEL.setAttribute("class", "foodInformation");
-
+  foodInformationEL.classList.add("swing-in-top-fwd")
+  setTimeout(function(){
+    foodInformationEL.classList.remove("swing-in-top-fwd")
+  },500)
   foodInformationEL.insertAdjacentHTML(
     "beforeend",
     `
@@ -141,7 +144,7 @@ const logicForFoodInformationEl = (element) => {
   });
   let similarRecipes = document.querySelector(".similarRecipes");
   fetch(
-    `https://api.spoonacular.com/recipes/${element.id}/similar?apiKey=94af32634fb9436a89a681ccbed43c30&number=6`
+    `https://api.spoonacular.com/recipes/${element.id}/similar?apiKey=d97f82583d3c41fca98bb900146824f2&number=6`
   )
     .then((response) => response.json())
     .then((similarRecipe) => {

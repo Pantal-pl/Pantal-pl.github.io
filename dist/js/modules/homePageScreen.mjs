@@ -33,9 +33,8 @@ const logicForHomePage = () => {
   let cusine = localStorage.getItem("cusine");
   let diet = localStorage.getItem("diet");
   let tryThisElement = document.querySelector(".tryThisElement .foodItems");
-  let favouriteElement = document.querySelector(".favouriteElement .foodItems");
   let viewedElement = document.querySelector(".viewedElement .foodItems");
-  const API_KEY = "94af32634fb9436a89a681ccbed43c30";
+  const API_KEY = "d97f82583d3c41fca98bb900146824f2";
 
   getFoodData();
   function getFoodData() {
@@ -50,8 +49,9 @@ const logicForHomePage = () => {
         console.log(recipesId);
         if (recipesId.length === 0) {
           tryThisElement.innerHTML = `
-          <div class="foodItem" style="height:15rem;display:grid;place-items:center;padding:0 1rem;text-align:center;">
+          <div class="foodItem" style="height:15rem;display:grid;place-items:center;padding:0 1rem;text-align:center;opacity:1;">
           <h1>Nothing matches your preferences :(</h1>
+            <h2>Try to do interview again by reseting it in menu</h2>
 
           </div>`;
         } else {
@@ -95,6 +95,19 @@ const logicForHomePage = () => {
     let foodItems = document.querySelectorAll(
       ".tryThisElement .foodItems .foodItem"
     );
+
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry =>{
+        entry.target.classList.toggle("show",entry.isIntersecting)
+        if(entry.isIntersecting) observer.unobserve(entry.target)
+      })
+    },{
+      threshold: 0.1,
+    });
+    foodItems.forEach(item =>{
+      observer.observe(item)
+    })
+
     foodItems[i].addEventListener(
       "click",
       logicForFoodInformationEl.bind(this, recipesInformation[i])
@@ -102,5 +115,7 @@ const logicForHomePage = () => {
 
     i++;
   }
+
+
 };
 export { homePageEl, logicForHomePage };
