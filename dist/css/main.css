@@ -2799,7 +2799,6 @@
 }
 
 .foodInformation .similarRecipesSection .similarRecipes .similarRecipe .similarRecipe-foodImage {
-  background-image: url(https://www.warzywizm.pl/wp-content/uploads/2021/07/A-WYBRANE-P1128074-auto-30-scaled-1.jpg);
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
@@ -2812,6 +2811,12 @@
 .foodInformation .similarRecipesSection .similarRecipes .similarRecipe p {
   text-align: center;
   padding: 0.5rem 1.5rem;
+}
+
+.foodInformation .similarRecipesSection .similarRecipes .similarRecipe a {
+  color: #3f3d56;
+  font-weight: bold;
+  text-decoration: none;
 }
 
 *, ::after, ::before {

@@ -171,7 +171,6 @@
         min-width: 10rem;
 
         & .similarRecipe-foodImage {
-          background-image: url(https://www.warzywizm.pl/wp-content/uploads/2021/07/A-WYBRANE-P1128074-auto-30-scaled-1.jpg);
           background-position: center;
           background-repeat: no-repeat;
           background-size: cover;
@@ -182,6 +181,11 @@
         & p {
           text-align: center;
           padding: 0.5rem 1.5rem;
+        }
+        & a {
+          color: $font-color-dark;
+          font-weight: bold;
+          text-decoration: none;
         }
       }
     }

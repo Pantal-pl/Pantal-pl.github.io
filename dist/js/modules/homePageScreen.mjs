@@ -16,15 +16,15 @@ homePageEl.insertAdjacentHTML(
   
   </div>
 </div>
-<div class="homePageElement viewedElement">
-  <h1 class="headingElement">Viewed</h1>
-  <div class="foodItems">
-    
-  </div>
+
 </div>
 `
 );
-
+{/* <div class="homePageElement viewedElement">
+  <h1 class="headingElement">Viewed</h1>
+  <div class="foodItems">
+    
+  </div> */}
 const logicForHomePage = () => {
   let recipesInformation = [];
   let recipesId = [];
@@ -34,7 +34,7 @@ const logicForHomePage = () => {
   let diet = localStorage.getItem("diet");
   let tryThisElement = document.querySelector(".tryThisElement .foodItems");
   let viewedElement = document.querySelector(".viewedElement .foodItems");
-  const API_KEY = "0c218b59f1534f84b79ff388ea544965";
+  const API_KEY = "1bd21e7db7a94a10b01a3ec4e055080d";
 
   getFoodData();
   function getFoodData() {

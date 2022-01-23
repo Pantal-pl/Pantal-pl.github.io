@@ -10,7 +10,7 @@ function refresh(element){
       document.querySelector(".favouriteElement .foodItems").innerHTML = "<div></div>"
       favouritesIds.forEach((id,index)=>{
         fetch(
-          `https://api.spoonacular.com/recipes/${id}/information?apiKey=0c218b59f1534f84b79ff388ea544965&includeNutrition=false`
+          `https://api.spoonacular.com/recipes/${id}/information?apiKey=1bd21e7db7a94a10b01a3ec4e055080d&includeNutrition=false`
         )
         .then((response) => response.json())
         .then((favourite)=>{
@@ -148,10 +148,13 @@ const logicForFoodInformationEl = (element) => {
     homePageEl.style.opacity = "1";
     body.lastChild.remove();
     window.scrollTo(0, 0);
+    if(body.contains(document.querySelector(".searchResults"))===true){
+      document.querySelector(".searchResults").style.display = "flex";
+    }
   });
   let similarRecipes = document.querySelector(".similarRecipes");
   fetch(
-    `https://api.spoonacular.com/recipes/${element.id}/similar?apiKey=0c218b59f1534f84b79ff388ea544965&number=6`
+    `https://api.spoonacular.com/recipes/${element.id}/similar?apiKey=1bd21e7db7a94a10b01a3ec4e055080d&number=6`
   )
     .then((response) => response.json())
     .then((similarRecipe) => {
@@ -164,6 +167,7 @@ const logicForFoodInformationEl = (element) => {
             "beforeend",
             `<div class="similarRecipe">
             <p>${element.title}</p>
+            <a href="${element.sourceUrl}" target="_blank">Click to open</a>
           </div>`
           );
         });
