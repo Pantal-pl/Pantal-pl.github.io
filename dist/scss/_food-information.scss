@@ -1,6 +1,7 @@
 @import "variables";
 .foodInformation {
-  margin: 18vh 1rem 0 1rem;
+  margin: 0 1rem 0 1rem;
+  padding-top: 18vh;
   position: absolute;
   top: 0;
   left: 0;
@@ -37,7 +38,7 @@
         background-repeat: no-repeat;
         background-size: cover;
         aspect-ratio: 1/1;
-        width: 64%;
+        width: 60%;
         height: 50%;
         border-radius: 2.8rem 0 2.8rem 0;
       }
@@ -103,7 +104,7 @@
     & p {
       text-indent: 0.5rem;
       margin-top: 1.2rem;
-      font-size: 1.2rem;
+      font-size: 1.05rem;
     }
     & ol {
       margin-top: 1.5rem;
@@ -126,8 +127,8 @@
     height: 10rem;
     background: $secondary-color;
     border-radius: 100%;
-    right: -4.5rem;
-    bottom: -4.5rem;
+    right: -3.5rem;
+    bottom: -3.5rem;
     position: fixed;
     cursor: pointer;
     z-index: 2;
@@ -136,12 +137,13 @@
     &::before {
       content: "Back";
       position: absolute;
-      left: 1.7rem;
-      top: 2.2rem;
-      font-size: 1.1rem;
+      left: 1.4rem;
+      top: 2.15rem;
+      font-size: 1.9rem;
       font-weight: bold;
-      transform: rotate(-45deg);
+      transform: rotate(316deg);
       appearance: none;
+      color: $font-color-dark;
     }
   }
   & .similarRecipesSection {
@@ -168,19 +170,21 @@
         border-radius: 2.8rem;
         display: grid;
         place-items: center;
-        min-width: 10rem;
-
-        & .similarRecipe-foodImage {
-          background-position: center;
-          background-repeat: no-repeat;
-          background-size: cover;
-          aspect-ratio: 1/1;
-          border-radius: 2.8rem 0 2.8rem 0;
-          filter: saturate(115%);
+        min-width: 12rem;
+        min-height: 10rem;
+        overflow: hidden;
+        position: relative;
+        & .band {
+          width: 10rem;
+          height: 1.5rem;
+          position: absolute;
+          left: -2.7rem;
+          top: -0.8rem;
+          transform: rotate(-45deg);
         }
         & p {
           text-align: center;
-          padding: 0.5rem 1.5rem;
+          padding: 0.8rem 1.9rem;
         }
         & a {
           color: $font-color-dark;

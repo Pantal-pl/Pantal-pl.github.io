@@ -1,5 +1,7 @@
 import { logicForFoodInformationEl } from "./foodInformationScreen.mjs";
 const searchBarEl = document.createElement("div");
+const API_KEY = "8cdcc3c2c3f442cb92f1d1b3b37af0ab"
+
 searchBarEl.setAttribute("class", "menuBar");
 const body = document.querySelector("body")
 searchBarEl.insertAdjacentHTML(
@@ -32,7 +34,7 @@ searchBarEl.insertAdjacentHTML(
     <select name="searchBy" class="searchBy">
       <option value=""></option>
       <option value="query">Dish name</option>
-      <option value="Ingredients">Ingredients</option>
+      <option value="ingredients">Ingredients</option>
       <option value="cuisine">cuisine</option>
     </select>
   </label>
@@ -77,52 +79,98 @@ const logicForSearchBar = () => {
   const interviewBtn = document.querySelector(".interviewScreenButton")
   const homeBtn = document.querySelector(".homeScreenButton")
   searchBtn.addEventListener("click",()=>{
-    if(body.contains(document.querySelector(".searchResults"))===true){
-      body.removeChild(body.lastElementChild)
-    }
-    const searchResultsEl = document.createElement("section");
-    searchResultsEl.setAttribute("class", "searchResults");
-    document.querySelector(".homePage").style.display = "none"
-    body.appendChild(searchResultsEl)
+    
+    if(searchByInput.value === "" || nameInput.value === ""){
+      document.querySelector(".warningBanner").style = "top: 0; background: #2087d5; text-align: center; position: fixed; z-index: 3; width: 100%; height: 11vh; display: grid; place-items: center; font-size: 1.4rem;color:#fafafa; transition: .25s ease-in-out;"
+      document.querySelector(".warningBanner").textContent = "Enter name and search by"
+      setTimeout(() => {
+        document.querySelector(".warningBanner").style.top = "-11.1vh"
+        document.querySelector(".warningBanner").textContent = ""
+      }, 1450);
+    }else{
 
-      fetch(
-        `https://api.spoonacular.com/recipes/complexSearch?apiKey=1bd21e7db7a94a10b01a3ec4e055080d&${searchByInput.value}=${nameInput.value}&number=15`
-      )
-        .then((response) => response.json())
-        .then((data) => {
-          console.log(data)
-          data.results.forEach((element,index) =>{
-            searchResultsEl.insertAdjacentHTML(
-              "beforeend",
-              `<div class="searchResult">
-                <div class="foodImage searchResultFoodImage"></div>
-                <p>${element.title}</p>
-              </div>`
-            );
-
-          })
-          let searchResultFoodImages = document.querySelectorAll(".searchResultFoodImage")
-          searchResultFoodImages.forEach((image,index)=>{
-            image.style.backgroundImage = `url(${data.results[index].image})`
-          })
-          let searchResultItem = document.querySelectorAll(".searchResult")
-          searchResultItem.forEach((item,index)=>{
-            item.addEventListener("click",()=>{
-              fetch(
-                `https://api.spoonacular.com/recipes/${data.results[index].id}/information?apiKey=1bd21e7db7a94a10b01a3ec4e055080d&includeNutrition=false`
-              ).then((response) => response.json())
-              .then((searchResultItemDescription) =>{
-                logicForFoodInformationEl(searchResultItemDescription)
+      if(body.contains(document.querySelector(".searchResults"))===true){
+        body.removeChild(body.lastElementChild)
+      }
+      const searchResultsEl = document.createElement("section");
+      searchResultsEl.setAttribute("class", "searchResults");
+      document.querySelector(".homePage").style.display = "none"
+      body.appendChild(searchResultsEl)
+        if(searchByInput.value === "ingredients"){
+          let searchType1 = "findByIngredients"
+          fetch(
+            `https://api.spoonacular.com/recipes/${searchType1}?apiKey=${API_KEY}&${searchByInput.value}=${nameInput.value}&number=15`
+          )
+            .then((response) => response.json())
+            .then((data) => {
+              console.log(data)
+              data.forEach((element) =>{
+                searchResultsEl.insertAdjacentHTML(
+                  "beforeend",
+                  `<div class="searchResult">
+                    <div class="foodImage searchResultFoodImage"></div>
+                    <p>${element.title}</p>
+                  </div>`
+                );
+    
               })
-            setTimeout(()=>{
-              document.querySelector(".similarRecipesSection").remove()
-            },300)
+              let searchResultFoodImages = document.querySelectorAll(".searchResultFoodImage")
+              searchResultFoodImages.forEach((image,index)=>{
+                image.style.backgroundImage = `url(${data[index].image})`
+              })
+              let searchResultItem = document.querySelectorAll(".searchResult")
+              searchResultItem.forEach((item,index)=>{
+                item.addEventListener("click",()=>{
+                  fetch(
+                    `https://api.spoonacular.com/recipes/${data[index].id}/information?apiKey=${API_KEY}&includeNutrition=false`
+                  ).then((response) => response.json())
+                  .then((searchResultItemDescription) =>{
+                    logicForFoodInformationEl(searchResultItemDescription)
+                  })
+                document.querySelector(".searchResults").style.display = "none";
+    
+                })
+              })
+            });
+        }else{
+          let searchType = "complexSearch"
+          fetch(
+            `https://api.spoonacular.com/recipes/${searchType}?apiKey=${API_KEY}&${searchByInput.value}=${nameInput.value}&number=15`
+          )
+            .then((response) => response.json())
+            .then((data) => {
+              console.log(data)
+              data.results.forEach((element) =>{
+                searchResultsEl.insertAdjacentHTML(
+                  "beforeend",
+                  `<div class="searchResult">
+                    <div class="foodImage searchResultFoodImage"></div>
+                    <p>${element.title}</p>
+                  </div>`
+                );
+    
+              })
+              let searchResultFoodImages = document.querySelectorAll(".searchResultFoodImage")
+              searchResultFoodImages.forEach((image,index)=>{
+                image.style.backgroundImage = `url(${data.results[index].image})`
+              })
+              let searchResultItem = document.querySelectorAll(".searchResult")
+              searchResultItem.forEach((item,index)=>{
+                item.addEventListener("click",()=>{
+                  fetch(
+                    `https://api.spoonacular.com/recipes/${data.results[index].id}/information?apiKey=${API_KEY}&includeNutrition=false`
+                  ).then((response) => response.json())
+                  .then((searchResultItemDescription) =>{
+                    logicForFoodInformationEl(searchResultItemDescription)
+                  })
+                document.querySelector(".searchResults").style.display = "none";
+    
+                })
+              })
+            });
+        }
 
-            document.querySelector(".searchResults").style.display = "none";
-
-            })
-          })
-        });
+    }
 
   })
   homeBtn.addEventListener("click",()=>{

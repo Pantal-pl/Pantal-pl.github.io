@@ -3,6 +3,8 @@ let similarRecipesArr = []
 let favouritesRecipes = []
 let favouritesIds = []
 let isEvExist = 0;
+const bandColors = ["e84317","f8e46c","813531","ff611d","982121","cf5c3c"]
+const API_KEY = "8cdcc3c2c3f442cb92f1d1b3b37af0ab"
 function refresh(element){
   console.log(element)
   favouritesRecipes = []
@@ -10,7 +12,7 @@ function refresh(element){
       document.querySelector(".favouriteElement .foodItems").innerHTML = "<div></div>"
       favouritesIds.forEach((id,index)=>{
         fetch(
-          `https://api.spoonacular.com/recipes/${id}/information?apiKey=1bd21e7db7a94a10b01a3ec4e055080d&includeNutrition=false`
+          `https://api.spoonacular.com/recipes/${id}/information?apiKey=${API_KEY}&includeNutrition=false`
         )
         .then((response) => response.json())
         .then((favourite)=>{
@@ -97,6 +99,11 @@ function createFoodInformationEl(element) {
 }
 const logicForFoodInformationEl = (element) => {
   console.log(element)
+  function getRandomIntInclusive(min, max) {
+    min = Math.ceil(min);
+    max = Math.floor(max);
+    return Math.floor(Math.random() * (max - min + 1)) + min;
+  }
   let homePageEl = document.querySelector(".homePage");
   homePageEl.style.zIndex = "-99999";
   homePageEl.style.opacity = "0";
@@ -154,7 +161,7 @@ const logicForFoodInformationEl = (element) => {
   });
   let similarRecipes = document.querySelector(".similarRecipes");
   fetch(
-    `https://api.spoonacular.com/recipes/${element.id}/similar?apiKey=1bd21e7db7a94a10b01a3ec4e055080d&number=6`
+    `https://api.spoonacular.com/recipes/${element.id}/similar?apiKey=${API_KEY}&number=6`
   )
     .then((response) => response.json())
     .then((similarRecipe) => {
@@ -168,12 +175,17 @@ const logicForFoodInformationEl = (element) => {
             `<div class="similarRecipe">
             <p>${element.title}</p>
             <a href="${element.sourceUrl}" target="_blank">Click to open</a>
+            <span class="band"></span
           </div>`
           );
         });
       });
+      let decoratesBands = document.querySelectorAll(".band")
+      decoratesBands.forEach((band,index)=>{
+        band.style.background = `#${bandColors[index]}`
+      })
     });
-
+  
     if(isEvExist === 1){
       document.querySelector(".favouriteElement .headingElement button").addEventListener("click",refresh.bind(this,element))
     }

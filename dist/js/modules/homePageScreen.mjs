@@ -4,6 +4,7 @@ homePageEl.setAttribute("class", "homePage");
 homePageEl.insertAdjacentHTML(
   "beforeend",
   `
+  <div class="warningBanner"></div>
 <div class="homePageElement tryThisElement">
   <h1 class="headingElement">Try this !</h1>
   <div class="foodItems">
@@ -34,7 +35,7 @@ const logicForHomePage = () => {
   let diet = localStorage.getItem("diet");
   let tryThisElement = document.querySelector(".tryThisElement .foodItems");
   let viewedElement = document.querySelector(".viewedElement .foodItems");
-  const API_KEY = "1bd21e7db7a94a10b01a3ec4e055080d";
+  const API_KEY = "8cdcc3c2c3f442cb92f1d1b3b37af0ab";
 
   getFoodData();
   function getFoodData() {

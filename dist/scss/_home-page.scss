@@ -2,7 +2,7 @@
 .homePage {
     min-height: 100vh;
     background: $bg-color;
-    margin-top: 18vh;
+    padding-top: 18vh;
     display: flex;
     flex-direction: column;
     & .favouriteElement {

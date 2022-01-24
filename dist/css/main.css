@@ -1942,7 +1942,7 @@
 .homePage {
   min-height: 100vh;
   background: #fafafa;
-  margin-top: 18vh;
+  padding-top: 18vh;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -2113,8 +2113,13 @@
 .homePage .homePageElement .foodItems .foodItem .foodImageAndTags .tags p {
   border: 1px solid #e3e3e3;
   border-radius: 30rem;
-  padding: 5px;
+  padding: 6px 8px;
   text-indent: 0;
+}
+
+.homePage .homePageElement .foodItems .foodItem .foodImageAndTags .tags h3 {
+  border-bottom: 2px solid #e84317;
+  padding: 0 2px;
 }
 
 .homePage .homePageElement .foodItems .foodItem h2 {
@@ -2318,9 +2323,9 @@
 
 .searchResults {
   width: 100%;
-  margin-top: 18vh;
   background: #fafafa;
   padding: 1rem;
+  padding-top: 18vh;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -2338,19 +2343,30 @@
 
 .searchResults .searchResult {
   width: calc(50% - 1.5rem);
-  height: 50% !important;
   background: #fafafa;
   -webkit-box-shadow: 5px 12px 35px rgba(0, 0, 0, 0.274);
           box-shadow: 5px 12px 35px rgba(0, 0, 0, 0.274);
-  height: auto;
   border-radius: 2.8rem;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
   cursor: pointer;
 }
 
 .searchResults .searchResult .foodImage {
   background-position: center;
   background-repeat: no-repeat;
-  background-size: cover;
+  width: 100%;
   aspect-ratio: 1/1;
   border-radius: 2.8rem 0 2.8rem 0;
   -webkit-filter: saturate(115%);
@@ -2359,7 +2375,13 @@
 
 .searchResults .searchResult p {
   text-align: center;
-  padding: .5rem;
+  padding: 0.5rem 0.8rem;
+  -webkit-box-flex: 1;
+      -ms-flex: 1;
+          flex: 1;
+  display: -ms-grid;
+  display: grid;
+  place-items: center;
 }
 
 /* ----------------------------------------------
@@ -2546,7 +2568,8 @@
 }
 
 .foodInformation {
-  margin: 18vh 1rem 0 1rem;
+  margin: 0 1rem 0 1rem;
+  padding-top: 18vh;
   position: absolute;
   top: 0;
   left: 0;
@@ -2601,7 +2624,7 @@
   background-repeat: no-repeat;
   background-size: cover;
   aspect-ratio: 1/1;
-  width: 64%;
+  width: 60%;
   height: 50%;
   border-radius: 2.8rem 0 2.8rem 0;
 }
@@ -2654,8 +2677,13 @@
 .foodInformation .foodDescription .imageAndTags .tags p {
   border: 1px solid #e3e3e3;
   border-radius: 30rem;
-  padding: 5px;
+  padding: 6px 8px;
   text-indent: 0;
+}
+
+.foodInformation .foodDescription .imageAndTags .tags h3 {
+  border-bottom: 2px solid #e84317;
+  padding: 0 2px;
 }
 
 .foodInformation .foodDescription .description {
@@ -2700,7 +2728,7 @@
 .foodInformation .foodDescription p {
   text-indent: 0.5rem;
   margin-top: 1.2rem;
-  font-size: 1.2rem;
+  font-size: 1.05rem;
 }
 
 .foodInformation .foodDescription ol {
@@ -2709,7 +2737,7 @@
 
 .foodInformation .foodDescription ol li {
   margin: 5px 0 5px 1.4rem;
-  font-size: 1.2rem;
+  font-size: 1.05rem;
   list-style: decimal !important;
   padding-left: 0.3rem;
   list-style: none;
@@ -2722,7 +2750,7 @@
 
 .foodInformation .foodDescription ul li {
   margin: 5px 0 5px 1.4rem;
-  font-size: 1.2rem;
+  font-size: 1.05rem;
   list-style: decimal !important;
   padding-left: 0.3rem;
 }
@@ -2733,8 +2761,8 @@
   height: 10rem;
   background: #f8e46c;
   border-radius: 100%;
-  right: -4.5rem;
-  bottom: -4.5rem;
+  right: -3.5rem;
+  bottom: -3.5rem;
   position: fixed;
   cursor: pointer;
   z-index: 2;
@@ -2748,15 +2776,16 @@
 .foodInformation .backButton::before {
   content: "Back";
   position: absolute;
-  left: 1.7rem;
-  top: 2.2rem;
-  font-size: 1.1rem;
+  left: 1.4rem;
+  top: 2.15rem;
+  font-size: 1.9rem;
   font-weight: bold;
-  -webkit-transform: rotate(-45deg);
-          transform: rotate(-45deg);
+  -webkit-transform: rotate(316deg);
+          transform: rotate(316deg);
   -webkit-appearance: none;
      -moz-appearance: none;
           appearance: none;
+  color: #3f3d56;
 }
 
 .foodInformation .similarRecipesSection {
@@ -2795,22 +2824,25 @@
   display: -ms-grid;
   display: grid;
   place-items: center;
-  min-width: 10rem;
+  min-width: 12rem;
+  min-height: 10rem;
+  overflow: hidden;
+  position: relative;
 }
 
-.foodInformation .similarRecipesSection .similarRecipes .similarRecipe .similarRecipe-foodImage {
-  background-position: center;
-  background-repeat: no-repeat;
-  background-size: cover;
-  aspect-ratio: 1/1;
-  border-radius: 2.8rem 0 2.8rem 0;
-  -webkit-filter: saturate(115%);
-          filter: saturate(115%);
+.foodInformation .similarRecipesSection .similarRecipes .similarRecipe .band {
+  width: 10rem;
+  height: 1.5rem;
+  position: absolute;
+  left: -2.7rem;
+  top: -0.8rem;
+  -webkit-transform: rotate(-45deg);
+          transform: rotate(-45deg);
 }
 
 .foodInformation .similarRecipesSection .similarRecipes .similarRecipe p {
   text-align: center;
-  padding: 0.5rem 1.5rem;
+  padding: 0.8rem 1.9rem;
 }
 
 .foodInformation .similarRecipesSection .similarRecipes .similarRecipe a {
