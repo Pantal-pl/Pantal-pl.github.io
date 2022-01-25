@@ -2,7 +2,7 @@ import { logicForFoodInformationEl } from "./foodInformationScreen.mjs";
 import { createResetInterviewScreen } from "./resetInterviewScreen.mjs";
 import { logicForInterviewScreen,interviewScreenEl } from "./interviewScreen.mjs";
 const searchBarEl = document.createElement("div");
-const API_KEY = "534014d782324349a687220968c1c39d"
+const API_KEY = "b4abc62e3c4f4b878aaa319313c873b1"
 
 searchBarEl.setAttribute("class", "menuBar");
 const body = document.querySelector("body")

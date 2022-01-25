@@ -35,7 +35,7 @@ const logicForHomePage = () => {
   let diet = localStorage.getItem("diet");
   let tryThisElement = document.querySelector(".tryThisElement .foodItems");
   let viewedElement = document.querySelector(".viewedElement .foodItems");
-  const API_KEY = "534014d782324349a687220968c1c39d";
+  const API_KEY = "b4abc62e3c4f4b878aaa319313c873b1";
 
   getFoodData();
   function getFoodData() {

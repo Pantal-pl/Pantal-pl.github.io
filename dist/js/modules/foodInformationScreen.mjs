@@ -4,7 +4,7 @@ let favouritesRecipes = []
 let favouritesIds = []
 let isEvExist = 0;
 const bandColors = ["e84317","f8e46c","813531","ff611d","982121","cf5c3c"]
-const API_KEY = "534014d782324349a687220968c1c39d"
+const API_KEY = "b4abc62e3c4f4b878aaa319313c873b1"
 function refresh(element){
   console.log(element)
   favouritesRecipes = []
