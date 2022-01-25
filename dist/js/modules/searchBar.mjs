@@ -1,6 +1,8 @@
 import { logicForFoodInformationEl } from "./foodInformationScreen.mjs";
+import { createResetInterviewScreen } from "./resetInterviewScreen.mjs";
+import { logicForInterviewScreen,interviewScreenEl } from "./interviewScreen.mjs";
 const searchBarEl = document.createElement("div");
-const API_KEY = "8cdcc3c2c3f442cb92f1d1b3b37af0ab"
+const API_KEY = "534014d782324349a687220968c1c39d"
 
 searchBarEl.setAttribute("class", "menuBar");
 const body = document.querySelector("body")
@@ -8,19 +10,7 @@ searchBarEl.insertAdjacentHTML(
   "beforeend",
   `
 <div class="row1">
-  <label id="instructionRequired">
-    <p>Instruction required?</p>
-    <div id="instructionRequiredOption">
-      <div class="option optionYes">
-      <div></div>
-        <p>Yes</p>
-      </div>
-      <div class="option optionNo">
-      <div><div></div></div>
-        <p>No</p>
-      </div>
-    </div>
-  </label>
+  <button class="randomRecipeButton">Random</button>
   <button class="homeScreenButton">Home</button>
   <button class="interviewScreenButton">Interview</button>
 </div>
@@ -59,19 +49,6 @@ const logicForSearchBar = () => {
     });
   };
   swipeDownMenuBar()
-  const instructionRequiredYes = document.querySelector(".optionYes div")
-  const instructionRequiredNo = document.querySelector(".optionNo div")
-  const instructionRequiredNo2 = document.querySelector(".optionNo div div")
-  instructionRequiredYes.addEventListener("click",()=>{
-    instructionRequiredYes.classList.add("optionYesActive")
-    instructionRequiredNo.classList.remove("optionNoActive")
-    instructionRequiredNo2.classList.remove("optionNoActive2")
-  })
-  instructionRequiredNo.addEventListener("click",()=>{
-    instructionRequiredNo.classList.add("optionNoActive")
-    instructionRequiredNo2.classList.add("optionNoActive2")
-    instructionRequiredYes.classList.remove("optionYesActive")
-  })
 
   let nameInput = document.querySelector(".name")
   let searchByInput = document.querySelector(".searchBy")
@@ -79,7 +56,6 @@ const logicForSearchBar = () => {
   const interviewBtn = document.querySelector(".interviewScreenButton")
   const homeBtn = document.querySelector(".homeScreenButton")
   searchBtn.addEventListener("click",()=>{
-    
     if(searchByInput.value === "" || nameInput.value === ""){
       document.querySelector(".warningBanner").style = "top: 0; background: #2087d5; text-align: center; position: fixed; z-index: 3; width: 100%; height: 11vh; display: grid; place-items: center; font-size: 1.4rem;color:#fafafa; transition: .25s ease-in-out;"
       document.querySelector(".warningBanner").textContent = "Enter name and search by"
@@ -185,5 +161,44 @@ const logicForSearchBar = () => {
       }
     }
   })
+  const resetInterviewButton = document.querySelector(".interviewScreenButton")
+  resetInterviewButton.addEventListener("click",function(){
+
+    document.querySelector(".homePage").style.display = "none"
+    document.querySelector(".menuBar").style.display = "none"
+    if(body.contains(document.querySelector(".searchResults"))){
+      let el = document.querySelector(".searchResults")
+      el.remove()
+    }
+ 
+    createResetInterviewScreen()
+
+    document.querySelector(".yes").addEventListener("click",function(){
+      localStorage.setItem("cusine","")
+      localStorage.setItem("intolerances","")
+      localStorage.setItem("diet","")
+      localStorage.setItem("interviewDone","")
+      window.location.reload()
+    })
+    document.querySelector(".no").addEventListener("click",function(){
+      document.querySelector(".resetInterviewScreen").remove()
+      document.querySelector(".homePage").style.display = "flex"
+    document.querySelector(".menuBar").style.display = "flex"
+    })
+  })
+  const randomRecipeButton = document.querySelector(".randomRecipeButton")
+  randomRecipeButton.addEventListener("click",function(){
+    if(body.contains(document.querySelector(".foodInformation"))){
+      let el = document.querySelector(".foodInformation")
+      el.remove()
+    }
+    fetch(
+      `https://api.spoonacular.com/recipes/random?apiKey=${API_KEY}&number=1`
+    ).then((response) => response.json())
+    .then((randomRecipeResult) =>{
+      logicForFoodInformationEl(randomRecipeResult.recipes[0])
+    })
+  })
+ 
 };
 export { searchBarEl, logicForSearchBar };

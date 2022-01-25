@@ -13,13 +13,12 @@ startScreenEl.insertAdjacentHTML("beforeend",`
 <div class="start-screen__element"></div>
 <div class="start-screen__footer">
     <ul>
-        <li><a href="#">API</a></li>
+        <li><a href="https://spoonacular.com/food-api">API</a></li>
         <li><a href="#">&#8226</a></li>
-        <li><a href="#">Code</a></li>
+        <li><a href="https://github.com/Pantal-pl">Code</a></li>
         <li><a href="#">&#8226</a></li>
         <li><a href="#">Menu</a></li>
-        <li><a href="#">&#8226</a></li>
-        <li><a href="#">Theme</a></li>
+
     </ul>
     <p>© 2021 Food App Corp.</p>
 </div>
