@@ -9,6 +9,7 @@ import {
 } from "./modules/interviewScreen.mjs";
 
 const body = document.querySelector("body");
+const API_KEY = "e8d73a53232448f4953b4545ed358b38"
 
 const insertScreen = (elToInsert) => {
   body.appendChild(elToInsert);
@@ -32,3 +33,4 @@ startBtn.addEventListener("click", () => {
   }
 
 });
+export {API_KEY}

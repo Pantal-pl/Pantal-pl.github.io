@@ -1,12 +1,14 @@
+import { API_KEY } from "../main.js";
 const body = document.querySelector("body");
 let similarRecipesArr = []
 let favouritesRecipes = []
-let favouritesIds = []
 let isEvExist = 0;
 const bandColors = ["e84317","f8e46c","813531","ff611d","982121","cf5c3c"]
-const API_KEY = "b4abc62e3c4f4b878aaa319313c873b1"
-function refresh(element){
-  console.log(element)
+
+function refresh(element,favouritesIds){
+  favouritesIds = localStorage.getItem("favourite").split(",")
+  // console.log(favouritesIds)
+  // console.log(element)
   favouritesRecipes = []
     if(favouritesIds.length>0){
       document.querySelector(".favouriteElement .foodItems").innerHTML = "<div></div>"
@@ -33,7 +35,6 @@ function refresh(element){
       let foodImages = document.querySelectorAll(
         ".favouriteElement .foodItems .foodItem .foodImage"
       );
-      [...foodImages].reverse();
       foodImages[index].style.backgroundImage = `url(${favourite.image})`;
 
         })
@@ -44,11 +45,9 @@ function refresh(element){
             logicForFoodInformationEl(favouritesRecipes[index])
             console.log(favouritesRecipes)
           })
-          
         })
       },1000)
     }
-
 }
 
 function createFoodInformationEl(element) {
@@ -99,69 +98,74 @@ function createFoodInformationEl(element) {
 }
 const logicForFoodInformationEl = (element) => {
   console.log(element)
-  function getRandomIntInclusive(min, max) {
-    min = Math.ceil(min);
-    max = Math.floor(max);
-    return Math.floor(Math.random() * (max - min + 1)) + min;
-  }
+  let favouritesIds = localStorage.getItem("favourite").split(",")
+  favouritesIds = favouritesIds.filter((item) => item != "")
+
+  console.log(favouritesIds)
+  console.log(typeof favouritesIds)
+
+  localStorage.setItem("favourite",favouritesIds)
   let homePageEl = document.querySelector(".homePage");
   homePageEl.style.zIndex = "-99999";
   homePageEl.style.opacity = "0";
   window.scrollTo(0, 0);
   createFoodInformationEl(element);
-  let recipeDescription = document.querySelector(".description p");
 
+
+  let recipeDescription = document.querySelector(".description p");
   if (recipeDescription.innerText === "null") {
     recipeDescription.innerText = "Instruction not found :(";
   } else {
     let recipeDescriptionString = recipeDescription.innerText;
-    recipeDescriptionString = recipeDescriptionString.replace(
-      /\./g,
-      ". <br/> <br/>"
-    );
+    recipeDescriptionString = recipeDescriptionString.replace(/\./g,". <br/> <br/>");
     recipeDescription.innerHTML = recipeDescriptionString;
   }
+
+
   let recipeIngredients = document.querySelector(".description ul");
   element.extendedIngredients.forEach((line) => {
     recipeIngredients.innerHTML += `<li>${line.originalString}</li>`;
   });
-
   let descriptionFoodImage = document.querySelector(
     ".foodDescription .imageAndTags .foodImage"
   );
   descriptionFoodImage.style.backgroundImage = `url(${element.image})`;
 
+
  let addToFavouriteBtn = document.querySelector(".addToFavouriteBtn")
     addToFavouriteBtn.addEventListener("click",function(){
       if(JSON.parse(localStorage.getItem("favourite").includes(element.id))){
+        favouritesIds = [...new Set(favouritesIds)]
         favouritesIds = favouritesIds.filter(item => item != element.id)
         localStorage.setItem("favourite",favouritesIds)
         addToFavouriteBtn.querySelector("img").src = "dist/images/Star 1.svg"
+        console.log("exist")
       }else{
+        console.log("new")
         favouritesIds.push(element.id)
-        JSON.stringify(localStorage.setItem("favourite",favouritesIds))
+        localStorage.setItem("favourite",favouritesIds)
         addToFavouriteBtn.querySelector("img").src = "dist/images/Star 2.svg"
-
       }
       addToFavouriteBtn.style.transform = "scale(1.2)"
-      setTimeout(function(){
-      addToFavouriteBtn.style.transform = "scale(1)"
-        
-      },500)
+      setTimeout(()=>{addToFavouriteBtn.style.transform = "scale(1)"},500)
     })
+
+
   const backButton = document.querySelector(".backButton");
   backButton.addEventListener("click", function () {
     homePageEl.style.zIndex = "1";
     homePageEl.style.opacity = "1";
     body.lastChild.remove();
     window.scrollTo(0, 0);
-    if(body.contains(document.querySelector(".searchResults"))===true){
+    if(body.contains(document.querySelector(".searchResults"))){
       document.querySelector(".searchResults").style.display = "flex";
     }
   });
+
+
   let similarRecipes = document.querySelector(".similarRecipes");
   fetch(
-    `https://api.spoonacular.com/recipes/${element.id}/similar?apiKey=${API_KEY}&number=6`
+    `https://api.spoonacular.com/recipes/${element.id}/similar?apiKey=${API_KEY}&number=4`
   )
     .then((response) => response.json())
     .then((similarRecipe) => {
@@ -186,8 +190,11 @@ const logicForFoodInformationEl = (element) => {
       })
     });
   
-    if(isEvExist === 1){
-      document.querySelector(".favouriteElement .headingElement button").addEventListener("click",refresh.bind(this,element))
+    if(isEvExist === 0){
+      document.querySelector(".favouriteElement .headingElement button").addEventListener("click",refresh.bind(this,element,favouritesIds))
+      document.querySelector(".favouriteElement .headingElement #deleteAllFavourites").addEventListener("click",()=>{
+        localStorage.setItem("favourite",[])
+      })
     }
     isEvExist++
 };

@@ -1,6 +1,6 @@
 @import "variables";
 .foodInformation {
-  margin: 0 1rem 0 1rem;
+  margin: 0 1rem;
   padding-top: 18vh;
   position: absolute;
   top: 0;
@@ -41,6 +41,9 @@
         width: 60%;
         height: 50%;
         border-radius: 2.8rem 0 2.8rem 0;
+        // @include respond-to('sm'){
+        //   margin-top: -.5rem;
+        //   }
       }
       & .addToFavouriteBtn {
         position: absolute;
@@ -54,9 +57,6 @@
         padding: 0.3rem;
         cursor: pointer;
         transition: transform 0.45s ease-in-out;
-        // &:hover {
-        //   transform: scale(1.4);
-        // }
         & img {
           width: 2.2rem;
           height: 2.2rem;
@@ -65,9 +65,12 @@
       & .tags {
         @include tags;
         flex: 1;
-        margin: 0;
+        margin: .5rem 0 0 0;
         gap: 0;
         text-align: center;
+        p {
+          font-size: .8rem;
+        }
       }
     }
     & .description {
@@ -75,24 +78,18 @@
       h1 {
         position: relative;
         &::before {
-          position: absolute;
-          content: "";
-          left: -0.45rem;
-          top: 0;
-          width: 12px;
-          height: 12px;
+          @include foodHeadingPseudoElements;
           border-left: 2px solid $primary-color;
           border-top: 2px solid $primary-color;
+          left: -0.45rem;
+          top: 0;
         }
         &::after {
-          position: absolute;
-          content: "";
-          bottom: 0;
-          transform: translateX(-5px);
-          width: 12px;
-          height: 12px;
+          @include foodHeadingPseudoElements;
           border-right: 2px solid $primary-color;
           border-bottom: 2px solid $primary-color;
+          bottom: 0;
+          transform: translateX(-5px);
         }
       }
     }
@@ -147,10 +144,11 @@
     }
   }
   & .similarRecipesSection {
-    margin-top: 3.5rem;
+    margin: 3.5rem 0 0 -1rem;
     & h2 {
       border-bottom: 2px solid $primary-color;
       width: fit-content;
+      margin-left: 1rem;
     }
     & .similarRecipes {
       display: flex;
@@ -164,7 +162,7 @@
       }
 
       & .similarRecipe {
-        margin: 2.4rem 1.5rem 0 0;
+        margin: 2.4rem 1.5rem 0 1rem;
         background: $bg-color;
         box-shadow: 5px 12px 35px rgba(0, 0, 0, 0.274);
         border-radius: 2.8rem;

@@ -5,20 +5,11 @@
     padding: 1rem;
     background: $bg-color;
     & .heading {
-        position: fixed;
-        z-index: 2;
-        top: 0;
-        left: 0;
-        width: 100%;
+        @include headingStyle;
         height: 13vh;
-        display: grid;
-        place-items: center;
-        background: $primary-color;
-        border-radius: 0 0 2.5rem 2.5rem;
-        color: $font-color-light;
-        font-weight: normal;
-        letter-spacing: 2px;
         text-align: center;
+        font-size: 1.5rem;
+        letter-spacing: 0;
     }
     & .buttons {
         display: flex;
@@ -37,41 +28,19 @@
             box-shadow: 5px 12px 35px rgba(0, 0, 0, 0.288);
         }
         & .yes {
+            @include resetInterviewButtons;
             background: #DA0404;
-            position: relative;
-            color: $font-color-light;
-            font-size: 2rem;
-            padding: 1rem;
-            -webkit-animation: vibrate-1 0.3s linear infinite both;
-	        animation: vibrate-1 0.3s linear infinite both;
             &::after{
-                position: absolute;
-                left: 50%;
-                top: 50%;
+                @include resetInterviewButtonsPseudoElements;
                 content: "YES";
-                transform: translate(-50%,-50%);
-                font-size: 8.5rem;
-                color: rgba(255, 255, 255, 0.281);
-                font-weight: bold;
             }
         }
         & .no {
+            @include resetInterviewButtons;
             background: #6BCB20;
-            position: relative;
-            color: $font-color-light;
-            padding: 1rem;
-            font-size: 2rem;
-            -webkit-animation: vibrate-2 0.3s linear infinite both;
-	        animation: vibrate-2 0.3s linear infinite both;
             &::after{
-                position: absolute;
-                left: 50%;
-                top: 50%;
+                @include resetInterviewButtonsPseudoElements;
                 content: "NO";
-                transform: translate(-50%,-50%);
-                font-size: 8.5rem;
-                color: rgba(255, 255, 255, 0.281);
-                font-weight: bold;
             }
         }
     }

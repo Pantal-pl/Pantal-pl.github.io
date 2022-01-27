@@ -1,4 +1,6 @@
 import { logicForFoodInformationEl } from "./foodInformationScreen.mjs";
+import { API_KEY } from "../main.js";
+
 const homePageEl = document.createElement("section");
 homePageEl.setAttribute("class", "homePage");
 homePageEl.insertAdjacentHTML(
@@ -12,7 +14,7 @@ homePageEl.insertAdjacentHTML(
   </div>
 </div>
 <div class="homePageElement favouriteElement">
-  <h1 class="headingElement">Favourite<button><img src="dist/images/refresh-svgrepo-com.svg"/></button></h1>
+  <h1 class="headingElement">Favourite<button><img src="dist/images/refresh-svgrepo-com.svg"/></button><button id="deleteAllFavourites"><img src="dist/images/recycle-bin-svgrepo-com.svg"</button></h1>
   <div class="foodItems">
   
   </div>
@@ -21,11 +23,7 @@ homePageEl.insertAdjacentHTML(
 </div>
 `
 );
-{/* <div class="homePageElement viewedElement">
-  <h1 class="headingElement">Viewed</h1>
-  <div class="foodItems">
-    
-  </div> */}
+
 const logicForHomePage = () => {
   let recipesInformation = [];
   let recipesId = [];
@@ -34,13 +32,11 @@ const logicForHomePage = () => {
   let cusine = localStorage.getItem("cusine");
   let diet = localStorage.getItem("diet");
   let tryThisElement = document.querySelector(".tryThisElement .foodItems");
-  let viewedElement = document.querySelector(".viewedElement .foodItems");
-  const API_KEY = "b4abc62e3c4f4b878aaa319313c873b1";
 
   getFoodData();
   function getFoodData() {
     fetch(
-      `https://api.spoonacular.com/recipes/complexSearch?apiKey=${API_KEY}&cuisine=${cusine}&diet=${diet}&intolerances=${intolerances}&number=15`
+      `https://api.spoonacular.com/recipes/complexSearch?apiKey=${API_KEY}&cuisine=${cusine}&diet=${diet}&intolerances=${intolerances}&number=5`
     )
       .then((response) => response.json())
       .then((data) => {

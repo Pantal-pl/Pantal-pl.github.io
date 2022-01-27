@@ -1,33 +1,5 @@
 @import "variables";
-@mixin rowAndCenter {
-  width: 100%;
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-  justify-content: space-between;
-  flex: 1;
-}
-@mixin buttonStyle {
-  width: 6rem;
-  margin: 0 0.3rem;
-  border: none;
-  background: $secondary-color;
-  color: $font-color-dark;
-  font-size: 1.1rem;
-  text-align: center;
-  padding: 1rem 0.2rem;
-  font-weight: 400;
-  border-radius: 30rem;
-  box-shadow: 4px 6px 15px rgba(0, 0, 0, 0.25);
-  cursor: pointer;
-  transition: 0.25s ease-in-out;
-  flex:1;
-  gap: 1rem;
-}
-@mixin buttonHover {
-  background: $font-color-dark;
-  color: $secondary-color;
-}
+
 .menuBar {
   width: 100%;
   height: 32vh;
@@ -52,19 +24,15 @@
     left: 0;
     display: grid;
     place-items: center;
-    &::after {
-      position: absolute;
-      content: "";
-      width: 100px;
-      height: 3px;
-      background: $font-color-light;
-      bottom: 35%;
-      left: 50%;
-      transform: translate(-50%,-50%);
+    & img {
+      width: 2rem;
+      background: $primary-color;
+      transform: translateY(14px);
+      border-radius: 100%;
     }
   }
   & .row1 {
-    @include rowAndCenter();
+    @include rowAndCenter;
     & button {
       @include buttonStyle;
       &:hover {
@@ -73,7 +41,7 @@
     }
   }
   & .row2 {
-    @include rowAndCenter();
+    @include rowAndCenter;
     & #name {
       color: $font-color-light;
       margin: 0 0.3rem;
@@ -120,34 +88,3 @@
     }
   }
 }
-// .optionYesActive {
-//   position: absolute;
-//   width: 10px !important;
-//   height: 17px !important;
-//   border-radius: 0 !important;
-//   border-bottom: 3px solid green;
-//   border-right: 3px solid green;
-//   top: 45%;
-//   left: 50%;
-//   transform: translate(-50%, -50%) rotate(40deg);
-// }
-// .optionNoActive {
-//   width: 3px !important;
-//   height: 17px !important;
-//   border-radius: 0 !important;
-//   position: absolute;
-//   background: red;
-//   top: 50%;
-//   left: 50%;
-//   transform: translate(-50%, -50%) rotate(-45deg);
-// }
-// .optionNoActive2{
-//   width: 3px !important;
-//   height: 17px !important;
-//   border-radius: 0 !important;
-//   position: absolute;
-//   background: red;
-//   top: 50%;
-//   left: 50%;
-//   transform: translate(-50%, -50%) rotate(90deg);
-// }

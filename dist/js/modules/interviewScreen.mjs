@@ -1,8 +1,6 @@
 const interviewScreenEl = document.createElement("section");
 interviewScreenEl.setAttribute("class", "interviewScreen");
 const body = document.querySelector("body");
-localStorage.setItem(`favourite`, []); 
-
 import { searchBarEl, logicForSearchBar } from "./searchBar.mjs";
 import {homePageEl, logicForHomePage} from "./homePageScreen.mjs"
 
@@ -74,6 +72,7 @@ interviewScreenEl.insertAdjacentHTML(
 export { interviewScreenEl };
 
 const logicForInterviewScreen = () => {
+  localStorage.setItem(`favourite`,[]); 
   let intolerances = [];
   let diet = [];
   let cusine = [];
@@ -87,8 +86,9 @@ const logicForInterviewScreen = () => {
     ".cusine .interviewElementInputs input"
   );
   const warningBanner = document.querySelector(".warningBanner");
-  const EvForEveryOption = (objectOption, typeOption) => {
-    objectOption.forEach((option) => {
+  //Adding jelly effect to ecery input
+  const EvForEveryOption = (ElementOption, typeOption) => {
+    ElementOption.forEach((option) => {
       option.addEventListener("click", () => {
         option.classList.toggle("optionActive");
         if (option.classList.value === "optionActive") {
@@ -151,7 +151,6 @@ const logicForInterviewScreen = () => {
       logicForHomePage()
     }
   });
-  //
 };
  
-export { logicForInterviewScreen, searchBarEl,logicForSearchBar,homePageEl,logicForHomePage }
+export { logicForInterviewScreen, searchBarEl,logicForSearchBar,homePageEl,logicForHomePage}

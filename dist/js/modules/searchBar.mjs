@@ -1,8 +1,8 @@
 import { logicForFoodInformationEl } from "./foodInformationScreen.mjs";
 import { createResetInterviewScreen } from "./resetInterviewScreen.mjs";
-import { logicForInterviewScreen,interviewScreenEl } from "./interviewScreen.mjs";
+import { API_KEY } from "../main.js";
+
 const searchBarEl = document.createElement("div");
-const API_KEY = "b4abc62e3c4f4b878aaa319313c873b1"
 
 searchBarEl.setAttribute("class", "menuBar");
 const body = document.querySelector("body")
@@ -30,31 +30,20 @@ searchBarEl.insertAdjacentHTML(
   </label>
   <button class="searchButton">Search</button>
 </div>
-<div class="moveBar"></div>
+<div class="moveBar"><img id="moveBarImage" src="./dist/images/arrow-down-svgrepo-com.svg"></div>
 `
 );
 const logicForSearchBar = () => {
   const menuBar = document.querySelector(".menuBar");
   const moveBar = document.querySelector(".moveBar");
-  const swipeDownMenuBar = () => {
-    moveBar.addEventListener("touchstart", () => {
-      menuBar.style.top = "0";
-      swipeUpMenuBar();
-    });
-  };
-  const swipeUpMenuBar = () => {
-    moveBar.addEventListener("touchstart", () => {
-      menuBar.style.top = "-18vh";
-      swipeDownMenuBar();
-    });
-  };
-  swipeDownMenuBar()
+  moveBar.addEventListener("touchstart", ()=>{
+    menuBar.classList.toggle("menuBarActive")
+    document.querySelector("#moveBarImage").classList.toggle("menuBarImageActive")
+  })
 
   let nameInput = document.querySelector(".name")
   let searchByInput = document.querySelector(".searchBy")
   const searchBtn = document.querySelector(".searchButton")
-  const interviewBtn = document.querySelector(".interviewScreenButton")
-  const homeBtn = document.querySelector(".homeScreenButton")
   searchBtn.addEventListener("click",()=>{
     if(searchByInput.value === "" || nameInput.value === ""){
       document.querySelector(".warningBanner").style = "top: 0; background: #2087d5; text-align: center; position: fixed; z-index: 3; width: 100%; height: 11vh; display: grid; place-items: center; font-size: 1.4rem;color:#fafafa; transition: .25s ease-in-out;"
@@ -65,8 +54,12 @@ const logicForSearchBar = () => {
       }, 1450);
     }else{
 
-      if(body.contains(document.querySelector(".searchResults"))===true){
+      if(body.contains(document.querySelector(".searchResults"))){
         body.removeChild(body.lastElementChild)
+      }
+      if(body.contains(document.querySelector(".foodInformation"))){
+        let el = document.querySelector(".foodInformation")
+        el.remove()
       }
       const searchResultsEl = document.createElement("section");
       searchResultsEl.setAttribute("class", "searchResults");
@@ -75,7 +68,7 @@ const logicForSearchBar = () => {
         if(searchByInput.value === "ingredients"){
           let searchType1 = "findByIngredients"
           fetch(
-            `https://api.spoonacular.com/recipes/${searchType1}?apiKey=${API_KEY}&${searchByInput.value}=${nameInput.value}&number=15`
+            `https://api.spoonacular.com/recipes/${searchType1}?apiKey=${API_KEY}&${searchByInput.value}=${nameInput.value}&number=5`
           )
             .then((response) => response.json())
             .then((data) => {
@@ -88,7 +81,6 @@ const logicForSearchBar = () => {
                     <p>${element.title}</p>
                   </div>`
                 );
-    
               })
               let searchResultFoodImages = document.querySelectorAll(".searchResultFoodImage")
               searchResultFoodImages.forEach((image,index)=>{
@@ -111,7 +103,7 @@ const logicForSearchBar = () => {
         }else{
           let searchType = "complexSearch"
           fetch(
-            `https://api.spoonacular.com/recipes/${searchType}?apiKey=${API_KEY}&${searchByInput.value}=${nameInput.value}&number=15`
+            `https://api.spoonacular.com/recipes/${searchType}?apiKey=${API_KEY}&${searchByInput.value}=${nameInput.value}&number=5`
           )
             .then((response) => response.json())
             .then((data) => {
@@ -140,34 +132,39 @@ const logicForSearchBar = () => {
                     logicForFoodInformationEl(searchResultItemDescription)
                   })
                 document.querySelector(".searchResults").style.display = "none";
-    
                 })
               })
             });
         }
-
     }
-
   })
+  const homeBtn = document.querySelector(".homeScreenButton")
   homeBtn.addEventListener("click",()=>{
     if(body.contains(document.querySelector(".searchResults"))){
-      document.querySelector(".searchResults").remove()
+      let el = document.querySelector(".searchResults")
+      el.remove();
       document.querySelector(".homePage").style.display = "flex"
       document.querySelector(".homePage").style.opacity = "1"
       document.querySelector(".homePage").style.zIndex = "1"
       window.scrollTo(0,0)
       if(body.contains(document.querySelector(".foodInformation"))){
-        document.querySelector(".foodInformation").remove()
+        let el = document.querySelector(".foodInformation")
+        el.remove()
       }
     }
+    document.querySelector(".menuBar").style.top = "-18vh"
   })
   const resetInterviewButton = document.querySelector(".interviewScreenButton")
   resetInterviewButton.addEventListener("click",function(){
-
+    window.scroll(0,0)
     document.querySelector(".homePage").style.display = "none"
     document.querySelector(".menuBar").style.display = "none"
     if(body.contains(document.querySelector(".searchResults"))){
       let el = document.querySelector(".searchResults")
+      el.remove()
+    }
+    if(body.contains(document.querySelector(".foodInformation"))){
+      let el = document.querySelector(".foodInformation")
       el.remove()
     }
  
@@ -185,6 +182,8 @@ const logicForSearchBar = () => {
       document.querySelector(".homePage").style.display = "flex"
     document.querySelector(".menuBar").style.display = "flex"
     })
+    document.querySelector(".menuBar").style.top = "-18vh"
+
   })
   const randomRecipeButton = document.querySelector(".randomRecipeButton")
   randomRecipeButton.addEventListener("click",function(){
@@ -198,6 +197,8 @@ const logicForSearchBar = () => {
     .then((randomRecipeResult) =>{
       logicForFoodInformationEl(randomRecipeResult.recipes[0])
     })
+    document.querySelector(".menuBar").style.top = "-18vh"
+
   })
  
 };

@@ -1,9 +1,5 @@
 @import 'variables';
-@mixin shadow {
-    -webkit-box-shadow: -23px 9px 100px -29px rgba(66, 68, 90, 1);
-    -moz-box-shadow: -23px 9px 100px -29px rgba(66, 68, 90, 1);
-    box-shadow: -23px 9px 100px -29px rgba(66, 68, 90, 1);
-}
+
 .start-screen {
     width: 100%;
     height: 100vh;
@@ -19,19 +15,22 @@
         position: absolute;
         top: 5vh;
         right: 0;
-        padding: 2rem;
-        padding-bottom: 160px;
+        padding: 2rem 2rem 160px 2rem;
         z-index: 1;
-        @include shadow();
+        @include shadow;
         & img {
             position: absolute;
             bottom: 5vh;
             right: 24vw;
             width: 40%;
-            -webkit-animation: slide-top 1.1s cubic-bezier(0.250, 0.460, 0.450, 0.940) infinite alternate ;
             animation: slide-top 1.1s cubic-bezier(0.250, 0.460, 0.450, 0.940) infinite alternate ;
-           
+                @include respond-to('sm'){
+                bottom: 3vh;
+                right: 28vw;
+                width: 25%;
+                }
         }
+       
     }
     .start-screen__element {
         width: 50vw;
@@ -55,8 +54,6 @@
         display: flex;
         flex-direction: column;
         gap: 1.2rem 0;
-        -webkit-box-shadow: -51px 51px 100px -29px rgba(66, 68, 90, 1);
-        -moz-box-shadow: -51px 51px 100px -29px rgba(66, 68, 90, 1);
         box-shadow: -51px 51px 100px -29px rgba(66, 68, 90, 1);
         z-index: 1;
         & ul {
@@ -65,17 +62,6 @@
             flex-direction: row;
             align-items: center;
             justify-content: space-evenly;
-            // & li::before {
-            //     content: "\2022";
-            //     color: $font-color-light;
-            //     font-weight: bold;
-            //     display: inline-block;
-            //     width: 1em;
-            //     margin-left: -1em;
-            //   }
-            // & li:first-child::before{
-            //     content: "";
-            // }
             & a {
                 text-decoration: none;
                 color: $font-color-light;

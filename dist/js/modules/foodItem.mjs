@@ -14,4 +14,3 @@ foodItemEl.insertAdjacentHTML(
   <h2>{data.results.title$}</h2>
 </div>`
 );
-export { foodItemEl };
