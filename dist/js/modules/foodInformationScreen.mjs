@@ -1,4 +1,5 @@
 import { API_KEY } from "../main.js";
+import { warningBannerActive } from "./searchBar.mjs";
 const body = document.querySelector("body");
 let similarRecipesArr = []
 let favouritesRecipes = []
@@ -7,10 +8,9 @@ const bandColors = ["e84317","f8e46c","813531","ff611d","982121","cf5c3c"]
 
 function refresh(element,favouritesIds){
   favouritesIds = localStorage.getItem("favourite").split(",")
-  // console.log(favouritesIds)
-  // console.log(element)
   favouritesRecipes = []
     if(favouritesIds.length>0){
+      warningBannerActive("Success","#339900","#f0f0f0")
       document.querySelector(".favouriteElement .foodItems").innerHTML = "<div></div>"
       favouritesIds.forEach((id,index)=>{
         fetch(
@@ -47,14 +47,17 @@ function refresh(element,favouritesIds){
           })
         })
       },1000)
+    }else {
+      warningBannerActive("Nothing to show")
     }
 }
 
 function createFoodInformationEl(element) {
+
   const foodInformationEL = document.createElement("section");
   foodInformationEL.setAttribute("class", "foodInformation");
   foodInformationEL.classList.add("swing-in-top-fwd")
-  setTimeout(function(){
+  setTimeout(()=>{
     foodInformationEL.classList.remove("swing-in-top-fwd")
   },500)
   foodInformationEL.insertAdjacentHTML(
@@ -103,12 +106,17 @@ const logicForFoodInformationEl = (element) => {
 
   console.log(favouritesIds)
   console.log(typeof favouritesIds)
+  
+  let menuBar = document.querySelector(".menuBar")
+  menuBar.classList.remove("menuBarActive")
 
   localStorage.setItem("favourite",favouritesIds)
+
   let homePageEl = document.querySelector(".homePage");
   homePageEl.style.zIndex = "-99999";
   homePageEl.style.opacity = "0";
   window.scrollTo(0, 0);
+
   createFoodInformationEl(element);
 
 
@@ -124,7 +132,7 @@ const logicForFoodInformationEl = (element) => {
 
   let recipeIngredients = document.querySelector(".description ul");
   element.extendedIngredients.forEach((line) => {
-    recipeIngredients.innerHTML += `<li>${line.originalString}</li>`;
+    recipeIngredients.insertAdjacentHTML('beforeend',`<li>${line.original}</li>`);
   });
   let descriptionFoodImage = document.querySelector(
     ".foodDescription .imageAndTags .foodImage"
@@ -140,8 +148,10 @@ const logicForFoodInformationEl = (element) => {
         localStorage.setItem("favourite",favouritesIds)
         addToFavouriteBtn.querySelector("img").src = "dist/images/Star 1.svg"
         console.log("exist")
+        warningBannerActive("Removed")
       }else{
         console.log("new")
+        warningBannerActive("Added to favourite")
         favouritesIds.push(element.id)
         localStorage.setItem("favourite",favouritesIds)
         addToFavouriteBtn.querySelector("img").src = "dist/images/Star 2.svg"
@@ -189,11 +199,14 @@ const logicForFoodInformationEl = (element) => {
         band.style.background = `#${bandColors[index]}`
       })
     });
-  
+ 
     if(isEvExist === 0){
-      document.querySelector(".favouriteElement .headingElement button").addEventListener("click",refresh.bind(this,element,favouritesIds))
-      document.querySelector(".favouriteElement .headingElement #deleteAllFavourites").addEventListener("click",()=>{
+      const refreshButton =  document.querySelector(".favouriteElement .headingElement #refreshFavourites")
+      const deleteAllFavouritesButton =  document.querySelector(".favouriteElement .headingElement #deleteAllFavourites")
+      refreshButton.addEventListener("click",refresh.bind(this,element,favouritesIds))
+      deleteAllFavouritesButton.addEventListener("click",()=>{
         localStorage.setItem("favourite",[])
+        warningBannerActive("Deleted","#cc3300","#f0f0f0")
       })
     }
     isEvExist++

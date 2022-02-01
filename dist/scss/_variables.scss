@@ -4,10 +4,13 @@ $font-color-dark: #3f3d56;
 $primary-color: #e84317;
 $secondary-color: #f8e46c;
 .menuBarActive {
-  top: 0 !important;
+  top: 0 ;
 }
 .menuBarImageActive {
   transform: rotate(180deg) translateY(-14px) !important;
+}
+.buttonActive {
+  transform: rotate(360deg) translateY(-50%) !important;
 }
 @mixin tags {
   font-size: 16px;
@@ -113,7 +116,7 @@ $secondary-color: #f8e46c;
   box-shadow: -23px 9px 100px -29px rgba(66, 68, 90, 1);
 }
 $breakpoints: (
-  xs: 340px,
+  xs: 320px,
   sm: 576px,
   md: 768px,
   lg: 992px,
@@ -124,7 +127,7 @@ $breakpoints: (
   // If the key exists in the map
   @if map-has-key($breakpoints, $breakpoint) {
     // Prints a media query based on the value
-    @media (max-width: map-get($breakpoints, $breakpoint)) {
+    @media (min-width: map-get($breakpoints, $breakpoint)) {
       @content;
     }
   }

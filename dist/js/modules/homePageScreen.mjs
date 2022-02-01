@@ -6,20 +6,16 @@ homePageEl.setAttribute("class", "homePage");
 homePageEl.insertAdjacentHTML(
   "beforeend",
   `
-  <div class="warningBanner"></div>
 <div class="homePageElement tryThisElement">
   <h1 class="headingElement">Try this !</h1>
   <div class="foodItems">
-
   </div>
 </div>
 <div class="homePageElement favouriteElement">
-  <h1 class="headingElement">Favourite<button><img src="dist/images/refresh-svgrepo-com.svg"/></button><button id="deleteAllFavourites"><img src="dist/images/recycle-bin-svgrepo-com.svg"</button></h1>
+  <h1 class="headingElement">Favourite<button id="refreshFavourites"><img src="dist/images/refresh-svgrepo-com.svg"/></button><button id="deleteAllFavourites"><img src="dist/images/recycle-bin-svgrepo-com.svg"</button></h1>
   <div class="foodItems">
-  
   </div>
 </div>
-
 </div>
 `
 );
@@ -32,7 +28,7 @@ const logicForHomePage = () => {
   let cusine = localStorage.getItem("cusine");
   let diet = localStorage.getItem("diet");
   let tryThisElement = document.querySelector(".tryThisElement .foodItems");
-
+  document.body.insertAdjacentHTML("beforeend",`<div class="warningBanner"></div>`)
   getFoodData();
   function getFoodData() {
     fetch(
@@ -49,7 +45,6 @@ const logicForHomePage = () => {
           <div class="foodItem" style="height:15rem;display:grid;place-items:center;padding:0 1rem;text-align:center;opacity:1;">
           <h1>Nothing matches your preferences :(</h1>
             <h2>Try to do interview again by reseting it in menu</h2>
-
           </div>`;
         } else {
           searchByFoodId(recipesId);
@@ -85,37 +80,32 @@ const logicForHomePage = () => {
         <h2>${recipesInformation[i].title}</h2>
       </div>`
     );
-    let foodImages = document.querySelectorAll(
-      ".tryThisElement .foodItems .foodItem .foodImage"
-    );
+
+    let foodImages = document.querySelectorAll(".tryThisElement .foodItems .foodItem .foodImage");
     foodImages[i].style.backgroundImage = `url(${recipesInformation[i].image})`;
-    let foodItems = document.querySelectorAll(
-      ".tryThisElement .foodItems .foodItem"
-    );
 
-
-    foodItems[i].addEventListener(
-      "click",
-      logicForFoodInformationEl.bind(this, recipesInformation[i])
-    );
-    console.log(i)
+    let foodItems = document.querySelectorAll(".tryThisElement .foodItems .foodItem");
+    foodItems[i].addEventListener("click",logicForFoodInformationEl.bind(this, recipesInformation[i]));
     i++;
-    let foodItemsObserver = document.querySelectorAll(
-      ".tryThisElement .foodItems .foodItem"
-    );
-    const observer = new IntersectionObserver((entries) => {
-      entries.forEach(entry =>{
-        entry.target.classList.toggle("show",entry.isIntersecting)
-        if(entry.isIntersecting) observer.unobserve(entry.target)
-      })
-    },{
-      threshold: 0.1,
-    });
-    foodItemsObserver.forEach(item =>{
-      observer.observe(item)
-    })
+
+      function observeHomePage(){
+        let foodItemsObserver = document.querySelectorAll(
+          ".tryThisElement .foodItems .foodItem"
+        );
+        const observer = new IntersectionObserver((entries) => {
+          entries.forEach(entry =>{
+            entry.target.classList.toggle("show",entry.isIntersecting)
+            if(entry.isIntersecting) observer.unobserve(entry.target)
+          })
+        },{
+          threshold: 0.1,
+        });
+        foodItemsObserver.forEach(item =>{
+          observer.observe(item)
+        })
+      }
+      observeHomePage()
   }
- 
 };
 
 export { homePageEl, logicForHomePage };

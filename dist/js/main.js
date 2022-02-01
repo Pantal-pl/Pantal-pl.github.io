@@ -9,7 +9,7 @@ import {
 } from "./modules/interviewScreen.mjs";
 
 const body = document.querySelector("body");
-const API_KEY = "e8d73a53232448f4953b4545ed358b38"
+var API_KEY = "2bc61db4f6364c6baf24ffb62496d497"
 
 const insertScreen = (elToInsert) => {
   body.appendChild(elToInsert);
@@ -31,6 +31,5 @@ startBtn.addEventListener("click", () => {
       body.appendChild(homePageEl)
       logicForHomePage()
   }
-
 });
 export {API_KEY}

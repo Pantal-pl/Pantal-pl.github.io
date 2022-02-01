@@ -18,3 +18,15 @@
     -webkit-animation: jello-horizontal 0.7s both;
 	        animation: jello-horizontal 0.7s both;
 }
+
+body{
+    @include respond-to('xs'){
+        font-size:15.5px;     
+    }
+    @include respond-to('sm'){
+        font-size:16px;
+    }
+    @include respond-to('md'){
+        font-size:17px;      
+    }
+}

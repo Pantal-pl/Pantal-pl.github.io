@@ -3,6 +3,7 @@ interviewScreenEl.setAttribute("class", "interviewScreen");
 const body = document.querySelector("body");
 import { searchBarEl, logicForSearchBar } from "./searchBar.mjs";
 import {homePageEl, logicForHomePage} from "./homePageScreen.mjs"
+import { warningBannerActive } from "./searchBar.mjs";
 
 interviewScreenEl.insertAdjacentHTML(
   "beforeend",
@@ -72,6 +73,7 @@ interviewScreenEl.insertAdjacentHTML(
 export { interviewScreenEl };
 
 const logicForInterviewScreen = () => {
+  window.scroll(0,0)
   localStorage.setItem(`favourite`,[]); 
   let intolerances = [];
   let diet = [];
@@ -86,7 +88,7 @@ const logicForInterviewScreen = () => {
     ".cusine .interviewElementInputs input"
   );
   const warningBanner = document.querySelector(".warningBanner");
-  //Adding jelly effect to ecery input
+  //Adding jelly effect to every input
   const EvForEveryOption = (ElementOption, typeOption) => {
     ElementOption.forEach((option) => {
       option.addEventListener("click", () => {
@@ -97,11 +99,7 @@ const logicForInterviewScreen = () => {
             console.log(intolerances);
           } else if (typeOption === "diet") {
             if (diet.length > 0) {
-              warningBanner.classList.add("warningBannerActive");
-              warningBanner.textContent = "You can pick max one diet"
-              setTimeout(() => {
-                warningBanner.classList.remove("warningBannerActive");
-              }, 1850);
+              warningBannerActive("You can pick max one diet")
               option.classList.remove("optionActive");
             } else {
               diet.push(option.value);
@@ -134,11 +132,7 @@ const logicForInterviewScreen = () => {
   const saveBtn = document.querySelector(".saveBtn");
   saveBtn.addEventListener("click", () => {
     if (cusine.length == 0) {
-      warningBanner.classList.add("warningBannerActive");
-      warningBanner.textContent = "Choose at least one cusine"
-      setTimeout(() => {
-        warningBanner.classList.remove("warningBannerActive");
-      }, 1850);
+      warningBannerActive("Choose at least one cusine")
     } else {
       localStorage.setItem("intolerances", intolerances);
       localStorage.setItem("diet", diet);
