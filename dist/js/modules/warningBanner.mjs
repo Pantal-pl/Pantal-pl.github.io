@@ -5,6 +5,11 @@ function warningBannerActive(text,bgColor,fontColor,fontSize){
     warningBanner.style.background = bgColor
     warningBanner.style.color = fontColor
     warningBanner.style.fontSize = fontSize
+    
+    warningBanner.insertAdjacentHTML("beforeend",`<progress id="progress" value="0" max="100"></progress>`) 
+    setTimeout(()=>{
+      document.querySelector("#progress").style.width = "0";
+    },250)
     setTimeout(() => {
       warningBanner.style.top = "-11.1vh"
       warningBanner.textContent = ""

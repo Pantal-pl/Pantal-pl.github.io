@@ -12,16 +12,44 @@
           transform: rotate(360deg) translateY(-50%) !important;
 }
 
+#progress {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  border: none;
+  height: 7px;
+  -webkit-transform-origin: 0% 0%;
+          transform-origin: 0% 0%;
+  -webkit-transition: 1200ms ease-in-out;
+  transition: 1200ms ease-in-out;
+  -webkit-appearance: none;
+     -moz-appearance: none;
+          appearance: none;
+}
+
+progress::-moz-progress-bar {
+  background: #f0fff0;
+}
+
+progress::-webkit-progress-value {
+  background: #f0fff0;
+}
+
+progress::-webkit-progress-bar {
+  background: #f0fff0;
+}
+
 .lds-spinner {
-  color: red;
   display: inline-block;
   position: absolute;
   width: 80px;
   height: 80px;
-  margin-left: 50%;
-  padding-top: 15px;
+  margin-left: 20%;
+  padding-top: 2rem;
   -webkit-transform: translateX(-50%);
           transform: translateX(-50%);
+  -webkit-transition: 1s ease-in-out;
+  transition: 1s ease-in-out;
 }
 
 .lds-spinner div {
@@ -714,16 +742,44 @@
           transform: rotate(360deg) translateY(-50%) !important;
 }
 
+#progress {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  border: none;
+  height: 7px;
+  -webkit-transform-origin: 0% 0%;
+          transform-origin: 0% 0%;
+  -webkit-transition: 1200ms ease-in-out;
+  transition: 1200ms ease-in-out;
+  -webkit-appearance: none;
+     -moz-appearance: none;
+          appearance: none;
+}
+
+progress::-moz-progress-bar {
+  background: #f0fff0;
+}
+
+progress::-webkit-progress-value {
+  background: #f0fff0;
+}
+
+progress::-webkit-progress-bar {
+  background: #f0fff0;
+}
+
 .lds-spinner {
-  color: red;
   display: inline-block;
   position: absolute;
   width: 80px;
   height: 80px;
-  margin-left: 50%;
-  padding-top: 15px;
+  margin-left: 20%;
+  padding-top: 2rem;
   -webkit-transform: translateX(-50%);
           transform: translateX(-50%);
+  -webkit-transition: 1s ease-in-out;
+  transition: 1s ease-in-out;
 }
 
 .lds-spinner div {
@@ -1247,16 +1303,44 @@
           transform: rotate(360deg) translateY(-50%) !important;
 }
 
+#progress {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  border: none;
+  height: 7px;
+  -webkit-transform-origin: 0% 0%;
+          transform-origin: 0% 0%;
+  -webkit-transition: 1200ms ease-in-out;
+  transition: 1200ms ease-in-out;
+  -webkit-appearance: none;
+     -moz-appearance: none;
+          appearance: none;
+}
+
+progress::-moz-progress-bar {
+  background: #f0fff0;
+}
+
+progress::-webkit-progress-value {
+  background: #f0fff0;
+}
+
+progress::-webkit-progress-bar {
+  background: #f0fff0;
+}
+
 .lds-spinner {
-  color: red;
   display: inline-block;
   position: absolute;
   width: 80px;
   height: 80px;
-  margin-left: 50%;
-  padding-top: 15px;
+  margin-left: 20%;
+  padding-top: 2rem;
   -webkit-transform: translateX(-50%);
           transform: translateX(-50%);
+  -webkit-transition: 1s ease-in-out;
+  transition: 1s ease-in-out;
 }
 
 .lds-spinner div {
@@ -2244,16 +2328,44 @@
           transform: rotate(360deg) translateY(-50%) !important;
 }
 
+#progress {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  border: none;
+  height: 7px;
+  -webkit-transform-origin: 0% 0%;
+          transform-origin: 0% 0%;
+  -webkit-transition: 1200ms ease-in-out;
+  transition: 1200ms ease-in-out;
+  -webkit-appearance: none;
+     -moz-appearance: none;
+          appearance: none;
+}
+
+progress::-moz-progress-bar {
+  background: #f0fff0;
+}
+
+progress::-webkit-progress-value {
+  background: #f0fff0;
+}
+
+progress::-webkit-progress-bar {
+  background: #f0fff0;
+}
+
 .lds-spinner {
-  color: red;
   display: inline-block;
   position: absolute;
   width: 80px;
   height: 80px;
-  margin-left: 50%;
-  padding-top: 15px;
+  margin-left: 20%;
+  padding-top: 2rem;
   -webkit-transform: translateX(-50%);
           transform: translateX(-50%);
+  -webkit-transition: 1s ease-in-out;
+  transition: 1s ease-in-out;
 }
 
 .lds-spinner div {
@@ -2962,16 +3074,44 @@
           transform: rotate(360deg) translateY(-50%) !important;
 }
 
+#progress {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  border: none;
+  height: 7px;
+  -webkit-transform-origin: 0% 0%;
+          transform-origin: 0% 0%;
+  -webkit-transition: 1200ms ease-in-out;
+  transition: 1200ms ease-in-out;
+  -webkit-appearance: none;
+     -moz-appearance: none;
+          appearance: none;
+}
+
+progress::-moz-progress-bar {
+  background: #f0fff0;
+}
+
+progress::-webkit-progress-value {
+  background: #f0fff0;
+}
+
+progress::-webkit-progress-bar {
+  background: #f0fff0;
+}
+
 .lds-spinner {
-  color: red;
   display: inline-block;
   position: absolute;
   width: 80px;
   height: 80px;
-  margin-left: 50%;
-  padding-top: 15px;
+  margin-left: 20%;
+  padding-top: 2rem;
   -webkit-transform: translateX(-50%);
           transform: translateX(-50%);
+  -webkit-transition: 1s ease-in-out;
+  transition: 1s ease-in-out;
 }
 
 .lds-spinner div {
@@ -3495,16 +3635,44 @@
           transform: rotate(360deg) translateY(-50%) !important;
 }
 
+#progress {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  border: none;
+  height: 7px;
+  -webkit-transform-origin: 0% 0%;
+          transform-origin: 0% 0%;
+  -webkit-transition: 1200ms ease-in-out;
+  transition: 1200ms ease-in-out;
+  -webkit-appearance: none;
+     -moz-appearance: none;
+          appearance: none;
+}
+
+progress::-moz-progress-bar {
+  background: #f0fff0;
+}
+
+progress::-webkit-progress-value {
+  background: #f0fff0;
+}
+
+progress::-webkit-progress-bar {
+  background: #f0fff0;
+}
+
 .lds-spinner {
-  color: red;
   display: inline-block;
   position: absolute;
   width: 80px;
   height: 80px;
-  margin-left: 50%;
-  padding-top: 15px;
+  margin-left: 20%;
+  padding-top: 2rem;
   -webkit-transform: translateX(-50%);
           transform: translateX(-50%);
+  -webkit-transition: 1s ease-in-out;
+  transition: 1s ease-in-out;
 }
 
 .lds-spinner div {
@@ -4261,16 +4429,44 @@
           transform: rotate(360deg) translateY(-50%) !important;
 }
 
+#progress {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  border: none;
+  height: 7px;
+  -webkit-transform-origin: 0% 0%;
+          transform-origin: 0% 0%;
+  -webkit-transition: 1200ms ease-in-out;
+  transition: 1200ms ease-in-out;
+  -webkit-appearance: none;
+     -moz-appearance: none;
+          appearance: none;
+}
+
+progress::-moz-progress-bar {
+  background: #f0fff0;
+}
+
+progress::-webkit-progress-value {
+  background: #f0fff0;
+}
+
+progress::-webkit-progress-bar {
+  background: #f0fff0;
+}
+
 .lds-spinner {
-  color: red;
   display: inline-block;
   position: absolute;
   width: 80px;
   height: 80px;
-  margin-left: 50%;
-  padding-top: 15px;
+  margin-left: 20%;
+  padding-top: 2rem;
   -webkit-transform: translateX(-50%);
           transform: translateX(-50%);
+  -webkit-transition: 1s ease-in-out;
+  transition: 1s ease-in-out;
 }
 
 .lds-spinner div {
@@ -4888,16 +5084,44 @@
           transform: rotate(360deg) translateY(-50%) !important;
 }
 
+#progress {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  border: none;
+  height: 7px;
+  -webkit-transform-origin: 0% 0%;
+          transform-origin: 0% 0%;
+  -webkit-transition: 1200ms ease-in-out;
+  transition: 1200ms ease-in-out;
+  -webkit-appearance: none;
+     -moz-appearance: none;
+          appearance: none;
+}
+
+progress::-moz-progress-bar {
+  background: #f0fff0;
+}
+
+progress::-webkit-progress-value {
+  background: #f0fff0;
+}
+
+progress::-webkit-progress-bar {
+  background: #f0fff0;
+}
+
 .lds-spinner {
-  color: red;
   display: inline-block;
   position: absolute;
   width: 80px;
   height: 80px;
-  margin-left: 50%;
-  padding-top: 15px;
+  margin-left: 20%;
+  padding-top: 2rem;
   -webkit-transform: translateX(-50%);
           transform: translateX(-50%);
+  -webkit-transition: 1s ease-in-out;
+  transition: 1s ease-in-out;
 }
 
 .lds-spinner div {
@@ -5710,16 +5934,44 @@
           transform: rotate(360deg) translateY(-50%) !important;
 }
 
+#progress {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  border: none;
+  height: 7px;
+  -webkit-transform-origin: 0% 0%;
+          transform-origin: 0% 0%;
+  -webkit-transition: 1200ms ease-in-out;
+  transition: 1200ms ease-in-out;
+  -webkit-appearance: none;
+     -moz-appearance: none;
+          appearance: none;
+}
+
+progress::-moz-progress-bar {
+  background: #f0fff0;
+}
+
+progress::-webkit-progress-value {
+  background: #f0fff0;
+}
+
+progress::-webkit-progress-bar {
+  background: #f0fff0;
+}
+
 .lds-spinner {
-  color: red;
   display: inline-block;
   position: absolute;
   width: 80px;
   height: 80px;
-  margin-left: 50%;
-  padding-top: 15px;
+  margin-left: 20%;
+  padding-top: 2rem;
   -webkit-transform: translateX(-50%);
           transform: translateX(-50%);
+  -webkit-transition: 1s ease-in-out;
+  transition: 1s ease-in-out;
 }
 
 .lds-spinner div {

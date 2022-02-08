@@ -4,7 +4,7 @@ $font-color-dark: #3f3d56;
 $primary-color: #e84317;
 $secondary-color: #f8e46c;
 .menuBarActive {
-  top: 0 ;
+  top: 0;
 }
 .menuBarImageActive {
   transform: rotate(180deg) translateY(-14px) !important;
@@ -12,16 +12,36 @@ $secondary-color: #f8e46c;
 .buttonActive {
   transform: rotate(360deg) translateY(-50%) !important;
 }
+#progress {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  border: none;
+  height: 7px;
+  transform-origin: 0% 0%; 
+  transition: 1200ms ease-in-out;
+  appearance: none;
+}
+progress::-moz-progress-bar {
+  background: #f0fff0;
+}
 
+progress::-webkit-progress-value {
+  background: #f0fff0;
+}
+
+progress::-webkit-progress-bar {
+  background: #f0fff0;
+}
 .lds-spinner {
-  color: red;
   display: inline-block;
   position: absolute;
   width: 80px;
   height: 80px;
-  margin-left: 50%;
-  padding-top: 15px;
+  margin-left: 20%;
+  padding-top: 2rem;
   transform: translateX(-50%);
+  transition: 1s ease-in-out;
 }
 .lds-spinner div {
   transform-origin: 40px 40px;
@@ -152,7 +172,6 @@ $secondary-color: #f8e46c;
   position: absolute;
   width: 12px;
   height: 12px;
-
 }
 @mixin interviewHeadingPseudoElements {
   content: "";
@@ -203,7 +222,7 @@ $breakpoints: (
   md: 768px,
   lg: 992px,
   xl: 1200px,
-  xxl: 1400px
+  xxl: 1400px,
 );
 @mixin respond-to($breakpoint) {
   // If the key exists in the map
@@ -575,31 +594,32 @@ $breakpoints: (
  * animation slide-in-left
  * ----------------------------------------
  */
- @-webkit-keyframes slide-in-left {
+@-webkit-keyframes slide-in-left {
   0% {
     -webkit-transform: translateX(-1000px);
-            transform: translateX(-1000px);
+    transform: translateX(-1000px);
     opacity: 0;
   }
   100% {
     -webkit-transform: translateX(0);
-            transform: translateX(0);
+    transform: translateX(0);
     opacity: 1;
   }
 }
 @keyframes slide-in-left {
   0% {
     -webkit-transform: translateX(-1000px);
-            transform: translateX(-1000px);
+    transform: translateX(-1000px);
     opacity: 0;
   }
   100% {
     -webkit-transform: translateX(0);
-            transform: translateX(0);
+    transform: translateX(0);
     opacity: 1;
   }
 }
 .slide-in-left {
-	-webkit-animation: slide-in-left 0.5s cubic-bezier(0.250, 0.460, 0.450, 0.940) both;
-	        animation: slide-in-left 0.5s cubic-bezier(0.250, 0.460, 0.450, 0.940) both;
+  -webkit-animation: slide-in-left 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94)
+    both;
+  animation: slide-in-left 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94) both;
 }
