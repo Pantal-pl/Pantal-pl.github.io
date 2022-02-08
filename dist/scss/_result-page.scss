@@ -41,4 +41,22 @@
       width: calc(50% - 1rem);
       }
     }
+    & .showNewBtn {
+      position: absolute;
+      bottom: 1rem;
+      left: 64%;
+      transform: translateX(-60%);
+      border: none;
+      background: $secondary-color;
+      width: 3.5rem;
+      aspect-ratio: 1/1;
+      border-radius: 100%;
+      display: grid;
+      place-items: center;
+      cursor: pointer;
+      margin: -3rem;
+      & img {
+        width: 2rem;
+      }
+    }
 }

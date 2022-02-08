@@ -1,3 +1,4 @@
+
 function createResetInterviewScreen() {
   const body = document.querySelector("body")
   const resetInterviewScreenEl = document.createElement("section");
@@ -15,4 +16,42 @@ function createResetInterviewScreen() {
   );
   body.appendChild(resetInterviewScreenEl)
 }
-export { createResetInterviewScreen };
+
+function resetInterviewScreen(){
+  const resetInterviewButton = document.querySelector(".interviewScreenButton")
+  resetInterviewButton.addEventListener("click",function(){
+  window.scroll(0,0)
+  document.querySelector(".homePage").style.display = "none"
+  document.querySelector(".menuBar").style.display = "none"
+  if(document.body.contains(document.querySelector(".searchResults"))){
+    let el = document.querySelector(".searchResults")
+    el.remove()
+  }
+  if(document.body.contains(document.querySelector(".foodInformation"))){
+    let el = document.querySelector(".foodInformation")
+    el.remove()
+  }
+
+  createResetInterviewScreen()
+
+  document.querySelector(".yes").addEventListener("click",function(){
+    localStorage.setItem("cusine","")
+    localStorage.setItem("intolerances","")
+    localStorage.setItem("diet","")
+    localStorage.setItem("interviewDone","")
+    localStorage.setItem("recipesRange","")
+    window.location.reload()
+  })
+  document.querySelector(".no").addEventListener("click",function(){
+    let homePage = document.querySelector(".homePage")
+    document.querySelector(".resetInterviewScreen").remove()
+    homePage.style.display = "flex"
+    homePage.style.zIndex = "1"
+    homePage.style.opacity = "1"
+  document.querySelector(".menuBar").style.display = "flex"
+  })
+  document.querySelector(".menuBar").classList.remove("menuBarActive")
+
+})
+}
+export { resetInterviewScreen };

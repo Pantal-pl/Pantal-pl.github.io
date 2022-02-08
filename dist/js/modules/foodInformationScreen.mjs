@@ -1,5 +1,7 @@
 import { API_KEY } from "../main.js";
-import { warningBannerActive } from "./searchBar.mjs";
+import { warningBannerActive } from "./warningBanner.mjs";
+
+
 const body = document.querySelector("body");
 let similarRecipesArr = []
 let favouritesRecipes = []
@@ -56,9 +58,9 @@ function createFoodInformationEl(element) {
 
   const foodInformationEL = document.createElement("section");
   foodInformationEL.setAttribute("class", "foodInformation");
-  foodInformationEL.classList.add("swing-in-top-fwd")
+  foodInformationEL.classList.add("slide-in-left")
   setTimeout(()=>{
-    foodInformationEL.classList.remove("swing-in-top-fwd")
+    foodInformationEL.classList.remove("slide-in-left")
   },500)
   foodInformationEL.insertAdjacentHTML(
     "beforeend",
@@ -175,7 +177,7 @@ const logicForFoodInformationEl = (element) => {
 
   let similarRecipes = document.querySelector(".similarRecipes");
   fetch(
-    `https://api.spoonacular.com/recipes/${element.id}/similar?apiKey=${API_KEY}&number=4`
+    `https://api.spoonacular.com/recipes/${element.id}/similar?apiKey=${API_KEY}&number=${localStorage.getItem("recipesRange")}`
   )
     .then((response) => response.json())
     .then((similarRecipe) => {

@@ -5,7 +5,9 @@
     padding-top: 18vh;
     display: flex;
     flex-direction: column;
-
+    @include respond-to('sm'){
+        padding-top: 20vh;
+     }
     & .favouriteElement {
         & .foodItems{
             & .foodItem {
@@ -27,12 +29,22 @@
                place-items: center;
                cursor: pointer;
                transition: transform .25s ease-in-out;
+               @include respond-to('xs'){
+               padding: .6rem; 
+               right: -3.5rem;
+            }
                &:nth-of-type(2){
                 right: -9.5rem;
                 background: #cc3300;
+                @include respond-to('xs'){
+                    right: -7.5rem;
+                 }
                }
                & img {
                    width: 1.7rem;
+                   @include respond-to('xs'){
+                    width: 1.4rem;
+                 }
                }
            }
        }
@@ -48,6 +60,11 @@
             text-align: center;
             position: relative;
             margin-left: 1rem;
+            @include respond-to('xs'){
+                padding: .6rem .9rem;
+                font-size: .9rem;
+                font-size: 1.5rem;
+             }
             &::before{
                 position: absolute;
                 content: "";
@@ -75,6 +92,7 @@
             overflow-x: scroll;
             padding: 2.4rem 0;
             padding-left: 1rem;
+     
             &::-webkit-scrollbar {
                 width: 0;
             }

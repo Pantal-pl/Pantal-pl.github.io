@@ -9,6 +9,20 @@ homePageEl.insertAdjacentHTML(
 <div class="homePageElement tryThisElement">
   <h1 class="headingElement">Try this !</h1>
   <div class="foodItems">
+    <div class="lds-spinner">
+      <div></div>
+      <div></div>
+      <div></div>
+      <div></div>
+      <div></div>
+      <div></div>
+      <div></div>
+      <div></div>
+      <div></div>
+      <div></div>
+      <div></div>
+      <div></div>
+    </div>
   </div>
 </div>
 <div class="homePageElement favouriteElement">
@@ -29,10 +43,13 @@ const logicForHomePage = () => {
   let diet = localStorage.getItem("diet");
   let tryThisElement = document.querySelector(".tryThisElement .foodItems");
   document.body.insertAdjacentHTML("beforeend",`<div class="warningBanner"></div>`)
+ if(localStorage.getItem("recipesRange")=== "undefined"){
+   localStorage.setItem("recipesRange",4)
+ }
   getFoodData();
   function getFoodData() {
     fetch(
-      `https://api.spoonacular.com/recipes/complexSearch?apiKey=${API_KEY}&cuisine=${cusine}&diet=${diet}&intolerances=${intolerances}&number=5`
+      `https://api.spoonacular.com/recipes/complexSearch?apiKey=${API_KEY}&cuisine=${cusine}&diet=${diet}&intolerances=${intolerances}&number=${localStorage.getItem("recipesRange")}`
     )
       .then((response) => response.json())
       .then((data) => {
@@ -47,6 +64,10 @@ const logicForHomePage = () => {
             <h2>Try to do interview again by reseting it in menu</h2>
           </div>`;
         } else {
+          setTimeout(()=>{
+            let el = document.querySelector(".lds-spinner")
+          el.remove()
+          },600)
           searchByFoodId(recipesId);
         }
       });
@@ -60,6 +81,7 @@ const logicForHomePage = () => {
         .then((ids) => {
           recipesInformation.push(ids);
           insertFoodData(recipesInformation);
+          console.log(recipesInformation)
         });
     });
   }
