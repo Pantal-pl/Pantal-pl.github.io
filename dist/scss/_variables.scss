@@ -19,7 +19,7 @@ $secondary-color: #f8e46c;
   border: none;
   height: 7px;
   transform-origin: 0% 0%; 
-  transition: 1200ms ease-in-out;
+  transition: 1400ms ease-in-out;
   appearance: none;
 }
 progress::-moz-progress-bar {
@@ -41,7 +41,7 @@ progress::-webkit-progress-bar {
   margin-left: 20%;
   padding-top: 2rem;
   transform: translateX(-50%);
-  transition: 1s ease-in-out;
+  transition:  1s ease-in-out;
 }
 .lds-spinner div {
   transform-origin: 40px 40px;
@@ -116,16 +116,18 @@ progress::-webkit-progress-bar {
 }
 @mixin tags {
   font-size: 16px;
-  margin: 1.2rem 0 0 0.5rem;
+  margin: 2rem 1.5rem 0 1.5rem;
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 10px;
+  gap: 1rem;
+
   & p {
     border: 1px solid #e3e3e3;
     border-radius: 30rem;
     padding: 6px 8px;
     text-indent: 0;
+    width: max-content;
   }
   & h3 {
     border-bottom: 2px solid $primary-color;
@@ -223,6 +225,7 @@ $breakpoints: (
   lg: 992px,
   xl: 1200px,
   xxl: 1400px,
+  xxxl: 2560px,
 );
 @mixin respond-to($breakpoint) {
   // If the key exists in the map

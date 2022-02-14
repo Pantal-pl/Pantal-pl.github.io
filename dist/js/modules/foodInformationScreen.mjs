@@ -55,7 +55,6 @@ function refresh(element,favouritesIds){
 }
 
 function createFoodInformationEl(element) {
-
   const foodInformationEL = document.createElement("section");
   foodInformationEL.setAttribute("class", "foodInformation");
   foodInformationEL.classList.add("slide-in-left")
@@ -73,9 +72,9 @@ function createFoodInformationEl(element) {
       </button>
       <div class="tags">
         <h3>About</h3>
-        <p>${element.dishTypes[0]}</p>
-        <p>${element.cuisines[0]}</p>
-        <p>Servings: ${element.servings}</p>
+        <p id="dishTypes">${element.dishTypes[0]}</p>
+        <p id="cuisines">${element.cuisines[0]}</p>
+        <p id="servings">Servings: ${element.servings}</p>
       </div>
     </div>
     <div class="description">
@@ -98,10 +97,13 @@ function createFoodInformationEl(element) {
   </div>
   `
   );
+
+  
   body.appendChild(foodInformationEL);
 
 }
 const logicForFoodInformationEl = (element) => {
+  
   console.log(element)
   let favouritesIds = localStorage.getItem("favourite").split(",")
   favouritesIds = favouritesIds.filter((item) => item != "")
@@ -121,7 +123,12 @@ const logicForFoodInformationEl = (element) => {
 
   createFoodInformationEl(element);
 
-
+  if(element.cuisines.length === 0) {
+    document.querySelector("#cuisines").textContent = "Not found"
+  }
+  if(element.dishTypes.length === 0) {
+    document.querySelector("#dishTypes").textContent = "Not found"
+  }
   let recipeDescription = document.querySelector(".description p");
   if (recipeDescription.innerText === "null") {
     recipeDescription.innerText = "Instruction not found :(";
@@ -170,7 +177,7 @@ const logicForFoodInformationEl = (element) => {
     body.lastChild.remove();
     window.scrollTo(0, 0);
     if(body.contains(document.querySelector(".searchResults"))){
-      document.querySelector(".searchResults").style.display = "flex";
+      document.querySelector(".searchResults").style.display = "grid";
     }
   });
 

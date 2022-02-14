@@ -1,5 +1,5 @@
 @import 'variables';
-
+$letters : 40px;
 .start-screen {
     width: 100%;
     height: 100vh;
@@ -15,7 +15,7 @@
         position: absolute;
         top: 5vh;
         right: 0;
-        padding: 2rem 2rem 160px 2rem;
+        padding: 2rem;
         z-index: 1;
         @include shadow;
         & img {
@@ -29,8 +29,40 @@
                 right: 28vw;
                 width: 25%;
                 }
+            @media (min-width:1024px){
+                bottom: 4vh;
+                right: 4vw;
+                width: 20%;
+            }
         }
-       
+        @media (min-width:1024px){
+            h1 {
+                font-size: 3rem;
+            }
+            p {
+                font-size: 1.6rem;
+            }
+        } 
+        & .animated-text {
+            display: flex;
+            gap: .5rem;
+            position: absolute;
+            bottom: 6vh;
+            & .letter {
+                padding: .5rem;
+                transition: .25s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+                cursor: pointer;
+                font-size: 1.4rem;
+                &:hover {
+                    transform: translateY(-10px);
+                    background: red;
+                }
+            }
+            @each $var in list {
+                
+            }
+        }
+
     }
     .start-screen__element {
         width: 50vw;
@@ -39,7 +71,7 @@
         position: absolute;
         right: 0;
         top: 74.9vh;
-        z-index: 1;
+        z-index: 2;
     }
     .start-screen__footer {
         width: 100vw;
@@ -83,18 +115,17 @@
         right: 60%;
         font-weight: 400;
         font-size: 2rem;
-        border-radius: 2rem;
+        border-radius: 1000rem;
         letter-spacing: 3px;
         background: $secondary-color;
         color: $font-color-dark;
         cursor: pointer;
+        transition: all .25s ease-in-out;
         @include shadow();
         &:hover {
             background: $font-color-dark;
             color: $secondary-color;
         }
-        transition: background .25s ease-in-out;
-        transition: color .5s ease-in-out;
     }
     & .line {
         position: absolute;

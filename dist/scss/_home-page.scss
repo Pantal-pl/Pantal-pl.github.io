@@ -122,8 +122,11 @@
                         background-repeat: no-repeat;
                         background-size: cover;
                         aspect-ratio: 1/1;
-                        width: 60%;
+                        width: 18rem;
                         border-radius: 2.8rem 0 2.8rem 0;
+                        @include respond-to('sm'){
+                            width: 15rem;
+                         }
                     }
                     & .tags {
                         @include tags;

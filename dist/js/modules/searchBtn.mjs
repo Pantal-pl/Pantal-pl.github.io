@@ -29,9 +29,7 @@ function searchBtn(){
         searchResultsEl.setAttribute("class", "searchResults");
         document.querySelector(".homePage").style.display = "none"
         body.appendChild(searchResultsEl)
-  
-        const showNewBtn = document.createElement("button")
-
+        
           if(searchByInput.value === "ingredients"){
             let searchType = "findByIngredients"
             fetch(
@@ -43,7 +41,7 @@ function searchBtn(){
                 data.forEach((element) =>{
                   offSetIngredients++;
                   console.log(offSetIngredients)
-  
+                  
                   searchResultsEl.insertAdjacentHTML(
                     "beforeend",
                     `<div class="searchResult">
@@ -52,6 +50,9 @@ function searchBtn(){
                     </div>`
                   );
                 })
+
+                if(offSetIngredients >= 16) offSetIngredients = 0;
+                
                 let searchResultFoodImages = document.querySelectorAll(".searchResultFoodImage")
                 searchResultFoodImages.forEach((image,index)=>{
                   image.style.backgroundImage = `url(${data[index].image})`
@@ -69,6 +70,7 @@ function searchBtn(){
       
                   })
                 })
+                data.length === 0 ? warningBannerActive("Nothing found, search again") : warningBannerActive(`${data.length} results`,"#339900","#f0f0f0")
               });
           }else{
             let searchType = "complexSearch"
@@ -88,8 +90,10 @@ function searchBtn(){
                       <p>${element.title}</p>
                     </div>`
                   );
-      
                 })
+
+                if(offSetDishName > 16) offSetDishName = 0;
+
                 let searchResultFoodImages = document.querySelectorAll(".searchResultFoodImage")
                 searchResultFoodImages.forEach((image,index)=>{
                   image.style.backgroundImage = `url(${data.results[index].image})`
@@ -106,6 +110,8 @@ function searchBtn(){
                   document.querySelector(".searchResults").style.display = "none";
                   })
                 })
+            
+            data.results.length === 0 ? warningBannerActive("Nothing found, search again") : warningBannerActive(`${data.results.length} results`,"#339900","#f0f0f0")
               });
           }
           searchByInput.value = "";
