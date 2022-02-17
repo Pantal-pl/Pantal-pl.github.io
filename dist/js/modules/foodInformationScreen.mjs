@@ -8,6 +8,17 @@ let favouritesRecipes = []
 let isEvExist = 0;
 const bandColors = ["e84317","f8e46c","813531","ff611d","982121","cf5c3c"]
 
+    
+function CopyMe(TextToCopy) {
+  var TempText = document.createElement("input");
+  TempText.value = TextToCopy;
+  document.body.appendChild(TempText);
+  TempText.select();
+  
+  document.execCommand("copy");
+  document.body.removeChild(TempText);
+}
+
 function refresh(element,favouritesIds){
   favouritesIds = localStorage.getItem("favourite").split(",")
   favouritesRecipes = []
@@ -87,6 +98,7 @@ function createFoodInformationEl(element) {
       <h2>Ingredients</h2>
       <ul>
       </ul>
+      <button class="copyToClipboard"><img src="/dist/images/copy-files-svgrepo-com.svg"></button>
     </div>
   </div>
   <button class="backButton"></button>
@@ -122,6 +134,22 @@ const logicForFoodInformationEl = (element) => {
   window.scrollTo(0, 0);
 
   createFoodInformationEl(element);
+
+  const copyToClipboardBtn = document.querySelector(".copyToClipboard")
+  copyToClipboardBtn.addEventListener("click",()=>{
+    let clipboardStorage = [];
+    element.extendedIngredients.forEach((name)=>{
+      clipboardStorage.push(name.original)
+    })
+    let clipboardStorageText = clipboardStorage.toString()
+    CopyMe(clipboardStorageText)
+    warningBannerActive("Copied to clipboard","#339900","#f0f0f0")
+    copyToClipboardBtn.style.transform = "rotate(360deg) scale(1.2)"
+    setTimeout(()=>{
+    copyToClipboardBtn.style.transform = "rotate(360deg) scale(1)"
+    },650)
+  })
+
 
   if(element.cuisines.length === 0) {
     document.querySelector("#cuisines").textContent = "Not found"
@@ -209,6 +237,7 @@ const logicForFoodInformationEl = (element) => {
       })
     });
  
+
     if(isEvExist === 0){
       const refreshButton =  document.querySelector(".favouriteElement .headingElement #refreshFavourites")
       const deleteAllFavouritesButton =  document.querySelector(".favouriteElement .headingElement #deleteAllFavourites")

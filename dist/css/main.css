@@ -5857,6 +5857,34 @@ progress::-webkit-progress-bar {
 
 .foodInformation .foodDescription .description {
   padding: 1rem;
+  position: relative;
+}
+
+.foodInformation .foodDescription .description .copyToClipboard {
+  margin-top: .7rem;
+  border: none;
+  background: #f8e46c;
+  padding: .5rem;
+  border-radius: 100%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  width: 3rem;
+  aspect-ratio: 1/1;
+  cursor: pointer;
+  -webkit-transition: 0.6s cubic-bezier(0.87, 0.05, 0.28, 1.01);
+  transition: 0.6s cubic-bezier(0.87, 0.05, 0.28, 1.01);
+}
+
+.foodInformation .foodDescription .description .copyToClipboard img {
+  width: 2rem;
+  aspect-ratio: 1/1;
 }
 
 .foodInformation .foodDescription .description h1 {
