@@ -8,7 +8,6 @@ import { warningBannerActive } from "./warningBanner.mjs";
 const searchBarEl = document.createElement("div");
 
 searchBarEl.setAttribute("class", "menuBar");
-const body = document.querySelector("body")
 searchBarEl.insertAdjacentHTML(
   "beforeend",
   `

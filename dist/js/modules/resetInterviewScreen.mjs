@@ -1,4 +1,3 @@
-
 function createResetInterviewScreen() {
   const body = document.querySelector("body")
   const resetInterviewScreenEl = document.createElement("section");
@@ -33,8 +32,9 @@ function resetInterviewScreen(){
   }
 
   createResetInterviewScreen()
-
+  
   document.querySelector(".yes").addEventListener("click",function(){
+    //clearing local storage
     localStorage.setItem("cusine","")
     localStorage.setItem("intolerances","")
     localStorage.setItem("diet","")
@@ -43,6 +43,7 @@ function resetInterviewScreen(){
     window.location.reload()
   })
   document.querySelector(".no").addEventListener("click",function(){
+    //close reset interview screen
     let homePage = document.querySelector(".homePage")
     document.querySelector(".resetInterviewScreen").remove()
     homePage.style.display = "flex"

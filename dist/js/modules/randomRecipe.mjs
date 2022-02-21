@@ -2,7 +2,6 @@ import { API_KEY } from "../main.js";
 import { logicForFoodInformationEl } from "./foodInformationScreen.mjs";
 import { warningBannerActive } from "./warningBanner.mjs";
 
-
 function randomRecipeButtonLogic() {
   const randomRecipeButton = document.querySelector(".randomRecipeButton");
   randomRecipeButton.addEventListener("click", function () {
@@ -18,11 +17,7 @@ function randomRecipeButtonLogic() {
         logicForFoodInformationEl(randomRecipeResult.recipes[0]);
         console.log(randomRecipeResult);
         warningBannerActive(
-          `${randomRecipeResult.recipes[0].title}`,
-          "#339900",
-          "#f0f0f0",
-          "1rem"
-        );
+          `${randomRecipeResult.recipes[0].title}`,"#339900","#f0f0f0","1rem");
       });
     document.querySelector(".menuBar").classList.remove("menuBarActive");
   });

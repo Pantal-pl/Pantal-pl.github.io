@@ -2,7 +2,6 @@ import { API_KEY } from "../main.js";
 import { logicForFoodInformationEl } from "./foodInformationScreen.mjs";
 import { warningBannerActive } from "./warningBanner.mjs";
 
-
 function searchBtn(){
     let body = document.querySelector("body")
     let nameInput = document.querySelector(".name")
