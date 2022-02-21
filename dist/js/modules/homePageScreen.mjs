@@ -38,15 +38,20 @@ const logicForHomePage = () => {
   let recipesInformation = [];
   let recipesId = [];
   let i = 0;
+  // getting user preferences
   let intolerances = localStorage.getItem("intolerances");
   let cusine = localStorage.getItem("cusine");
   let diet = localStorage.getItem("diet");
+
   let tryThisElement = document.querySelector(".tryThisElement .foodItems");
+
   document.body.insertAdjacentHTML("beforeend",`<div class="warningBanner"></div>`)
- if(localStorage.getItem("recipesRange")=== "undefined"){
+  // checking if user dont insert any value in range input, and setting it to 4 
+ if(localStorage.getItem("recipesRange") === "undefined"){
    localStorage.setItem("recipesRange",4)
  }
   getFoodData();
+  //querying data form API
   function getFoodData() {
     fetch(
       `https://api.spoonacular.com/recipes/complexSearch?apiKey=${API_KEY}&cuisine=${cusine}&diet=${diet}&intolerances=${intolerances}&number=${localStorage.getItem("recipesRange")}`
@@ -54,9 +59,11 @@ const logicForHomePage = () => {
       .then((response) => response.json())
       .then((data) => {
         data.results.forEach((element) => {
+          //pushing id of every meal that matches to user preferences
           recipesId.push(element.id);
         });
         console.log(recipesId);
+        //card display if nothing matches to user preferences
         if (recipesId.length === 0) {
           tryThisElement.innerHTML = `
           <div class="foodItem" style="height:15rem;display:grid;place-items:center;padding:0 1rem;text-align:center;opacity:1;">
@@ -64,14 +71,17 @@ const logicForHomePage = () => {
             <h2>Try to do interview again by reseting it in menu</h2>
           </div>`;
         } else {
+          // adding spinner while cards is loading
           setTimeout(()=>{
             let el = document.querySelector(".lds-spinner")
           el.remove()
           },600)
+          //searching clicked food by ID
           searchByFoodId(recipesId);
         }
       });
   }
+
   function searchByFoodId() {
     recipesId.forEach((element) => {
       fetch(
@@ -80,11 +90,13 @@ const logicForHomePage = () => {
         .then((response) => response.json())
         .then((ids) => {
           recipesInformation.push(ids);
+          //render food card 
           insertFoodData(recipesInformation);
           console.log(recipesInformation)
         });
     });
   }
+
   function insertFoodData(recipesInformation) {
     tryThisElement.insertAdjacentHTML(
       "beforeend",
@@ -110,6 +122,7 @@ const logicForHomePage = () => {
     foodItems[i].addEventListener("click",logicForFoodInformationEl.bind(this, recipesInformation[i]));
     i++;
 
+      // adding fancy drop animation
       function observeHomePage(){
         let foodItemsObserver = document.querySelectorAll(
           ".tryThisElement .foodItems .foodItem"

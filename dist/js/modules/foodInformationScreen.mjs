@@ -8,7 +8,7 @@ let favouritesRecipes = []
 let isEvExist = 0;
 const bandColors = ["e84317","f8e46c","813531","ff611d","982121","cf5c3c"]
 
-    
+// coping ingredients    
 function CopyMe(TextToCopy) {
   var TempText = document.createElement("input");
   TempText.value = TextToCopy;
@@ -19,6 +19,7 @@ function CopyMe(TextToCopy) {
   document.body.removeChild(TempText);
 }
 
+//refresh favourite section
 function refresh(element,favouritesIds){
   favouritesIds = localStorage.getItem("favourite").split(",")
   favouritesRecipes = []
@@ -65,13 +66,16 @@ function refresh(element,favouritesIds){
     }
 }
 
+//render food information element
 function createFoodInformationEl(element) {
   const foodInformationEL = document.createElement("section");
   foodInformationEL.setAttribute("class", "foodInformation");
+  //adding slide animation
   foodInformationEL.classList.add("slide-in-left")
   setTimeout(()=>{
     foodInformationEL.classList.remove("slide-in-left")
   },500)
+  //inserting HTML template
   foodInformationEL.insertAdjacentHTML(
     "beforeend",
     `
@@ -109,14 +113,13 @@ function createFoodInformationEl(element) {
   </div>
   `
   );
-
-  
   body.appendChild(foodInformationEL);
 
 }
 const logicForFoodInformationEl = (element) => {
   
   console.log(element)
+  // getting user favourite recipes IDs from local storage
   let favouritesIds = localStorage.getItem("favourite").split(",")
   favouritesIds = favouritesIds.filter((item) => item != "")
 
@@ -129,12 +132,14 @@ const logicForFoodInformationEl = (element) => {
   localStorage.setItem("favourite",favouritesIds)
 
   let homePageEl = document.querySelector(".homePage");
+  //hidding home page when render food information card
   homePageEl.style.zIndex = "-99999";
   homePageEl.style.opacity = "0";
   window.scrollTo(0, 0);
 
   createFoodInformationEl(element);
 
+  //copy to clipboard action
   const copyToClipboardBtn = document.querySelector(".copyToClipboard")
   copyToClipboardBtn.addEventListener("click",()=>{
     let clipboardStorage = [];
@@ -144,6 +149,7 @@ const logicForFoodInformationEl = (element) => {
     let clipboardStorageText = clipboardStorage.toString()
     CopyMe(clipboardStorageText)
     warningBannerActive("Copied to clipboard","#339900","#f0f0f0")
+    //animation for copy button
     copyToClipboardBtn.style.transform = "rotate(360deg) scale(1.2)"
     setTimeout(()=>{
     copyToClipboardBtn.style.transform = "rotate(360deg) scale(1)"
@@ -157,16 +163,17 @@ const logicForFoodInformationEl = (element) => {
   if(element.dishTypes.length === 0) {
     document.querySelector("#dishTypes").textContent = "Not found"
   }
+  //Checking that fetch data does not contain instructions
   let recipeDescription = document.querySelector(".description p");
   if (recipeDescription.innerText === "null") {
     recipeDescription.innerText = "Instruction not found :(";
   } else {
+    //if data from fetch include instructions, replace all "." with "<br>" tag
     let recipeDescriptionString = recipeDescription.innerText;
     recipeDescriptionString = recipeDescriptionString.replace(/\./g,". <br/> <br/>");
     recipeDescription.innerHTML = recipeDescriptionString;
   }
-
-
+  // inserting ingredients to food information card and image
   let recipeIngredients = document.querySelector(".description ul");
   element.extendedIngredients.forEach((line) => {
     recipeIngredients.insertAdjacentHTML('beforeend',`<li>${line.original}</li>`);
@@ -176,7 +183,7 @@ const logicForFoodInformationEl = (element) => {
   );
   descriptionFoodImage.style.backgroundImage = `url(${element.image})`;
 
-
+ //add to favourite button
  let addToFavouriteBtn = document.querySelector(".addToFavouriteBtn")
     addToFavouriteBtn.addEventListener("click",function(){
       if(JSON.parse(localStorage.getItem("favourite").includes(element.id))){
@@ -197,7 +204,7 @@ const logicForFoodInformationEl = (element) => {
       setTimeout(()=>{addToFavouriteBtn.style.transform = "scale(1)"},500)
     })
 
-
+  //back button action
   const backButton = document.querySelector(".backButton");
   backButton.addEventListener("click", function () {
     homePageEl.style.zIndex = "1";
@@ -231,13 +238,14 @@ const logicForFoodInformationEl = (element) => {
           );
         });
       });
+      //adding colored bands to similar recipes card
       let decoratesBands = document.querySelectorAll(".band")
       decoratesBands.forEach((band,index)=>{
         band.style.background = `#${bandColors[index]}`
       })
     });
  
-
+    //adding refresh button and delete button
     if(isEvExist === 0){
       const refreshButton =  document.querySelector(".favouriteElement .headingElement #refreshFavourites")
       const deleteAllFavouritesButton =  document.querySelector(".favouriteElement .headingElement #deleteAllFavourites")

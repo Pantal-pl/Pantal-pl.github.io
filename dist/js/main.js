@@ -14,6 +14,7 @@ const insertScreen = (elToInsert) => {
   body.appendChild(elToInsert);
 };
 
+// render a start screen 
 insertScreen(startScreenEl);
 const startBtn = document.querySelector(".start-btn");
 

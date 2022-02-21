@@ -85,6 +85,7 @@ export { interviewScreenEl };
 const logicForInterviewScreen = () => {
   window.scroll(0,0)
   localStorage.setItem(`favourite`,[]); 
+  // creating arrays for user inputs
   let intolerances = [];
   let diet = [];
   let cusine = [];
@@ -98,7 +99,8 @@ const logicForInterviewScreen = () => {
   const cusineEl = document.querySelectorAll(
     ".cusine .interviewElementInputs input"
   );
-  //Adding jelly effect to every input
+
+  //Adding jelly effect to every input and check for duplicates in arrays
   const EvForEveryOption = (ElementOption, typeOption) => {
     ElementOption.forEach((option) => {
       option.addEventListener("click", () => {
@@ -134,18 +136,19 @@ const logicForInterviewScreen = () => {
       });
     });
   };
-
+  // adding events to all 3 sections 
   EvForEveryOption(intolerancesEl, "intolerances");
   EvForEveryOption(dietEl, "diet");
   EvForEveryOption(cusineEl, "cusine");
-
+  
+  // range input to choose recipes limit
   let range =   document.getElementById("range")
     range.addEventListener("change",()=>{
       document.getElementById('rangeLimit').textContent = range.value
       recipesRange = range.value
     })
 
-  // Save button action
+  // onClick event to save button
   const saveBtn = document.querySelector(".saveBtn");
   saveBtn.addEventListener("click", () => {
     if (cusine.length === 0){
