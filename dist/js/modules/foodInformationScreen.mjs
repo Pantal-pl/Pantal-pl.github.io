@@ -1,11 +1,8 @@
 import { API_KEY } from "../main.js";
 import { warningBannerActive } from "./warningBanner.mjs";
 
-
 const body = document.querySelector("body");
 let similarRecipesArr = []
-let favouritesRecipes = []
-let isEvExist = 0;
 const bandColors = ["e84317","f8e46c","813531","ff611d","982121","cf5c3c"]
 
 // coping ingredients    
@@ -19,52 +16,6 @@ function CopyMe(TextToCopy) {
   document.body.removeChild(TempText);
 }
 
-//refresh favourite section
-function refresh(element,favouritesIds){
-  favouritesIds = localStorage.getItem("favourite").split(",")
-  favouritesRecipes = []
-    if(favouritesIds.length>0){
-      warningBannerActive("Success","#339900","#f0f0f0")
-      document.querySelector(".favouriteElement .foodItems").innerHTML = "<div></div>"
-      favouritesIds.forEach((id,index)=>{
-        fetch(
-          `https://api.spoonacular.com/recipes/${id}/information?apiKey=${API_KEY}&includeNutrition=false`
-        )
-        .then((response) => response.json())
-        .then((favourite)=>{
-          favouritesRecipes.push(favourite)
-          document.querySelector(".favouriteElement .foodItems").insertAdjacentHTML('beforeend',`
-          <div class="foodItem" id="favouriteItem${index}">
-        <div class="foodImageAndTags">
-        <div class="foodImage"></div>
-        <div class="tags">
-          <h3>About:</h3>
-          <p>${favourite.readyInMinutes} min.</p>
-          <p>Servings: ${favourite.servings}</p>
-          <p>${favourite.cuisines[0]}</p>
-        </div>
-        </div>
-        <h2>${favourite.title}</h2>
-      </div>`)
-      let foodImages = document.querySelectorAll(
-        ".favouriteElement .foodItems .foodItem .foodImage"
-      );
-      foodImages[index].style.backgroundImage = `url(${favourite.image})`;
-
-        })
-      });
-      setTimeout(()=>{
-        document.querySelectorAll(".favouriteElement .foodItems .foodItem").forEach((item,index)=>{
-          item.addEventListener("click",()=>{
-            logicForFoodInformationEl(favouritesRecipes[index])
-            console.log(favouritesRecipes)
-          })
-        })
-      },1000)
-    }else {
-      warningBannerActive("Nothing to show")
-    }
-}
 
 //render food information element
 function createFoodInformationEl(element) {
@@ -200,8 +151,8 @@ const logicForFoodInformationEl = (element) => {
         localStorage.setItem("favourite",favouritesIds)
         addToFavouriteBtn.querySelector("img").src = "dist/images/Star 2.svg"
       }
-      addToFavouriteBtn.style.transform = "scale(1.2)"
-      setTimeout(()=>{addToFavouriteBtn.style.transform = "scale(1)"},500)
+      addToFavouriteBtn.style.transform = "scale(1.2) rotate(1turn)"
+      setTimeout(()=>{addToFavouriteBtn.style.transform = "scale(1) rotate(1turn)"},500)
     })
 
   //back button action
@@ -246,16 +197,17 @@ const logicForFoodInformationEl = (element) => {
     });
  
     //adding refresh button and delete button
-    if(isEvExist === 0){
-      const refreshButton =  document.querySelector(".favouriteElement .headingElement #refreshFavourites")
-      const deleteAllFavouritesButton =  document.querySelector(".favouriteElement .headingElement #deleteAllFavourites")
-      refreshButton.addEventListener("click",refresh.bind(this,element,favouritesIds))
-      deleteAllFavouritesButton.addEventListener("click",()=>{
-        localStorage.setItem("favourite",[])
-        warningBannerActive("Deleted","#cc3300","#f0f0f0")
-      })
-    }
-    isEvExist++
+    // if(isEvExist === 0){
+    //   const refreshButton =  document.querySelector(".favouriteElement .headingElement #refreshFavourites")
+    //   const deleteAllFavouritesButton =  document.querySelector(".favouriteElement .headingElement #deleteAllFavourites")
+    //   refreshButton.addEventListener("click",refresh.bind(this,element,favouritesIds))
+    //   deleteAllFavouritesButton.addEventListener("click",()=>{
+    //     localStorage.setItem("favourite",[])
+    //     warningBannerActive("Deleted","#cc3300","#f0f0f0")
+    //   })
+    // }
+
+    // isEvExist++
 };
 
 

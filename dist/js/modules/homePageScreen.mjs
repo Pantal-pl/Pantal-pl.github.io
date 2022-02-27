@@ -1,6 +1,7 @@
 import { logicForFoodInformationEl } from "./foodInformationScreen.mjs";
 import { API_KEY } from "../main.js";
-
+import { refresh } from "./refreshButton.mjs";
+import { warningBannerActive } from "./warningBanner.mjs";
 const homePageEl = document.createElement("section");
 homePageEl.setAttribute("class", "homePage");
 homePageEl.insertAdjacentHTML(
@@ -141,6 +142,15 @@ const logicForHomePage = () => {
       }
       observeHomePage()
   }
+  const refreshButton =  document.querySelector(".favouriteElement .headingElement #refreshFavourites")
+  const deleteAllFavouritesButton =  document.querySelector(".favouriteElement .headingElement #deleteAllFavourites")
+  
+  refreshButton.addEventListener("click",refresh.bind(localStorage.getItem("favourite").split(",")))
+  deleteAllFavouritesButton.addEventListener("click",()=>{
+    localStorage.setItem("favourite",[])
+    warningBannerActive("Deleted","#cc3300","#f0f0f0")
+    document.querySelector(".favouriteElement .fooditems").innerHTML = ""
+  })
 };
 
 export { homePageEl, logicForHomePage };
