@@ -13,7 +13,7 @@ function warningBannerActive(text,bgColor,fontColor,fontSize){
     setTimeout(() => {
       warningBanner.style.top = "-11.1vh"
       warningBanner.textContent = ""
-    }, 1650);
+    }, 2550);
     warningBanner.addEventListener("click",({target})=>{
       target.style.top = "-11.1vh"
       target.textContent = ""

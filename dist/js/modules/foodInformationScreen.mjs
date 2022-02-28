@@ -16,7 +16,6 @@ function CopyMe(TextToCopy) {
   document.body.removeChild(TempText);
 }
 
-
 //render food information element
 function createFoodInformationEl(element) {
   const foodInformationEL = document.createElement("section");
@@ -195,19 +194,7 @@ const logicForFoodInformationEl = (element) => {
         band.style.background = `#${bandColors[index]}`
       })
     });
- 
-    //adding refresh button and delete button
-    // if(isEvExist === 0){
-    //   const refreshButton =  document.querySelector(".favouriteElement .headingElement #refreshFavourites")
-    //   const deleteAllFavouritesButton =  document.querySelector(".favouriteElement .headingElement #deleteAllFavourites")
-    //   refreshButton.addEventListener("click",refresh.bind(this,element,favouritesIds))
-    //   deleteAllFavouritesButton.addEventListener("click",()=>{
-    //     localStorage.setItem("favourite",[])
-    //     warningBannerActive("Deleted","#cc3300","#f0f0f0")
-    //   })
-    // }
 
-    // isEvExist++
 };
 
 

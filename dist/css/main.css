@@ -20,8 +20,8 @@
   height: 7px;
   -webkit-transform-origin: 0% 0%;
           transform-origin: 0% 0%;
-  -webkit-transition: 1400ms ease-in-out;
-  transition: 1400ms ease-in-out;
+  -webkit-transition: 2300ms ease-in-out;
+  transition: 2300ms ease-in-out;
   -webkit-appearance: none;
      -moz-appearance: none;
           appearance: none;
@@ -788,8 +788,8 @@ progress::-webkit-progress-bar {
   height: 7px;
   -webkit-transform-origin: 0% 0%;
           transform-origin: 0% 0%;
-  -webkit-transition: 1400ms ease-in-out;
-  transition: 1400ms ease-in-out;
+  -webkit-transition: 2300ms ease-in-out;
+  transition: 2300ms ease-in-out;
   -webkit-appearance: none;
      -moz-appearance: none;
           appearance: none;
@@ -1349,8 +1349,8 @@ progress::-webkit-progress-bar {
   height: 7px;
   -webkit-transform-origin: 0% 0%;
           transform-origin: 0% 0%;
-  -webkit-transition: 1400ms ease-in-out;
-  transition: 1400ms ease-in-out;
+  -webkit-transition: 2300ms ease-in-out;
+  transition: 2300ms ease-in-out;
   -webkit-appearance: none;
      -moz-appearance: none;
           appearance: none;
@@ -2181,10 +2181,6 @@ progress::-webkit-progress-bar {
   padding-bottom: 1rem;
 }
 
-.interviewScreen form .interviewElement .interviewElementInputs::-webkit-scrollbar {
-  width: 0;
-}
-
 .interviewScreen form .interviewElement .interviewElementInputs input {
   -webkit-appearance: none;
   -webkit-transition: .25s ease-in-out;
@@ -2412,8 +2408,8 @@ progress::-webkit-progress-bar {
   height: 7px;
   -webkit-transform-origin: 0% 0%;
           transform-origin: 0% 0%;
-  -webkit-transition: 1400ms ease-in-out;
-  transition: 1400ms ease-in-out;
+  -webkit-transition: 2300ms ease-in-out;
+  transition: 2300ms ease-in-out;
   -webkit-appearance: none;
      -moz-appearance: none;
           appearance: none;
@@ -3158,8 +3154,8 @@ progress::-webkit-progress-bar {
   height: 7px;
   -webkit-transform-origin: 0% 0%;
           transform-origin: 0% 0%;
-  -webkit-transition: 1400ms ease-in-out;
-  transition: 1400ms ease-in-out;
+  -webkit-transition: 2300ms ease-in-out;
+  transition: 2300ms ease-in-out;
   -webkit-appearance: none;
      -moz-appearance: none;
           appearance: none;
@@ -3719,8 +3715,8 @@ progress::-webkit-progress-bar {
   height: 7px;
   -webkit-transform-origin: 0% 0%;
           transform-origin: 0% 0%;
-  -webkit-transition: 1400ms ease-in-out;
-  transition: 1400ms ease-in-out;
+  -webkit-transition: 2300ms ease-in-out;
+  transition: 2300ms ease-in-out;
   -webkit-appearance: none;
      -moz-appearance: none;
           appearance: none;
@@ -4293,21 +4289,19 @@ progress::-webkit-progress-bar {
   right: -4.5rem;
   background: #f8e46c;
   border: none;
-  padding: .8rem;
+  padding: 0.8rem;
   border-radius: 100%;
   display: -ms-grid;
   display: grid;
   place-items: center;
   cursor: pointer;
-  -webkit-transition: -webkit-transform .25s ease-in-out;
-  transition: -webkit-transform .25s ease-in-out;
-  transition: transform .25s ease-in-out;
-  transition: transform .25s ease-in-out, -webkit-transform .25s ease-in-out;
+  -webkit-transition: 0.6s cubic-bezier(0.87, 0.05, 0.28, 1.01);
+  transition: 0.6s cubic-bezier(0.87, 0.05, 0.28, 1.01);
 }
 
 @media (max-width: 320px) {
   .homePage .favouriteElement .headingElement button {
-    padding: .6rem;
+    padding: 0.6rem;
     right: -3.5rem;
   }
 }
@@ -4315,6 +4309,12 @@ progress::-webkit-progress-bar {
 .homePage .favouriteElement .headingElement button:nth-of-type(2) {
   right: -9.5rem;
   background: #cc3300;
+  -webkit-transition: 0.6s cubic-bezier(0.87, 0.05, 0.28, 1.01);
+  transition: 0.6s cubic-bezier(0.87, 0.05, 0.28, 1.01);
+}
+
+.homePage .favouriteElement .headingElement button:nth-of-type(2):focus-visible {
+  background: green;
 }
 
 @media (max-width: 320px) {
@@ -4350,8 +4350,8 @@ progress::-webkit-progress-bar {
 
 @media (max-width: 320px) {
   .homePage .homePageElement .headingElement {
-    padding: .6rem .9rem;
-    font-size: .9rem;
+    padding: 0.6rem 0.9rem;
+    font-size: 0.9rem;
     font-size: 1.5rem;
   }
 }
@@ -4363,8 +4363,8 @@ progress::-webkit-progress-bar {
   height: 1.5rem;
   background: #e84317;
   border-radius: 50%;
-  left: -.3rem;
-  top: -.2rem;
+  left: -0.3rem;
+  top: -0.2rem;
 }
 
 .homePage .homePageElement .headingElement::after {
@@ -4374,8 +4374,8 @@ progress::-webkit-progress-bar {
   height: 1.5rem;
   background: #e84317;
   border-radius: 50%;
-  right: -.2rem;
-  bottom: -.2rem;
+  right: -0.2rem;
+  bottom: -0.2rem;
 }
 
 .homePage .homePageElement .foodItems {
@@ -4388,10 +4388,21 @@ progress::-webkit-progress-bar {
   overflow-x: scroll;
   padding: 2.4rem 0;
   padding-left: 1rem;
+  margin-bottom: 1rem;
 }
 
-.homePage .homePageElement .foodItems::-webkit-scrollbar {
-  width: 0;
+.homePage .homePageElement .foodItems::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.homePage .homePageElement .foodItems::-webkit-scrollbar-thumb {
+  background: #e84317;
+  width: 5px;
+  border-radius: 25px;
+}
+
+.homePage .homePageElement .foodItems::-webkit-scrollbar-thumb:hover {
+  background: #555;
 }
 
 .homePage .homePageElement .foodItems .foodItem {
@@ -4522,8 +4533,8 @@ progress::-webkit-progress-bar {
   height: 7px;
   -webkit-transform-origin: 0% 0%;
           transform-origin: 0% 0%;
-  -webkit-transition: 1400ms ease-in-out;
-  transition: 1400ms ease-in-out;
+  -webkit-transition: 2300ms ease-in-out;
+  transition: 2300ms ease-in-out;
   -webkit-appearance: none;
      -moz-appearance: none;
           appearance: none;
@@ -5169,8 +5180,8 @@ progress::-webkit-progress-bar {
   height: 7px;
   -webkit-transform-origin: 0% 0%;
           transform-origin: 0% 0%;
-  -webkit-transition: 1400ms ease-in-out;
-  transition: 1400ms ease-in-out;
+  -webkit-transition: 2300ms ease-in-out;
+  transition: 2300ms ease-in-out;
   -webkit-appearance: none;
      -moz-appearance: none;
           appearance: none;
@@ -6069,8 +6080,8 @@ progress::-webkit-progress-bar {
   height: 7px;
   -webkit-transform-origin: 0% 0%;
           transform-origin: 0% 0%;
-  -webkit-transition: 1400ms ease-in-out;
-  transition: 1400ms ease-in-out;
+  -webkit-transition: 2300ms ease-in-out;
+  transition: 2300ms ease-in-out;
   -webkit-appearance: none;
      -moz-appearance: none;
           appearance: none;

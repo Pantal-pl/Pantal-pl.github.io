@@ -4,6 +4,7 @@ import { logicForFoodInformationEl } from "./foodInformationScreen.mjs";
 
 //refresh favourite section
 function refresh(favouritesIds){
+  if(localStorage.getItem("favourite").length !== 0) {
     favouritesIds = localStorage.getItem("favourite").split(",")
     let favouritesRecipes = []
         warningBannerActive("Success","#339900","#f0f0f0")
@@ -23,7 +24,7 @@ function refresh(favouritesIds){
             <h3>About:</h3>
             <p>${favourite.readyInMinutes} min.</p>
             <p>Servings: ${favourite.servings}</p>
-            <p>${favourite.cuisines[0]}</p>
+            <p id="favourite-cuisines">${favourite.cuisines[0]}</p>
           </div>
           </div>
           <h2>${favourite.title}</h2>
@@ -32,6 +33,9 @@ function refresh(favouritesIds){
           ".favouriteElement .foodItems .foodItem .foodImage"
         );
         foodImages[index].style.backgroundImage = `url(${favourite.image})`;
+        if(favourite.cuisines.length === 0 ) {
+          document.querySelector("#favourite-cuisines").textContent = "Not found"
+        }
           })
         });
         setTimeout(()=>{
@@ -42,6 +46,9 @@ function refresh(favouritesIds){
             })
           })
         },1000)
+    } else {
+      warningBannerActive("Nothing to show")
+    }
   }
 
 export {refresh}

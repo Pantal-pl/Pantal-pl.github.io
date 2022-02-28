@@ -146,10 +146,20 @@ const logicForHomePage = () => {
   const deleteAllFavouritesButton =  document.querySelector(".favouriteElement .headingElement #deleteAllFavourites")
   
   refreshButton.addEventListener("click",refresh.bind(localStorage.getItem("favourite").split(",")))
-  deleteAllFavouritesButton.addEventListener("click",()=>{
+  refreshButton.addEventListener("click",()=>{
+    refreshButton.style.transform = "translateY(-50%) scale(1.1) rotate(360deg)"
+    setTimeout(()=>{
+      refreshButton.style.transform = "translateY(-50%) scale(1) rotate(0deg)"
+    },650)
+  })
+  deleteAllFavouritesButton.addEventListener("click",(e)=>{
+    deleteAllFavouritesButton.style.transform = "translateY(-50%) scale(1.1) rotate(360deg)"
+    setTimeout(()=>{
+      deleteAllFavouritesButton.style.transform = "translateY(-50%) scale(1) rotate(0deg)"
+    },650)
     localStorage.setItem("favourite",[])
     warningBannerActive("Deleted","#cc3300","#f0f0f0")
-    document.querySelector(".favouriteElement .fooditems").innerHTML = ""
+    document.querySelector(".favouriteElement .foodItems").innerHTML = ""
   })
 };
 

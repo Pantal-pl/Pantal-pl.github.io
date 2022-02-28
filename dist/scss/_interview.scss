@@ -47,9 +47,6 @@
                 overflow-x: scroll;
                 margin-top: 2.2rem;
                 padding-bottom: 1rem;
-                &::-webkit-scrollbar {
-                    width: 0;
-                }
                 & input {
                     -webkit-appearance: none;
                     transition: .25s ease-in-out;
